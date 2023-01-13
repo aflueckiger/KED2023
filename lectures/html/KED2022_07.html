@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Alex Flückiger">
+  <meta name="dcterms.date" content="2022-04-14">
+  <title>The ABC of Computational Text Analysis</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/simple.css" id="theme">
+  <style type='text/css'>
+  @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Caveat+Brush&family=Caveat:wght@600&family=Permanent+Marker&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro&display=swap');
+
+  /*********************************************
+  * CUSTOM COLORS
+
+  https://colorate.azurewebsites.net/Color/0A66B4
+  https://www.color-hex.com/color-palette/1294
+  *********************************************/
+
+  :root {
+      --green: #4d7e65;
+      --blue: #3c70b5;
+      --red: #b5533c;
+      --black: #1d1e1f;
+      --grey: #4a4a4b;
+      --color-subtitle: #00008B;
+      --color-headings: #00003F;
+      --color-small-headings: #5D5D9A;
+      --color-strong: #206C46;
+      --color-control: var(--color-small-headings);
+      --color-marker: #B6B6C8;
+  }
+
+
+  /*********************************************
+  * GLOBAL STYLES
+  *********************************************/
+
+  .reveal-viewport {
+      background: var(--bs-white);
+      background-color: var(--bs-white);
+    }
+
+  .reveal {
+     font-size: 2.4em;
+     font-weight: normal;
+     color: var(--black);
+  }
+
+  .reveal ::selection {
+     color: #f7f6f7;
+     background: rgb(10, 102, 180);
+     text-shadow: none;
+  }
+
+  .reveal ::-moz-selection {
+     color: #f7f6f7;
+     background: rgb(10, 102, 180);
+     text-shadow: none;
+  }
+
+  .reveal ::marker {
+      color: var(--color-marker)
+  }
+  section.has-dark-background ::marker {
+      color: white;
+  }
+
+  .reveal .controls {
+      bottom: 24px;
+      color: var(--color-control);
+  }
+
+  .reveal .progress {
+      height: 5px;
+      color: var(--color-headings);
+  }
+
+  .reveal .slide-number {
+      background-color: transparent;
+      color: var(--black);
+  }
+
+
+  /*********************************************
+  * HEADERS
+  *********************************************/
+
+  .reveal h1.title {
+      font-size: 3em;
+      font-weight: bold;
+      color: var(--black);
+  }
+
+  p.subtitle{
+      color: var(--color-subtitle);
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1.5em;
+      padding-top: 1em;
+      padding-bottom: 5em;
+  }
+
+  p.author,
+  p.date,
+  p.institute{
+      text-align: left;
+      font-size: 0.7em;
+      margin-top: -0.7em;
+      margin-left: 2.5%;
+  }
+
+  p.institute{
+      font-size: 0.5em
+  }
+
+  p.date {
+      margin-top: 1em;
+  }
+
+  .reveal h1,
+  .reveal h2,
+  .reveal h3,
+  .reveal h4,
+  .reveal h5,
+  .reveal h6 {
+      color: var(--color-headings)
+  }
+
+  .reveal h2 {
+      margin-bottom: +50px;
+  }
+
+  .reveal h3 {
+      color: var(--color-small-headings);
+      font-weight: bold;
+      font-size: 1.3em;
+  }
+
+
+  /*********************************************
+  * FULL SCREEN SLIDES
+  *********************************************/
+
+  .reveal section[data-background*="images"] {
+      font-size: 1.2em;
+      background-color: rgba(00, 00, 00, .2);
+      padding: 1em;
+      width: 80% !important;
+      left: 10%;
+      margin: auto;
+      /* border-bottom: 30px solid orange; */
+  }
+  .reveal h2[data-background*="images"] {
+      color: white;
+      font-family: Lato;
+      font-weight: bold;
+  }
+
+
+  /*********************************************
+  * LISTS
+  *********************************************/
+  .reveal ul,
+  .reveal ol {
+      margin-bottom: 0.6em;
+  }
+
+  ol li,
+  ul li {
+    margin-top: 0.6em;
+  }
+
+  ol li li,
+  ul li li {
+      margin-top: 0.2em;
+      list-style-type: None;
+      font-size: 0.8em;
+      font-weight: 300;
+  }
+
+  /*********************************************
+  * OTHER TEXT
+  *********************************************/
+  section.has-dark-background strong,
+  section.has-dark-background b {
+    color: white
+  }
+
+  strong, b {
+      color: var(--color-strong)
+  }
+
+  .reveal a {
+      color: var(--color-subtitle)
+  }
+
+  .reveal a:hover {
+    color: #8B0000;
+    text-shadow: none;
+    border: none;
+  }
+
+  .reveal section.has-dark-background a {
+      color: white;
+      text-decoration: underline;
+  }
+
+  .reveal figure figcaption {
+      font-style: italic;
+    color: var(--grey);
+    font-size: 75%;
+  }
+
+  section:not(.has-dark-background) span.citation{
+      font-size: 60%;
+      font-weight:300;
+      color: gray;
+      vertical-align: bottom;
+  }
+
+  .reveal pre {
+      margin-top: 2em;
+      margin-bottom: 4em;
+  }
+
+  .reveal pre code {
+      font-size: 1.5em;
+      padding: 1.5em;
+      line-height: 1.2em;
+      max-height: 600px;
+  }
+
+
+  section.has-dark-background code {
+      color: silver;
+  }
+
+  .reveal table {
+      font-size: 0.8em;
+  }
+
+  .emoji {
+      font-size: 1.2em
+  }
+
+  /*********************************************
+  * QUOTES
+  *********************************************/
+
+  .reveal blockquote  {
+    font-family: Georgia;
+    color: var(--black);
+    max-width: 80%;
+    text-align: left;
+    box-shadow: none;
+    font-size: 130%;
+    position: relative; }
+    .reveal blockquote p{
+        line-height: 1.15em;
+    }
+    .reveal blockquote p:first-child::before {
+      font-size: 1.5em;
+      font-family: Georgia, serif;
+      color: rgb(10, 102, 180);
+      content: '«'; }
+  .reveal blockquote p:first-child::after {
+    font-size: 1.5em;
+    font-family: Georgia, serif;
+    color: rgb(10, 102, 180);
+    content: '»'; }
+
+
+  .reveal blockquote cite{
+      color: rgb(10, 102, 180);
+      text-align: right;
+      font-style: normal;
+      font-size: 0.75em;
+      font-weight: bold;
+      margin-top:1em;
+  }
+
+  .reveal blockquote cite:before {
+      content: "\2014";
+  }
+
+  /*********************************************
+  * CUSTOM CLASSES
+  *********************************************/
+  .white-text {
+      color:#f9f9ff !important;
+  }
+  .dark-text {
+      color:#0c0c0c !important;
+      font-weight: bold;
+  }
+
+  .answer {
+      
+      background-color: rgba(00, 00, 00, .2);
+      padding: 0.8em;
+      margin-top: 0.3em;
+      width: 70%;
+      margin: auto;
+      margin-top: 1em;
+  }
+
+  .highlight {
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      font-size: 2em;
+      background: rgba(255, 255, 255, .5);
+      width: 80%;
+      margin:auto;
+      padding:1em;
+  }
+
+  .reading p,
+  .reading h3,
+  .csl-entry {
+      text-align: left;
+      width: 60%;
+      margin-left: auto;
+      margin-right: auto;
+
+  }
+  .reading p,
+  .references {
+      font-size: 0.6em;
+  }
+
+  .references > div{
+      margin-bottom: 0.4em;
+  }
+
+
+  .funky {
+      font-family: Caveat;
+      font-size: 1.5em;
+  }
+
+  .green {
+      color: #206C46;
+  }
+
+  .red {
+      color: #B40A22;
+  }
+
+  /*********************************************
+  * CUSTOM LAYOUT CLASSES
+  *********************************************/
+
+  .l-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .l-multiple {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .l-double strong {
+    font-size: 1.3em;
+  }
+
+  .l-image-corner {
+      position: absolute;
+      right: 0;
+      transform: translate(0%,-55%);
+  }
+
+  .l-left-align {
+    text-align: left;
+  }
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">The ABC of Computational Text Analysis</h1>
+  <p class="subtitle">#7 Working with (your own) Data</p>
+  <p class="author">Alex Flückiger</p>
+  <p class="institute">Faculty of Humanities and Social
+Sciences<br>University of Lucerne</p>
+  <p class="date">14 April 2022</p>
+</section>
+
+<section id="recap-last-lecture" class="slide level2">
+<h2>Recap last Lecture</h2>
+<ul>
+<li>describe text as pattern using RegEx</li>
+<li>extract + replace textual parts
+<ul>
+<li>literal: <code>abc</code></li>
+<li>meta: <code>\w \s [^abc] *</code></li>
+<li>power of <code>.*</code></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Regex für Extraktion + Säubern
+<ul>
+<li>man muss nur ungefähr wissen wonach suchen</li>
+<li>generalisierte Form = Muster</li>
+</ul></li>
+<li>Literale = Zeichen steht für tatsächliches Zeichen
+(buchstabentreu)</li>
+<li>Meta-Zeichen = Zeichen mit spezieller Bedeutung</li>
+<li>Fragen zu RegEx oder Übung?</li>
+</ul>
+</aside>
+</section>
+<section id="outline" class="slide level2">
+<h2>Outline</h2>
+<ul>
+<li>learn about available data resources</li>
+<li>use your own textual data
+<ul>
+<li>any text <span class="emoji"
+data-emoji="heavy_check_mark">✔️</span></li>
+<li>“any” format <span class="emoji"
+data-emoji="heavy_check_mark">✔️</span></li>
+<li>from anywhere <span class="emoji"
+data-emoji="heavy_check_mark">✔️</span></li>
+</ul></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>heute letzte Sitzung zu Kommandozeile</li>
+<li>zweiteilige Sitzung mit wenig Technischem
+<ul>
+<li>existierende Daten, eigene Daten</li>
+</ul></li>
+<li>interessannte Datasets für die Sozialwissenschaften
+<ul>
+<li>es gibt allerdings nicht viele</li>
+<li>zumeist eigene Daten präparieren</li>
+</ul></li>
+<li>eigene Textdaten nutzen unabhängig von
+<ul>
+<li>Formaten</li>
+<li>historischem Kontext (digital native)</li>
+</ul></li>
+<li>Überlegen, was für eine Analyse in MiniProject</li>
+</ul>
+</aside>
+</section>
+<section>
+<section id="data-sources" class="title-slide slide level1"
+data-background="../images/text_data_mining.jpg">
+<h1 data-background="../images/text_data_mining.jpg">Data Sources</h1>
+
+</section>
+<section id="what-data-sources-are-there" class="slide level2">
+<h2>What Data Sources are there?</h2>
+<ul>
+<li>broadly social
+<ul>
+<li>newspapers + magazines</li>
+<li>websites + social media</li>
+<li>reports by NGOs/GOs</li>
+</ul></li>
+<li>scientific articles</li>
+<li>economic
+<ul>
+<li>business plans/reports</li>
+<li>contracts</li>
+<li>patents</li>
+</ul></li>
+</ul>
+<p><span class="emoji" data-emoji="point_right">👉</span> basically, any
+textual documents…</p>
+<aside class="notes">
+<ul>
+<li>unheimliche Vielfalt an Dokumenten, alles neue digital</li>
+<li>Textkollektion ist bereits vorhanden im Gegensatz zu Survey
+<ul>
+<li>given data statt created data</li>
+<li>Datenbereinigungen sind nötig</li>
+</ul></li>
+<li>hier nur einen Bruchteil vorgestellt, soll als Inspiration dienen
+<ul>
+<li>Zeit reicht nicht, um auf alle Quellen einzugehen</li>
+</ul></li>
+</ul>
+<p><a
+href="https://www.copyrightuser.org/understand/exceptions/text-data-mining/">Image
+Credits</a></p>
+</aside>
+</section>
+<section id="interesting-publishers" class="slide level2">
+<h2>Interesting Publishers</h2>
+<ul>
+<li><a href="http://www.nexisuni.com/">Nexis Uni</a>
+<ul>
+<li>newspaper, business + legal reports (international)</li>
+<li>licensed by the university</li>
+</ul></li>
+<li><a href="https://constellate.org/builder/">Constellate</a>
+<ul>
+<li>scientific articles of JSTOR across disciplines</li>
+<li>provides an easy dataset builder</li>
+</ul></li>
+<li><a href="https://www.hathitrust.org/datasets">HathiTrust</a> and <a
+href="https://www.gutenberg.org/">Project Gutenberg</a>
+<ul>
+<li>massive collection of books (international)</li>
+<li>open, HathiTrust requires agreement</li>
+</ul></li>
+</ul>
+<p><span class="emoji" data-emoji="point_right">👉</span> check out
+other resources licensed by <a
+href="https://www.zhbluzern.ch/recherche/e-medien">ZHB</a></p>
+<aside class="notes">
+<ul>
+<li>Ressourcen gelistet auf ZHBLuzern
+<ul>
+<li>Zugang tlw. über ezproxy</li>
+</ul></li>
+<li>Nexis vielleicht spannendste Quelle für Analyse soziale
+Probleme</li>
+<li>Wieso Literatur? –&gt; Zeitgeist
+<ul>
+<li>genderspezifische Sprache, Verweise Natur/Umwelt</li>
+</ul></li>
+<li>Constellate
+<ul>
+<li>kurze Demo von Constellate</li>
+<li>brandneue Platform</li>
+<li>einfache Zusammenstellung von JSTOR Artikeln</li>
+<li>sehr gute Metadaten</li>
+<li>auch gut für schnelle Recherchen ohne Download</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="dataset-search" class="slide level2">
+<h2>Dataset Search</h2>
+<ul>
+<li><a href="https://dataverse.harvard.edu/">Harvard Dataverse</a>
+<ul>
+<li>open scientific data repository</li>
+</ul></li>
+<li><a href="https://datasetsearch.research.google.com">Google Dataset
+Search</a>
+<ul>
+<li>Google for datasets basically</li>
+</ul></li>
+<li>corpora by the <a
+href="https://www.cl.uzh.ch/en/texttechnologies/research.html">Department
+of Computational Linguistics @ UZH</a></li>
+</ul>
+<p><br></p>
+<p><span class="emoji" data-emoji="point_right">👉</span> search for a
+topic followed by <code>corpus</code>, <code>text collection</code> or
+<code>text as data</code></p>
+<aside class="notes">
+<ul>
+<li>moderne Wissenschaft veröffentlicht nicht nur Papers, sondern auch
+Daten
+<ul>
+<li>computergestützte Textanalyse ist aber immer noch Nische</li>
+</ul></li>
+<li>Suchmaschinen für Datensätze
+<ul>
+<li>allerlei Datensätze, primär aus Wissenschaft</li>
+</ul></li>
+<li>UZH hat Institut Computerlinguistik
+<ul>
+<li>verschiedene Korpora</li>
+<li>Credit Suisse PDF Bulletin Corpus</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="some-great-historical-corpora" class="slide level2">
+<h2>Some great historical Corpora</h2>
+<h3 id="ready-off-the-shelf-machine-readable">ready off-the-shelf,
+machine-readable</h3>
+<ul>
+<li><a
+href="https://www.republik.ch/2019/08/01/anleitung-fuer-die-perfekte-ansprache-zum-1-august">1
+August speeches by Swiss Federal Councilors</a>
+<ul>
+<li>provided via <a
+href="https://github.com/aflueckiger/KED2022/blob/master/materials/data/dataset_speeches_federal_council_2019.csv">course
+repo</a></li>
+</ul></li>
+<li><a
+href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/IAH8OY">Human
+Rights Reports by various NGOs</a></li>
+<li><a
+href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/0TJX8Y">United
+Nations General Debate Corpus</a></li>
+</ul>
+<div class="fragment">
+<p><br></p>
+<p><span class="emoji" data-emoji="sweat">😓</span> There are still not
+many.</p>
+<aside class="notes">
+<ul>
+<li>sehr wenige standardisierte Datasets</li>
+<li>nicht wie bei Survey-Forschung, numerischer Daten aus Politik und
+Ökonomie</li>
+</ul>
+</aside>
+</div>
+</section>
+<section id="online-computational-text-analysis" class="slide level2">
+<h2>Online Computational Text Analysis</h2>
+<ul>
+<li><a href="https://impresso-project.ch/app/">Impresso</a>
+<ul>
+<li>many historical newspapers + magazines (CH, LU)</li>
+<li>free, requires account</li>
+</ul></li>
+<li><a href="https://bookworm.htrc.illinois.edu">bookworm HathiTrust</a>
+<ul>
+<li>great filtering by metadata</li>
+<li>credible scientific source</li>
+</ul></li>
+<li><a href="https://books.google.com/ngrams#">Google Ngram Viewer</a>
+<ul>
+<li>no filtering option</li>
+<li>useful for quick analysis</li>
+</ul></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Datenanalysen online durchführen</li>
+<li>Absicherung über andere Quellen</li>
+<li>Impresso: Complete re-digitization of the NZZ (together with the
+Zurich Central Library and Swiss National Library)</li>
+</ul>
+</aside>
+</section>
+<section id="search-techniques" class="slide level2"
+data-background="var(--green)">
+<h2 data-background="var(--green)">Search Techniques</h2>
+<p>Make your web search more efficient by using dedicated <a
+href="https://support.google.com/websearch/answer/2466433?hl=en">tags</a>.
+Examples:</p>
+<ul>
+<li><p><code>"computational social science"</code></p></li>
+<li><p><code>nature OR environment</code></p></li>
+<li><p><code>site:nytimes.com</code></p></li>
+</ul>
+<aside class="notes">
+<ul>
+<li>Quotes für Wörter die zusammen gehören</li>
+<li>Boolean Search
+<ul>
+<li>OR / AND</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="data-is-property" class="slide level2">
+<h2>Data is property <span class="emoji"
+data-emoji="no_entry_sign">🚫</span></h2>
+<h3 id="and-has-rights-too">… and has rights too</h3>
+<ul>
+<li>copyright may further limit access to high quality data</li>
+<li>check the rights before processing the data</li>
+</ul>
+<figure>
+<img data-src="../images/copyright.png" style="width:70.0%"
+alt="Copyrighs may restrict some data use (src)" />
+<figcaption aria-hidden="true">Copyrighs may restrict some data use (<a
+href="https://www.ct.edu/files/pdfs/Copyright%20and%20Creative%20Commons%20presentation%20March%201%202019.pdf">src</a>)</figcaption>
+</figure>
+<aside class="notes">
+<ul>
+<li>Zugang zu Daten nicht immer einfach
+<ul>
+<li>open data unterschiedlich unterstützt</li>
+</ul></li>
+<li>Datenbereitstellung oftmals Teil von Geschäftsmodell
+<ul>
+<li>dann restriktiv</li>
+</ul></li>
+<li>oftmals ist Verwendung nicht geregelt
+<ul>
+<li>nutzt Graubereich</li>
+</ul></li>
+</ul>
+</aside>
+</section></section>
+<section>
+<section id="preparing-your-own-data" class="title-slide slide level1">
+<h1>Preparing your own Data</h1>
+
+</section>
+<section id="a-world-for-humans-and-a-jungle-of-file-formats."
+class="slide level2 dark-text"
+data-background="../images/file_types.jpg">
+<h2 class="dark-text" data-background="../images/file_types.jpg">A world
+for humans …<br>… and a jungle of file formats.</h2>
+<!-- https://www.studio-24-7.com/file-formats-and-their-uses-explained/ -->
+<aside class="notes">
+<ul>
+<li>extrem viele File-Typen</li>
+<li>mühsam, aber es gibt einfache Tools für Umwandlung</li>
+</ul>
+</aside>
+</section>
+<section id="common-conversions" class="slide level2">
+<h2>Common Conversions</h2>
+<h3 id="news-press-releases-reports-from-organizations">news, press
+releases, reports from organizations</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="emoji" data-emoji="arrow_down">⬇️</span></p>
+<p>digital native documents <br><code>.pdf</code>, <code>.docx</code>,
+<code>.html</code><br></p>
+<p><span class="emoji" data-emoji="arrow_down">⬇️</span></p>
+<p>convert to <code>.txt</code></p>
+</div><div class="column" style="width:50%;">
+<p><span class="emoji" data-emoji="arrow_down">⬇️</span></p>
+<p>scans of (old) documents <br><code>.pdf</code>, <code>.jpg</code>,
+<code>.png</code><br></p>
+<p><span class="emoji" data-emoji="arrow_down">⬇️</span></p>
+<p>Optical Character Recognition (OCR)</p>
+</div>
+</div>
+<p><br></p>
+<p><strong>machine-readable</strong> <span class="emoji"
+data-emoji="white_check_mark">✅</span></p>
+<aside class="notes">
+<ul>
+<li>PDF ist Publikationsstandard
+<ul>
+<li>neue (digital) vs. alte (scans)</li>
+<li>Kriterium: Suche möglich?</li>
+</ul></li>
+<li>anschliessend Schritte zur Umwandlung der wichtigsten Formate</li>
+<li>Keine Konzepte lernen, wie bei RegEx
+<ul>
+<li>nur welches Tool, für welche Umwandlung</li>
+<li>mehr oder weniger copy-paste</li>
+</ul></li>
+<li><strong>Pause (etwas früher)</strong></li>
+</ul>
+</aside>
+</section>
+<section id="conversion-of-docx" class="slide level2">
+<h2>Conversion of DOCX</h2>
+<h3 id="use-case-news-articles-from-nexis">use case: news articles from
+<a href="https://www.nexisuni.com/">Nexis</a></h3>
+<ul>
+<li><code>pandoc</code> to convert many file formats</li>
+<li>download as single articles in <code>.docx</code> on Nexis</li>
+</ul>
+<pre class="bash"><code># convert docx to txt
+pandoc infile.docx -o outfile.txt
+
+### Install first with
+brew install pandoc     # macOS
+sudo apt install pandoc # Ubuntu</code></pre>
+<aside class="notes">
+<ul>
+<li>pandoc ist ein fast-alles Könner für Dokumentkonversion
+<ul>
+<li>kann auch html konvertieren: pandoc slides/KED2022_01.html -t
+plain</li>
+</ul></li>
+<li>zusätzliche Installation</li>
+<li>Nexis = News-Datenbank
+<ul>
+<li>freier Zugang ezproxy</li>
+<li>kennen ezproxy alle?</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="conversion-of-native-pdf" class="slide level2">
+<h2>Conversion of native PDF</h2>
+<h3 id="use-case-swiss-party-programmes">use case: <a
+href="https://visuals.manifesto-project.wzb.eu/mpdb-shiny/cmp_dashboard_dataset/">Swiss
+party programmes</a></h3>
+<ul>
+<li><code>pdftotext</code> extracts text from non-scanned PDF</li>
+</ul>
+<pre class="bash"><code># convert native pdf to txt
+pdftotext -nopgbrk -eol unix infile.pdf
+
+### Install first with
+brew install poppler            # macOS
+sudo apt install poppler-utils  # Ubuntu</code></pre>
+<aside class="notes">
+<ul>
+<li>pdftotext: Name ist Programm
+<ul>
+<li>Outputfilename kann nicht spezifiziert werden</li>
+</ul></li>
+<li>dieselben Parteiprogramme, die wir schon analysiert haben</li>
+<li>Layout kann Extraktion erschweren
+<ul>
+<li>Spalten/Tabelle</li>
+</ul></li>
+<li>Häufigkeitsanalysen von Wörter sind robust, Struktur egal</li>
+</ul>
+</aside>
+</section>
+<section id="optical-character-recognition-ocr" class="slide level2">
+<h2>Optical Character Recognition (OCR)</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>OCR ~ convert images into text
+<ul>
+<li>extract text from scans/images</li>
+</ul></li>
+<li><code>tesseract</code> performs OCR
+<ul>
+<li>language-specific models</li>
+<li>supports handwriting + Fraktur texts</li>
+</ul></li>
+<li>image quality is crucial</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<figure>
+<img data-src="../images/ocr.png"
+alt="steps when performing OCR (Wikipedia)" />
+<figcaption aria-hidden="true">steps when performing OCR <a
+href="https://de.wikipedia.org/wiki/Texterkennung">(Wikipedia)</a></figcaption>
+</figure>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li><p>tatsächlicher Buchstabe, nicht nur Bild davon</p></li>
+<li><p>Zwischenschritt Verbesserung Kontrast, B/W</p></li>
+<li><p>technisch Deep-Learning, nicht weiter von Bedeutung</p></li>
+<li><p>früher teure Programme, heute sogar iPhone</p>
+<ul>
+<li>für viele Dokumente jedoch nicht geeignet</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="conversion-of-digitalized-pdf" class="slide level2">
+<h2>Conversion of digitalized PDF</h2>
+<h3 id="use-case-historical-party-programmes">use-case: <a
+href="https://visuals.manifesto-project.wzb.eu/mpdb-shiny/cmp_dashboard_dataset/">historical
+party programmes</a></h3>
+<ol type="1">
+<li>extract image from PDF + improve contrast</li>
+<li>run optical character recognition (OCR) on the image</li>
+</ol>
+<pre class="bash"><code># convert scanned pdf to tiff, control quality with parameters
+convert -density 300 -depth 8 -strip -background white -alpha off \
+infile.pdf temp.tiff
+
+# run OCR for German (&quot;eng&quot; for English, &quot;fra&quot; for French etc.)
+tesseract -l deu temp.tiff file_out
+
+### Install first with
+brew install imagemagick            # macOS
+sudo apt-get install imagemagick    # Ubuntu</code></pre>
+<aside class="notes">
+<ul>
+<li>Zwei Schritte: Bildumwandlung + OCR</li>
+<li>tesseract funktioniert für viele Bildformate
+<ul>
+<li>nicht direkt für PDF</li>
+</ul></li>
+<li>Beispiel: Kassenbon fotografieren &amp; mit Regex parsen
+<ul>
+<li>Wirtschaftswissenschaften: indexierter Warenkorb</li>
+</ul></li>
+</ul>
+</aside>
+</section>
+<section id="configure-imagemagick-properly" class="slide level2">
+<h2>Configure ImageMagick properly</h2>
+<h3 id="windows-ubuntu-users-need-to-execute-the-following">Windows
+Ubuntu users need to execute the following</h3>
+<pre class="bash"><code># disable security policy for Windows
+sudo sed -i &#39;/&lt;policy domain=&quot;coder&quot; rights=&quot;none&quot; pattern=&quot;PDF&quot;/d&#39; /etc/ImageMagick-6/policy.xml
+
+# increase memory limits
+sudo sed -i -E &#39;s/name=&quot;memory&quot; value=&quot;.+&quot;/name=&quot;memory&quot; value=&quot;8GiB&quot;/g&#39; /etc/ImageMagick-6/policy.xml
+sudo sed -i -E &#39;s/name=&quot;map&quot; value=&quot;.+&quot;/name=&quot;map&quot; value=&quot;8GiB&quot;/g&#39; /etc/ImageMagick-6/policy.xml
+sudo sed -i -E &#39;s/name=&quot;area&quot; value=&quot;.+&quot;/name=&quot;area&quot; value=&quot;8GiB&quot;/g&#39; /etc/ImageMagick-6/policy.xml
+sudo sed -i -E &#39;s/name=&quot;disk&quot; value=&quot;.+&quot;/name=&quot;disk&quot; value=&quot;8GiB&quot;/g&#39; /etc/ImageMagick-6/policy.xml</code></pre>
+</section>
+<section id="lifehack-make-a-pdf-searchable" class="slide level2"
+data-background="var(--green)">
+<h2 data-background="var(--green)">#LifeHack: Make a PDF searchable</h2>
+<h3 id="use-case-scanned-book-chapters">use case: scanned book
+chapters</h3>
+<pre class="bash"><code># output searchable pdf instead of txt
+convert -density 300 -depth 8 -strip -background white -alpha off -compress group4 \
+file_in.pdf temp.tiff
+
+tesseract -l deu temp.tiff file_out pdf</code></pre>
+<aside class="notes">
+<ul>
+<li>Output als PDF statt Text</li>
+<li>für Suchen/Zitate rauskopieren</li>
+<li>convert hier mit Kompression, da PDFs zu gross werden ansonsten</li>
+</ul>
+</aside>
+</section>
+<section id="scraping-pdf-from-websites" class="slide level2">
+<h2>Scraping PDF from Websites</h2>
+<h3 id="use-case-swiss-voting-booklet">use case: <a
+href="https://www.bk.admin.ch/bk/de/home/dokumentation/abstimmungsbuechlein.html">Swiss
+voting booklet</a></h3>
+<ul>
+<li><code>wget</code> to download any files from the internet</li>
+</ul>
+<pre class="bash"><code># get a single file
+wget EXACT_URL
+
+# get all linked pdf from a single webpage
+wget --recursive --accept pdf -nH --cut-dirs=5 \
+--ignore-case --wait 1 --level 1 --directory-prefix=data \
+https://www.bk.admin.ch/bk/de/home/dokumentation/abstimmungsbuechlein.html
+
+# --accept FORMAT_OF_YOUR_INTEREST
+# --directory-prefix YOUR_OUTPUT_DIRECTORY</code></pre>
+<aside class="notes">
+<ul>
+<li>bis hierher: Wie Daten in txt Format bringen</li>
+<li>jetzt Download automatisieren
+<ul>
+<li>Vorteil: schneller systematischer Download &amp; Dokumentation von
+Quellen</li>
+</ul></li>
+<li>Haupt-URL angeben, wo PDF verlinkt sind</li>
+<li>Scraping von Blogs möglich über Python
+<ul>
+<li>nicht Teil von Seminar</li>
+</ul></li>
+<li>nicht auf alle Argumente eingehen</li>
+</ul>
+</aside>
+</section>
+<section id="interesting-resources" class="slide level2">
+<h2>Interesting Resources</h2>
+<ul>
+<li><a
+href="https://visuals.manifesto-project.wzb.eu/mpdb-shiny/cmp_dashboard_dataset/">Party
+Programmes across Europe</a>
+<ul>
+<li>covers over 1000 parties from 1920 until today in over 50
+countries</li>
+</ul></li>
+<li><a
+href="https://www.bk.admin.ch/bk/de/home/dokumentation/abstimmungsbuechlein.html">Swiss
+voting booklets</a>
+<ul>
+<li>from 1978 until today</li>
+</ul></li>
+<li><a
+href="https://www.admin.ch/gov/de/start/dokumentation/reden/ansprachen-zum-nationalfeiertag.html">1
+August speeches by Swiss Federal Councillors</a></li>
+<li><a href="https://www.nestle.com/csv/performance/downloads">Nestlé
+Annual Reports</a></li>
+<li>… any organization of your interest <span class="emoji"
+data-emoji="thumbsup">👍</span></li>
+</ul>
+</section>
+<section id="basics-of-batch-processing" class="slide level2">
+<h2>Basics of Batch Processing</h2>
+<h3 id="perform-the-same-operation-on-many-files">perform the same
+operation on many files</h3>
+<pre class="bash"><code># loop over all txt files
+for file in *.txt; do
+
+    # indent all commands in loop with a tab
+
+    # rename each file
+    # e.g. a.txt -&gt; new_a.txt
+    mv $file new_$file
+
+done</code></pre>
+<aside class="notes">
+<ul>
+<li>Batch Processing = gleiche Operation durchführen für alle Files</li>
+<li>Erklären von Loop/Schleife und Variable
+<ul>
+<li>Wildcard zur Selektion &gt; Liste von Files &gt; Variable</li>
+</ul></li>
+<li>for-loop wichtiges Programmierkonzept</li>
+<li>Tabulator fürs Einrücken</li>
+</ul>
+</aside>
+</section>
+<section id="perform-ocr-for-many-pdf" class="slide level2">
+<h2>Perform OCR for many PDF</h2>
+<pre class="bash"><code>for FILEPATH in *.pdf; do
+    # convert pdf to image
+    convert -density 300 $FILEPATH -depth 8 -strip \
+    -background white -alpha off temp.tiff
+    
+    # define output name (remove .pdf from input)
+    OUTFILE=${FILEPATH%.pdf} 
+    
+    # perform OCR on the tiff image
+    tesseract -l deu temp.tiff $OUTFILE
+    
+    # remove the intermediate tiff image
+    rm temp.tiff
+
+done</code></pre>
+<aside class="notes">
+<ul>
+<li>sehr ähnlich wie vorher, nur für jedes einzelne File jetzt</li>
+</ul>
+</aside>
+</section>
+<section id="preprocessing-regex" class="slide level2"
+data-background="var(--red)">
+<h2 data-background="var(--red)">Preprocessing → RegEx</h2>
+<p><img data-src="../images/clean_data.png" /></p>
+<aside class="notes">
+<ul>
+<li>Aufbereitung unterschiedlich aufwendig</li>
+<li>für schnelle Analyse nicht notwendig</li>
+<li>nun alles da für Mini-Project, ausser wenn Lösung in Python</li>
+</ul>
+</aside>
+</section></section>
+<section>
+<section id="questions" class="title-slide slide level1 white-text"
+data-background="../images/paint-anna-kolosyuk-unsplash.jpg">
+<h1 class="white-text"
+data-background="../images/paint-anna-kolosyuk-unsplash.jpg">Questions?</h1>
+
+</section>
+<section id="in-class-exercises-i" class="slide level2"
+data-background="var(--blue)">
+<h2 data-background="var(--blue)">In-class: Exercises I</h2>
+<ol type="1">
+<li>Make sure that your local copy of the Github repository KED2022 is
+up-to-date with <code>git pull</code>. Check out the data samples in
+<code>materials/data</code> and the scripts to extract their text in
+<code>materials/code</code>.</li>
+<li>Install the missing tools with the commands given on the respective
+slides: <code>pandoc, imagemagick, poppler</code>.</li>
+<li><strong>Apply the commands to reproduce on the given data. Test them
+on your own data. Check the resources. Ask questions. Think about your
+mini-project.</strong></li>
+</ol>
+</section>
+<section id="in-class-exercises-ii" class="slide level2"
+data-background="var(--blue)">
+<h2 data-background="var(--blue)">In-class: Exercises II</h2>
+<ol type="1">
+<li>Use <code>wget</code> to download <em>cogito</em> and its
+predecessor <em>uniluAKTUELL</em> issues (PDF files) from the <a
+href="https://www.unilu.ch/magazin/service/pdf-und-archiv/#section=c67079">UniLu
+website</a>. Start with downloading one issue first and then try to
+automatize the process to download all the listed issued using arguments
+for the <code>wget</code> command.</li>
+<li>Convert the <em>cogito</em> and <em>uniluAKTUELL</em> PDF files into
+TXT files using <code>tesseract</code>. Try with a single issue first
+and then write a loop to batch process all of them.</li>
+<li>What is the University of Lucerne talking about in its issues? Use
+the commands of the previous lectures to count the vocabulary.</li>
+<li>Do the same as in 3.), yet analyze the vocabulary of <em>cogito</em>
+and <em>uniluAKTUELL</em> issues separately. Does the language and
+topics differ between the two magazines?</li>
+</ol>
+</section>
+<section id="in-class-exercises-iii" class="slide level2"
+data-background="var(--blue)">
+<h2 data-background="var(--blue)">In-class: Exercises III</h2>
+<ol type="1">
+<li>Use <code>wget</code> to download a book from Project Gutenberg and
+count some things (e.g., good/bad, joy/sad).</li>
+<li><code>wget</code> is a powerful tool. Have a look at its arguments
+and search for more examples in tutorials on the web.</li>
+</ol>
+</section>
+<section id="resources" class="slide level2">
+<h2>Resources</h2>
+<h3 id="make-a-more-sophisticated-script-for-pdf-to-txt-conversion">Make
+a more sophisticated script for PDF-to-TXT conversion</h3>
+<ul>
+<li>Erick Peirson. 2015. Tutorial: Text Extraction and OCR with
+Tesseract and ImageMagick - Methods in Digital and Computational
+Humanities - DigInG Confluence. <a
+href="https://diging.atlassian.net/wiki/spaces/DCH/pages/5275668/Tutorial+Text+Extraction+and+OCR+with+Tesseract+and+ImageMagick">online</a></li>
+</ul>
+</section>
+<section id="have-a-nice-easter-break" class="slide level2"
+data-background="../images/easter-eggs.jpg">
+<h2 data-background="../images/easter-eggs.jpg">Have a nice <br>Easter
+break!</h2>
+<!-- Adapted from https://www.artembutusov.com/pandoc-markdown-syntax-highlighting-with-highlight-js/ -->
+<p><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"></p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/atom-one-dark-reasonable.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>
+$(function() {
+    $("pre > code").each(function(i, block) {
+        var codeClass = $(this).parent().attr("class");
+        if (codeClass == null || codeClass === "") {
+            $(this).addClass("hljs");
+        } else {
+            var map = {
+                js: "javascript"
+            };
+            if (map[codeClass]) {
+                codeClass = map[codeClass];
+            }
+            $(this).addClass(codeClass);
+            hljs.highlightBlock(this);
+        }
+    });
+});
+</script>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: true,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1920,
+
+        height: 1080,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
