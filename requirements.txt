@@ -1,9 +1,11 @@
+wheel
 pandas
 jupyterlab
-spacy
+spacy==3.4.4
 textacy
 scattertext
 plotnine
-https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.3.0/en_core_web_sm-3.3.0.tar.gz
-https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-3.3.0/de_core_news_sm-3.3.0.tar.gz
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.4.0/en_core_web_sm-3.4.0.tar.gz
+https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-3.4.0/de_core_news_sm-3.4.0.tar.gz
 black
+doit
