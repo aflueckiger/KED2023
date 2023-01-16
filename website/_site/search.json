@@ -1,0 +1,170 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The ABC of Computational Text Analysis",
+    "section": "",
+    "text": "In this hands-on seminar, bachelor students of social and cultural sciences learn the basics of programming, among other essential technical skills. Building on a modern technology stack, it aims to prepare students to conduct data-driven text analysis and to make everyday life easier by fostering technological fundamentals. While learning about the importance of computation in solving problems, we also discuss the current developments in information technology. In short, the course promotes digital literacy on a practical and theoretical level.\nThis seminar focuses on the computational processing of digital and digitized texts using Python and the command-line. For any empirical research, the systematic preparation and aggregation of data and the swift retrieval of information are critical. These tasks require the handling of various data forms, including data that is not yet structured in a tabular format. The seminar covers the complete workflow, from gathering textual data to analyzing an entire text collection to producing interactive visualizations. Sounds cool? It certainly is.\nAlong the way, we deal with questions like these:\n\nHow can texts be quantitatively exploited to complement the qualitative content analysis?\nWhat are regular expressions, and why are they so powerful in the context of computational text analysis?\nHow to download data automatically from websites and process en masse?\nHow can historical texts be extracted from PDFs using Optical Character Recognition (OCR)?\n\n Go to UniLu website"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "KED2023",
+    "section": "",
+    "text": "KED\nStart\n\nName des Kurs\nNische für diesen Kurs\n\nTheoretisches Angebot gross\nMethodisch bisschen weniger\nNiemand führt in die Welt der Computer und computergestützte Forschung des 21. Jhd. ein\nErstmalige Durchführung\n\nmake students’ lives:\n\nRepetitive Aufgaben erschweren Leben. Computer wurden zur Automatisierung gebaut.\nBestenfalls: Ineffizienz, Vergeuden von Zeit\nSchlechtestenfalls: Unlösbarkeit von Aufgaben\n\nWitz über Raum\nDutzen → Alex\nEnglische Folien, veröffentlicht\nJederzeit unterbrechen\n\nFragen helfen allen & machen seminar interessanter\n\n\n\n\n\n\n\nVorstellen/Erwartungen Studis → Studiengänge\nStudium\n\nSoCom studiert\nSelbststudium, begünstigende Faktoren\n\nFaszination\n\nsozialwissenschaften interessante fragen, naturwissenschaften interessante methoden\n\nTextdaten passt zu weltbild: nicht so geordnet, nicht s/w\nWelt ist zu komplex, passt nicht in Tabelle\n\nTextanalyse/Netzwerkanalyse"
+  },
+  {
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Materials",
+    "section": "",
+    "text": "Before you can actually start programming on your computer, you need to set up the technical environment. Depending on your operating system, the installation procedure may vary. This guide provides step-by-step instructions.\nIf anything does not work as described, get in touch so that I can help."
+  },
+  {
+    "objectID": "materials.html#cheatsheet-data-wrangling-in-bash",
+    "href": "materials.html#cheatsheet-data-wrangling-in-bash",
+    "title": "Materials",
+    "section": "Cheatsheet Data Wrangling in Bash",
+    "text": "Cheatsheet Data Wrangling in Bash\nThe cheatsheet contains commands relevant for data wrangling task preceding any textual analysis. In addition to common Bash commands, it also features examples of regular expressions (RegEx)."
+  },
+  {
+    "objectID": "materials.html#python-basics",
+    "href": "materials.html#python-basics",
+    "title": "Materials",
+    "section": "Python Basics",
+    "text": "Python Basics\nThe Jupyter Notebook contains basic Python statements that you need to know before you can make use of the third-party libraries."
+  },
+  {
+    "objectID": "materials.html#nlp-with-python---an-example-analysis",
+    "href": "materials.html#nlp-with-python---an-example-analysis",
+    "title": "Materials",
+    "section": "NLP with Python - An example analysis",
+    "text": "NLP with Python - An example analysis\nIn this online-hosted notebook, you find many bits to start a powerful analysis based on simple techniques. It is a starters guide to enable social scientists to conduct NLP analysis. The kind of data, the relative simplicity of the methods, and the general approach are in line with social science practices and bring statistics together with the context of documents.\nYou can execute the code online to get a brief glimpse without bothering with installation."
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "We have 13 seminar sessions together.\nThe plan below is provisional. I am happy to adapt the topics, as well as the schedule, to the needs and interests of the students. Likely, we will change some topics and orderings as we go.\n\n\n\nDate\nTopic\n\n\n\n\n23 February 2022\nIntroduction + Where is the digital revolution?\n\n\n02 March 2022\nText as Data\n\n\n09 March 2022\nSetting up your Development Environment\n\n\n16 March 2022\nIntroduction to the Command-line\n\n\n23 March 2022\nBasic NLP with Command-line\n\n\n30 March 2022 (Zoom)\nLearning Regular Expressions\n\n\n06 April 2022 (Zoom)\nWorking with (your own) Data\n\n\n13 April 2022\nno lecture (Osterpause)\n\n\n20 April 2022\nEthics and the Evolution of NLP\n\n\n27 April 2022\nIntroduction to Python + VS Code\n\n\n04 May 2022\nPandas und LIRI-Dataset\n\n\n11 May 2022\nNLP with Python\n\n\n18 May 2022\nno lecture (Christi Himmelfahrt)\n\n\n25 May 2022\nNLP with Python II + Working Session\n\n\n01 June 2022\nMini-Project Presentations + Discussion"
+  },
+  {
+    "objectID": "lectures.html",
+    "href": "lectures.html",
+    "title": "Lectures",
+    "section": "",
+    "text": "Below you find a brief description of all the lectures. I make the slides available before the lecture starts. The slides are provided in the following formats and may be opened by clicking the icon:"
+  },
+  {
+    "objectID": "lectures.html#week-1-introduction-where-is-the-digital-revolution",
+    "href": "lectures.html#week-1-introduction-where-is-the-digital-revolution",
+    "title": "Lectures",
+    "section": "Week 1: Introduction + Where is the digital revolution?",
+    "text": "Week 1: Introduction + Where is the digital revolution?\nOn the one hand, I present the goals and organization of the seminar. On the other hand, we look at some recent applications that give an impression of the fascinating prospects of computers in the area of artificial intelligence (AI) and digital humanities (DH).\n  \n\n\nRequired Reading\n\nLazer, David, Alex Pentland, Lada Adamic, Sinan Aral, Albert-László Barabási, Devon Brewer, Nicholas Christakis, Noshir Contractor, James Fowler, Myron Gutmann, Tony Jebara, Gary King, Michael Macy, Deb Roy, and Marshall Van Alstyne. 2009. “Computational Social Science.” Science 323(5915):721–23.\n\n\n\nOptional Reading\n\nGraham, Shawn, Ian Milligan, and Scott Weingart. 2015. Exploring Big Historical Data: The Historian’s Macroscope. Open Draft Version. Under contract with Imperial College Press. online"
+  },
+  {
+    "objectID": "lectures.html#week-2-text-as-data",
+    "href": "lectures.html#week-2-text-as-data",
+    "title": "Lectures",
+    "section": "Week 2: Text as Data",
+    "text": "Week 2: Text as Data\nComputational text analysis comes with many challenges that are unique due to the fuzziness of natural language. In this session, we learn about its methodological foundation, and we conduct our first computational text analysis to understand how this translates into practice."
+  },
+  {
+    "objectID": "lectures.html#week-3-setting-up-your-development-environment",
+    "href": "lectures.html#week-3-setting-up-your-development-environment",
+    "title": "Lectures",
+    "section": "Week 3: Setting up your Development Environment",
+    "text": "Week 3: Setting up your Development Environment\nThe title says it all. We are getting ready for the practical part of the course: Programming. As the installation of Python and non-standard command-line tools may be tricky, we do this in class rather than doing it as homework. Moreover, I will also introduce some principles to organize research and jargon that guide your way in the programmer’s brave new word.\n  \n\n\nOptional: pimp your workflow\n\nHealy, Kieran. 2019. “The Plain Person’s Guide to Plain Text Social Science.” online."
+  },
+  {
+    "objectID": "lectures.html#week-4-introduction-to-the-command-line",
+    "href": "lectures.html#week-4-introduction-to-the-command-line",
+    "title": "Lectures",
+    "section": "Week 4: Introduction to the Command-line",
+    "text": "Week 4: Introduction to the Command-line\nThe command-line is a powerful tool at your disposal. It is the working horse for many data wrangling tasks. In this session, you learn the basics of shells and perform many operations by effectively substituting clicks on the screen with commands. Admittedly, it is not overly exciting at this stage, yet it is essential for more sophisticated automation later on.\n  \n\n\nRecommended Resources\n\nCheatsheet for this course\nThe Programming Historian\nDigitalOcean"
+  },
+  {
+    "objectID": "lectures.html#week-5-basic-nlp-with-command-line",
+    "href": "lectures.html#week-5-basic-nlp-with-command-line",
+    "title": "Lectures",
+    "section": "Week 5: Basic NLP with Command-line",
+    "text": "Week 5: Basic NLP with Command-line\nCounting words is the most basic method to look at texts from a computational perspective. The command-line provides tools to quickly sift through a massive text collection to describe the use of words quantitatively. In no time, you can also take a systematic look at the word usage in context. Sounds like a Swiss knife for computational text analysis in social science? It certainly is."
+  },
+  {
+    "objectID": "lectures.html#week-6-learning-regular-expressions",
+    "href": "lectures.html#week-6-learning-regular-expressions",
+    "title": "Lectures",
+    "section": "Week 6: Learning Regular Expressions",
+    "text": "Week 6: Learning Regular Expressions\nWhen working with text data, you spend a lot of time cleaning your documents and extracting some pieces of information. Doing this by hand is not only a pain but simply impossible when facing more than a few dozens of documents. Fortunately, a formal language named Regular Expressions allows writing expressive and generalizable patterns to match specific text. Using these patterns, you can systematically extract and remove any textual parts without missing a single instance.\n  \n\n\nRequired Reading\n\nBen Schmidt. 2019. Regular Expressions. online\n\n\n\nRecommended Resource\nEverything we have touched about text processing in greater detail.\n\nNikolaj Lindberg. egrep for Linguists. online\n\n\n\nOnline Regular Expression Editor\n\nregex101 is a visual editor to check your regular expressions."
+  },
+  {
+    "objectID": "lectures.html#week-7-working-with-data",
+    "href": "lectures.html#week-7-working-with-data",
+    "title": "Lectures",
+    "section": "Week 7: Working with Data",
+    "text": "Week 7: Working with Data\nTo this point, you have acquired the skills to cut a document into pieces and, subsequently, to extract, replace, and count any textual elements. Unless you have interesting data, these tools are neat but of no greater use. Thus, we turn to relevant data resources for social science. Given you have plain text at hand, your tools cut through data like butter. For other formats like PDF or DOCX, we learn some remedies to convert them into plain text. Most notably, we perform optical character recognition (OCR) ."
+  },
+  {
+    "objectID": "lectures.html#week-8-ethics-and-the-evolution-of-nlp",
+    "href": "lectures.html#week-8-ethics-and-the-evolution-of-nlp",
+    "title": "Lectures",
+    "section": "Week 8: Ethics and the Evolution of NLP",
+    "text": "Week 8: Ethics and the Evolution of NLP\nEthics is not just an abstract topic of Philosophy. Modern NLP is more powerful than ever before and, thus, embedded in many aspects of life. Unfortunately, it also exhibits severe and not yet well-understood bias that causes harm. With the recent data-driven deep learning turn, NLP overcame many theoretical limitations – yet, this comes at a cost. It is our duty to better understand the working and impact of this technology."
+  },
+  {
+    "objectID": "lectures.html#week-9-introduction-to-python",
+    "href": "lectures.html#week-9-introduction-to-python",
+    "title": "Lectures",
+    "section": "Week 9: Introduction to Python",
+    "text": "Week 9: Introduction to Python\nIt may come as a surprise that we start with Python in the ninth session only. As the folks say, Python is among the coolest programming languages, relatively easy to learn, and provides excellent NLP packages so that you don’t have to implement everything yourself. All true as long as you have your data ready. In this session, we begin with an introduction to the basic syntax of Python. Starting with basics is a dry matter; however, it allows you to use third-party libraries and get a handle on more sophisticated NLP analyses."
+  },
+  {
+    "objectID": "lectures.html#week-10-nlp-with-python",
+    "href": "lectures.html#week-10-nlp-with-python",
+    "title": "Lectures",
+    "section": "Week 10: NLP with Python",
+    "text": "Week 10: NLP with Python\nPython is the language of choice when it comes to advanced NLP. Have you ever wondered how the frequency of terms has evolved over the years? Or how the language differs between two groups whereby the groups may be formed by any metadata (people, organization, gender etc.)? In such an exploratory endeavour, using an interactive and visual mode is the most effective that complements basic statistics. In short, we finally arrived at the serious stuff in our journey. To make sure, you don’t get lost in the forest of yet unknown terms you will also learn the jargon of NLP.\n  \n\n\nCode\n Click to open the static code\n Click to run the code in your browser without any installation"
+  },
+  {
+    "objectID": "lectures.html#week-11-nlp-with-python-ii-working-session",
+    "href": "lectures.html#week-11-nlp-with-python-ii-working-session",
+    "title": "Lectures",
+    "section": "Week 11: NLP with Python II + Working Session",
+    "text": "Week 11: NLP with Python II + Working Session\nIn today’s session, we continue our deep dive into NLP with Python. It is the last piece of our puzzle. During this course, you have learned about the entire workflow, from assembling datasets of documents to analyze their content and visualize your findings. As soon as you have a structured text collection along with basic metadata (e.g., publication date), you can take numerous perspectives to look at your data. At this stage, it is time to kick-off the mini-projects allowing you to work with your data of interest.\n  \n\n\nExplore interactively: 1 August Speeches by Swiss Federal Councilors\nAs a matter of tradition, Swiss Federal Councilors give an official speech on the Swiss National Day. Simon Schmid (journalist at Republik), with the collaboration of Prof. Andreas Kley (Faculty of Law, UZH), collected many of these speeches and kindly shared the resulting dataset with me. The collection comprises 166 speeches, which is a multiple of the publicly available here.\nThe interactive visualization linked below shows how the language differs between speakers of Social Democratic Party of Switzerland (SP) and speakers of other parties. The top right corner shows terms that have been frequently used by all parties. In contrast, the top left and the lower right corner reveal words that have been used primarily by the members of the SP and correspondingly by the centre-right parties.\nYou can search for the terms of your interest. Moreover, you may click on the points in the plot to show the context of the corresponding words within speeches. These functions allow for a quick investigation of the corpus along the dimensions of Swiss parties.\n Click to explore in your browser(it may take a few seconds to load)"
+  },
+  {
+    "objectID": "lectures.html#week-12-mini-project-presentations-discussion",
+    "href": "lectures.html#week-12-mini-project-presentations-discussion",
+    "title": "Lectures",
+    "section": "Week 12: Mini-Project Presentations + Discussion",
+    "text": "Week 12: Mini-Project Presentations + Discussion\nIn this session, it is your turn. Going beyond mere toy examples, you present what you have worked on and show off your first harvest of computational text analysis.\nThe seminar is coming to an end, yet it doesn’t have to be a dead-end. You may have gotten more proficient in cursing your computer but also fighting your way through the jungle of technology. Keep going, cheers!"
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "You have to submit three assignments to complete the seminar successfully. The purpose of the assignments is not making the course hard to pass but rather to foster your engagement with the covered topics. As you like, you may prefer to work in teams to discuss different approaches. Nonetheless, each student has to come up with their own solution and submit it before the deadline."
+  },
+  {
+    "objectID": "assignments.html#formal-instructions",
+    "href": "assignments.html#formal-instructions",
+    "title": "Assignments",
+    "section": "Formal Instructions",
+    "text": "Formal Instructions\nYour submission is a single script, meaning that is readily executable, and is named as follows:\n\nBash scripts: SURNAME_KED2022_NR.sh\nPython scripts: SURNAME_KED2022_NR.py\n\nThe script follows the order of the tasks in the assignment. In addition to the commands you have used in your solution, you also provide a short, yet concise explanation to your solution. You should include these comments directly in the script by starting the line with #.\nPlease use the following examples as template:\n\nBash\n#!/bin/bash\n\n##################################################\n### assignment 1\n### Seminar: The ABC of Computational Text Analysis\n### University of Lucerne\n##################################################\n\n### task 1a)\necho \"this is a test\"\n# solution: echo prints out the provided text in the command-line \n\n### task 1b)\necho -n \"test\" | wc\n# solution: wc counts the lines, words and characters. \n# The argument -n is necessary to omit the trailing new-line symbol.\n# \"test\" has 4 characters.\n\n...\n\n\nPython\n#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n\n##################################################\n### assignment 1\n### Seminar: The ABC of Computational Text Analysis\n### University of Lucerne\n##################################################\n\n### task 1a)\nprint(\"Hello, World\")\n# outputs the provided string to the prompt\n\n..."
+  },
+  {
+    "objectID": "assignments.html#inspiring-student-projects",
+    "href": "assignments.html#inspiring-student-projects",
+    "title": "Assignments",
+    "section": "Inspiring Student Projects",
+    "text": "Inspiring Student Projects\n\nGender differences in 1 August speeches [Code], Dario Haab, Valentina Meyer, Nils Brun, 2022\nAnalysis of Bulletin Board Systeme (BBS), Josias Bruderer, 2021"
+  }
+]
