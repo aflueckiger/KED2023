@@ -1,1 +1,1 @@
-Sitemap: https://XX.ch/sitemap.xml
+Sitemap: https://aflueckiger.github.io/KED2023/sitemap.xml

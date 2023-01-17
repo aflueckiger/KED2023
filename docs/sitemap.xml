@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://XX.ch/index.html</loc>
-    <lastmod>2023-01-16T16:12:09.636Z</lastmod>
+    <lastmod>2023-01-17T10:52:52.613Z</lastmod>
   </url>
   <url>
     <loc>https://XX.ch/materials.html</loc>
-    <lastmod>2023-01-16T16:12:09.862Z</lastmod>
+    <lastmod>2023-01-17T10:52:22.996Z</lastmod>
   </url>
   <url>
     <loc>https://XX.ch/schedule.html</loc>
-    <lastmod>2023-01-16T16:12:10.076Z</lastmod>
+    <lastmod>2023-01-17T10:52:23.183Z</lastmod>
   </url>
   <url>
     <loc>https://XX.ch/lectures.html</loc>
-    <lastmod>2023-01-16T16:12:10.329Z</lastmod>
+    <lastmod>2023-01-17T10:52:23.476Z</lastmod>
   </url>
   <url>
     <loc>https://XX.ch/assignments.html</loc>
-    <lastmod>2023-01-16T16:12:10.616Z</lastmod>
+    <lastmod>2023-01-17T10:52:23.693Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aflueckiger.github.io/KED2023/index.html</loc>
+    <lastmod>2023-01-17T10:57:37.555Z</lastmod>
   </url>
 </urlset>
