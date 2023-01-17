@@ -24,6 +24,7 @@ LECTURES_NOTES_DIR = LECTURES_DIR / "notes"
 
 ASSIGNMENTS_DIR = MAIN_DIR / "assignments"
 MATERIALS_DIR = MAIN_DIR / "materials"
+WEBSITE_DIR = MAIN_DIR / "website"
 
 
 def task_prepare_dir():
@@ -112,19 +113,21 @@ def task_create_pdf_slide():
 
 def task_create_syllabus():
 
-    outfile = Path("KED2022_syllabus.pdf")
+    outfile = MAIN_DIR / "KED2023_syllabus.pdf"
     today = datetime.today().strftime('%d %B %Y')
+
+    fdependencies = [WEBSITE_DIR / fname for fname in ["index.qmd", "schedule.qmd", "lectures.qmd", "assignments.qmd"] ]
     return {
-        "file_dep": ["index.md", "schedule.md", "lectures.md", "assignments.md"],
+        "file_dep": fdependencies,
         "actions": [
-            "cat index.md <(echo '[Go to Course Website](https://aflueckiger.github.io/KED2022/)' ) | grep -v 'Go to UniLu website' | sed '/<div/,/div>/d'	> index.md.tmp",
-            "sed '5 a # Schedule' schedule.md | sed 's/.lectures//' > schedule.md.tmp",
-            "sed '5 a # Lectures' lectures.md | sed 's/!.*\.svg)//' | grep -v '{.*comment .}' | grep -v 'recorded video'  > lectures.md.tmp",
-            "sed '5 a # Assignments' assignments.md > assignments.md.tmp",
-            f"pandoc -o {outfile} index.md.tmp schedule.md.tmp lectures.md.tmp assignments.md.tmp \
+            f"cd {WEBSITE_DIR} && \
+            cat index.qmd <(echo '[Go to Course Website](https://aflueckiger.github.io/KED2023/)' ) | grep -v 'Go to UniLu website' | sed '/<div/,/div>/d'> index.md.tmp && \
+            sed '5 a # Schedule' schedule.qmd > schedule.md.tmp && \
+            sed '5 a # Lectures' lectures.qmd | grep -P -v '{{< .+ >}}' | sed -E 's/The slides .+ icon://g' > lectures.md.tmp && \
+            sed '5 a # Assignments' assignments.qmd > assignments.md.tmp && \
+            pandoc -o {outfile} index.md.tmp schedule.md.tmp lectures.md.tmp assignments.md.tmp \
             --from markdown \
-            --toc \
-            --toc-depth=1 \
+            --toc --toc-depth=1 \
             --number-sections \
             -V geometry:margin=2.5cm \
             -V urlcolor='[HTML]{{111bab}}' \
@@ -132,6 +135,7 @@ def task_create_syllabus():
             -V filecolor='[HTML]{{111bab}}' \
             --metadata title='{TITLE}' \
             --metadata date='{today}'",
+            f"rm {WEBSITE_DIR} /*.tmp"
            
         ],
         "targets": [outfile],

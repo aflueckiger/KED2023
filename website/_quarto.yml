@@ -10,10 +10,10 @@ website:
     left:
       - text: "Home"
         file: index.qmd
-      - schedule.md
-      - lectures.md
-      - assignments.md
-      - materials.md
+      - schedule.qmd
+      - lectures.qmd
+      - assignments.qmd
+      - materials.qmd
     pinned: true
   page-footer:
     left: "Copyright 2023, Alex Flückiger"
