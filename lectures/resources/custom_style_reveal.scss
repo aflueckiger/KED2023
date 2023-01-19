@@ -1,4 +1,11 @@
-<style type='text/css'>
+/*-- scss:defaults --*/
+
+$presentation-slide-text-align: center;
+$presentation-font-size-root: 30px;
+
+/*-- scss:rules --*/
+
+
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Caveat+Brush&family=Caveat:wght@600&family=Permanent+Marker&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro&display=swap');
 
@@ -92,24 +99,7 @@ p.subtitle{
     font-family: 'Permanent Marker', cursive;
     font-size: 1.5em;
     padding-top: 1em;
-    padding-bottom: 5em;
-}
-
-p.author,
-p.date,
-p.institute{
-    text-align: left;
-    font-size: 0.7em;
-    margin-top: -0.7em;
-    margin-left: 2.5%;
-}
-
-p.institute{
-    font-size: 0.5em
-}
-
-p.date {
-    margin-top: 1em;
+    padding-bottom: 3em;
 }
 
 .reveal h1,
@@ -143,7 +133,7 @@ p.date {
     width: 80% !important;
     left: 10%;
     margin: auto;
-    /* border-bottom: 30px solid orange; */
+
 }
 .reveal h2[data-background*="images"] {
     color: white;
@@ -371,9 +361,3 @@ section.has-dark-background code {
   text-align: left;
 }
 
-
-
-
-
-
-</style>
