@@ -135,8 +135,8 @@ p.subtitle{
     margin: auto;
 
 }
-.reveal h2[data-background*="images"] {
-    color: white;
+.reveal section[data-background*="images"] h2 {
+    color: white !important;
     font-family: Lato;
     font-weight: bold;
 }
@@ -271,6 +271,10 @@ section.has-dark-background code {
 /*********************************************
 * CUSTOM CLASSES
 *********************************************/
+#questions h1 {
+    color:#f9f9ff !important;
+}
+
 .white-text {
     color:#f9f9ff !important;
 }
