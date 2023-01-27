@@ -2,6 +2,7 @@ from pathlib import Path
 from datetime import datetime
 
 
+today = datetime.today().strftime("%d %B %Y")
 
 TITLE = "BA Seminar: The ABC of Computational Text Analysis"
 AUTHOR = "Alex Flückiger"
@@ -71,7 +72,7 @@ def task_create_html_slide():
                 f"cd {LECTURES_MD_DIR} && mv {outfile.name} {outfile}",
             ],
             "targets": [outfile],
-            'title': show_cmd
+            "title": show_cmd,
         }
 
 
@@ -111,14 +112,14 @@ def task_create_lecture_notes():
         }
 
 
-
-
 def task_create_syllabus():
 
     outfile = MAIN_DIR / "KED2023_syllabus.pdf"
-    today = datetime.today().strftime('%d %B %Y')
 
-    fdependencies = [WEBSITE_DIR / fname for fname in ["index.qmd", "schedule.qmd", "lectures.qmd", "assignments.qmd"] ]
+    fdependencies = [
+        WEBSITE_DIR / fname
+        for fname in ["index.qmd", "schedule.qmd", "lectures.qmd", "assignments.qmd"]
+    ]
     return {
         "file_dep": fdependencies,
         "actions": [
@@ -137,22 +138,56 @@ def task_create_syllabus():
             -V filecolor='[HTML]{{111bab}}' \
             --metadata title='{TITLE}' \
             --metadata date='{today}'",
-            f"rm {WEBSITE_DIR}/*.tmp"
-           
+            f"rm {WEBSITE_DIR}/*.tmp",
         ],
         "targets": [outfile],
         # 'title': show_cmd
     }
-	            
 
-# %.pdf: %.md
-# 	pandoc -f  markdown+rebase_relative_paths -o $@ $< \
-# 	-V urlcolor='[HTML]{111bab}' \
-# 	-V linkcolor='[HTML]{111bab}' \
-# 	-V filecolor='[HTML]{111bab}' \
-# 	-V geometry:margin=2.5cm \
-# 	--number-sections \
-# 	--metadata date="`date -u '+%d %B %Y'`"
+
+def task_create_assignment():
+
+    infiles = sorted(ASSIGNMENTS_DIR.glob("**/*.md"))
+
+    for infile in infiles:
+        outfile = infile.with_suffix(".pdf")
+        yield {
+            "name": infile,
+            "file_dep": [infile],
+            "actions": [
+                f"pandoc -f  markdown+rebase_relative_paths -o {outfile} {infile} \
+           -V urlcolor='[HTML]{{111bab}}' \
+            -V linkcolor='[HTML]{{111bab}}' \
+            -V filecolor='[HTML]{{111bab}}' \
+            -V geometry:margin=2.5cm \
+            --number-sections \
+            --metadata date='{today}'",
+            ],
+            "targets": [outfile],
+            # 'title': show_cmd
+        }
+
+def task_create_assignment():
+
+    infiles = sorted(MATERIALS_DIR.glob("**/*.md"))
+
+    for infile in infiles:
+        outfile = infile.with_suffix(".pdf")
+        yield {
+            "name": infile,
+            "file_dep": [infile],
+            "actions": [
+                f"pandoc -f  markdown+rebase_relative_paths -o {outfile} {infile} \
+           -V urlcolor='[HTML]{{111bab}}' \
+            -V linkcolor='[HTML]{{111bab}}' \
+            -V filecolor='[HTML]{{111bab}}' \
+            -V geometry:margin=2.5cm \
+            --number-sections \
+            --metadata date='{today}'",
+            ],
+            "targets": [outfile],
+            # 'title': show_cmd
+        }
 
 def show_cmd(task):
     return "executing... %s" % task.actions[0]
