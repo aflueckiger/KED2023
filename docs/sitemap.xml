@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://XX.ch/index.html</loc>
-    <lastmod>2023-01-17T10:52:52.613Z</lastmod>
+    <loc>https://aflueckiger.github.io/KED2023/materials.html</loc>
+    <lastmod>2023-01-27T16:19:19.184Z</lastmod>
   </url>
   <url>
-    <loc>https://XX.ch/materials.html</loc>
-    <lastmod>2023-01-17T10:52:22.996Z</lastmod>
-  </url>
-  <url>
-    <loc>https://XX.ch/schedule.html</loc>
-    <lastmod>2023-01-17T10:52:23.183Z</lastmod>
-  </url>
-  <url>
-    <loc>https://XX.ch/lectures.html</loc>
-    <lastmod>2023-01-17T10:52:23.476Z</lastmod>
-  </url>
-  <url>
-    <loc>https://XX.ch/assignments.html</loc>
-    <lastmod>2023-01-17T10:52:23.693Z</lastmod>
+    <loc>https://aflueckiger.github.io/KED2023/lectures.html</loc>
+    <lastmod>2023-01-27T16:23:48.738Z</lastmod>
   </url>
   <url>
     <loc>https://aflueckiger.github.io/KED2023/index.html</loc>
-    <lastmod>2023-01-17T11:56:32.543Z</lastmod>
+    <lastmod>2023-01-27T16:23:41.118Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aflueckiger.github.io/KED2023/schedule.html</loc>
+    <lastmod>2023-01-27T16:23:46.484Z</lastmod>
+  </url>
+  <url>
+    <loc>https://aflueckiger.github.io/KED2023/assignments.html</loc>
+    <lastmod>2023-01-27T16:23:56.698Z</lastmod>
   </url>
 </urlset>

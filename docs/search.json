@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "The ABC of Computational Text Analysis",
-    "section": "",
-    "text": "In this hands-on seminar, bachelor students of social and cultural sciences learn the basics of programming, among other essential technical skills. Building on a modern technology stack, it aims to prepare students to conduct data-driven text analysis and to make everyday life easier by fostering technological fundamentals. While learning about the importance of computation in solving problems, we also discuss the current developments in information technology. In short, the course promotes digital literacy on a practical and theoretical level.\nThis seminar focuses on the computational processing of digital and digitized texts using Python and the command-line. For any empirical research, the systematic preparation and aggregation of data and the swift retrieval of information are critical. These tasks require the handling of various data forms, including data that is not yet structured in a tabular format. The seminar covers the complete workflow, from gathering textual data to analyzing an entire text collection to producing interactive visualizations. Sounds cool? It certainly is.\nAlong the way, we deal with questions like these:\n\nHow can texts be quantitatively exploited to complement the qualitative content analysis?\nWhat are regular expressions, and why are they so powerful in the context of computational text analysis?\nHow to download data automatically from websites and process en masse?\nHow can historical texts be extracted from PDFs using Optical Character Recognition (OCR)?\n\n Go to UniLu website\n Get course syllabus as PDF (updated version)"
-  },
-  {
     "objectID": "materials.html",
     "href": "materials.html",
     "title": "Materials",
@@ -33,13 +26,6 @@
     "title": "Materials",
     "section": "NLP with Python - An example analysis",
     "text": "NLP with Python - An example analysis\nIn this online-hosted notebook, you find many bits to start a powerful analysis based on simple techniques. It is a starters guide to enable social scientists to conduct NLP analysis. The kind of data, the relative simplicity of the methods, and the general approach are in line with social science practices and bring statistics together with the context of documents.\nYou can execute the code online to get a brief glimpse without bothering with installation."
-  },
-  {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Schedule",
-    "section": "",
-    "text": "We have 13 seminar sessions together.\nThe plan below is provisional. I am happy to adapt the topics, as well as the schedule, to the needs and interests of the students. Likely, we will change some topics and orderings as we go.\n\n\n\nDate\nTopic\n\n\n\n\n23 February 2022\nIntroduction + Where is the digital revolution?\n\n\n02 March 2022\nText as Data\n\n\n09 March 2022\nSetting up your Development Environment\n\n\n16 March 2022\nIntroduction to the Command-line\n\n\n23 March 2022\nBasic NLP with Command-line\n\n\n30 March 2022 (Zoom)\nLearning Regular Expressions\n\n\n06 April 2022 (Zoom)\nWorking with (your own) Data\n\n\n13 April 2022\nno lecture (Osterpause)\n\n\n20 April 2022\nEthics and the Evolution of NLP\n\n\n27 April 2022\nIntroduction to Python + VS Code\n\n\n04 May 2022\nPandas und LIRI-Dataset\n\n\n11 May 2022\nNLP with Python\n\n\n18 May 2022\nno lecture (Christi Himmelfahrt)\n\n\n25 May 2022\nNLP with Python II + Working Session\n\n\n01 June 2022\nMini-Project Presentations + Discussion"
   },
   {
     "objectID": "lectures.html",
@@ -133,6 +119,20 @@
     "text": "Week 12: Mini-Project Presentations + Discussion\nIn this session, it is your turn. Going beyond mere toy examples, you present what you have worked on and show off your first harvest of computational text analysis.\nThe seminar is coming to an end, yet it doesn’t have to be a dead-end. You may have gotten more proficient in cursing your computer but also fighting your way through the jungle of technology. Keep going, cheers!"
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "The ABC of Computational Text Analysis",
+    "section": "",
+    "text": "In this hands-on seminar, bachelor students of social and cultural sciences learn the basics of programming, among other essential technical skills. Building on a modern technology stack, it aims to prepare students to conduct data-driven text analysis and to make everyday life easier by fostering technological fundamentals. While learning about the importance of computation in solving problems, we also discuss the current developments in information technology. In short, the course promotes digital literacy on a practical and theoretical level.\nThis seminar focuses on the computational processing of digital and digitized texts using Python and the command-line. For any empirical research, the systematic preparation and aggregation of data and the swift retrieval of information are critical. These tasks require the handling of various data forms, including data that is not yet structured in a tabular format. The seminar covers the complete workflow, from gathering textual data to analyzing an entire text collection to producing interactive visualizations. Sounds cool? It certainly is.\nAlong the way, we deal with questions like these:\n\nHow can texts be quantitatively exploited to complement the qualitative content analysis?\nWhat are regular expressions, and why are they so powerful in the context of computational text analysis?\nHow to download data automatically from websites and process en masse?\nHow can historical texts be extracted from PDFs using Optical Character Recognition (OCR)?\n\n Go to UniLu website\n Get course syllabus as PDF (updated version)"
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "We have 13 seminar sessions together.\nThe plan below is provisional. I am happy to adapt the topics, as well as the schedule, to the needs and interests of the students. Likely, we will change some topics and orderings as we go.\n\n\n\nDate\nTopic\n\n\n\n\n23 February 2023\nIntroduction + Where is the digital revolution?\n\n\n02 March 2023\nText as Data\n\n\n09 March 2023\nSetting up your Development Environment\n\n\n16 March 2023\nIntroduction to the Command-line\n\n\n23 March 2023\nBasic NLP with Command-line\n\n\n30 March 2023 (Zoom)\nLearning Regular Expressions\n\n\n06 April 2023 (Zoom)\nWorking with (your own) Data\n\n\n13 April 2023\nno lecture (Osterpause)\n\n\n20 April 2023\nEthics and the Evolution of NLP\n\n\n27 April 2023\nIntroduction to Python + VS Code\n\n\n04 May 2023\nPandas und LIRI-Dataset\n\n\n11 May 2023\nNLP with Python\n\n\n18 May 2023\nno lecture (Christi Himmelfahrt)\n\n\n25 May 2023\nNLP with Python II + Working Session\n\n\n01 June 2023\nMini-Project Presentations + Discussion"
+  },
+  {
     "objectID": "assignments.html",
     "href": "assignments.html",
     "title": "Assignments",
@@ -144,13 +144,13 @@
     "href": "assignments.html#formal-instructions",
     "title": "Assignments",
     "section": "Formal Instructions",
-    "text": "Formal Instructions\nYour submission is a single script, meaning that is readily executable, and is named as follows:\n\nBash scripts: SURNAME_KED2022_NR.sh\nPython scripts: SURNAME_KED2022_NR.py\n\nThe script follows the order of the tasks in the assignment. In addition to the commands you have used in your solution, you also provide a short, yet concise explanation to your solution. You should include these comments directly in the script by starting the line with #.\nPlease use the following examples as template:\n\nBash\n#!/bin/bash\n\n##################################################\n### assignment 1\n### Seminar: The ABC of Computational Text Analysis\n### University of Lucerne\n##################################################\n\n### task 1a)\necho \"this is a test\"\n# solution: echo prints out the provided text in the command-line \n\n### task 1b)\necho -n \"test\" | wc\n# solution: wc counts the lines, words and characters. \n# The argument -n is necessary to omit the trailing new-line symbol.\n# \"test\" has 4 characters.\n\n...\n\n\nPython\n#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n\n##################################################\n### assignment 1\n### Seminar: The ABC of Computational Text Analysis\n### University of Lucerne\n##################################################\n\n### task 1a)\nprint(\"Hello, World\")\n# outputs the provided string to the prompt\n\n..."
+    "text": "Formal Instructions\nYour submission is a single script, meaning that is readily executable, and is named as follows:\n\nBash scripts: SURNAME_KED2023_NR.sh\nPython scripts: SURNAME_KED2023_NR.py\n\nThe script follows the order of the tasks in the assignment. In addition to the commands you have used in your solution, you also provide a short, yet concise explanation to your solution. You should include these comments directly in the script by starting the line with #.\nPlease use the following examples as template:\n\nBash\n#!/bin/bash\n\n##################################################\n### assignment 1\n### Seminar: The ABC of Computational Text Analysis\n### University of Lucerne\n##################################################\n\n### task 1a)\necho \"this is a test\"\n# solution: echo prints out the provided text in the command-line \n\n### task 1b)\necho -n \"test\" | wc\n# solution: wc counts the lines, words and characters. \n# The argument -n is necessary to omit the trailing new-line symbol.\n# \"test\" has 4 characters.\n\n...\n\n\nPython\n#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n\n##################################################\n### assignment 1\n### Seminar: The ABC of Computational Text Analysis\n### University of Lucerne\n##################################################\n\n### task 1a)\nprint(\"Hello, World\")\n# outputs the provided string to the prompt\n\n..."
   },
   {
     "objectID": "assignments.html#inspiring-student-projects",
     "href": "assignments.html#inspiring-student-projects",
     "title": "Assignments",
     "section": "Inspiring Student Projects",
-    "text": "Inspiring Student Projects\n\nGender differences in 1 August speeches [Code], Dario Haab, Valentina Meyer, Nils Brun, 2022\nAnalysis of Bulletin Board Systeme (BBS), Josias Bruderer, 2021"
+    "text": "Inspiring Student Projects\n\nGender differences in 1 August speeches [Code], Dario Haab, Valentina Meyer, Nils Brun, 2023\nAnalysis of Bulletin Board Systeme (BBS), Josias Bruderer, 2021"
   }
 ]
