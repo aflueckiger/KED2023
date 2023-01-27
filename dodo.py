@@ -46,12 +46,11 @@ def task_prepare_dir():
         }
 
 
-# def task_run_jekyll():
-#     pass
-#     """Running jekyll locally"""
-#     return {
-#         "actions": ["bundle exec jekyll serve"],
-#     }
+def task_update_website():
+    """Render with quarto"""
+    return {
+        "actions": ["quarto render website"],
+    }
 
 
 def task_create_html_slide():
@@ -67,12 +66,12 @@ def task_create_html_slide():
             "actions": [
                 f"cd {LECTURES_MD_DIR} && quarto render {infile} -o {outfile.name} \
                 -f markdown+emoji+strikeout --standalone --embed-resources \
-                --bibliography {BIBFILE} \
-                -V width=1920 -V height=1080 \
-                --include-in-header {CSSFILE} --quiet",
+                --citeproc --bibliography {BIBFILE} \
+                 --quiet",
                 f"cd {LECTURES_MD_DIR} && mv {outfile.name} {outfile}",
             ],
             "targets": [outfile],
+            'title': show_cmd
         }
 
 
@@ -86,7 +85,10 @@ def task_create_pdf_slide():
             "name": infile,
             "file_dep": [infile],
             "actions": [
-                f"decktape --load-pause 500 --pdf-author '{AUTHOR}' --pdf-title '{TITLE}' {infile} {outfile}",
+                # generate PDF from HTML
+                # use 4:3 format because of this bug: https://github.com/astefanutti/decktape/issues/151
+                f"decktape --size='2048x1536' --load-pause 500 --pdf-author '{AUTHOR}' --pdf-title '{TITLE}' {infile} {outfile}",
+                # compress
                 f"gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress -dNOPAUSE -dQUIET -dBATCH -sOutputFile={outfile}.temp {outfile}",
                 f"mv {outfile}.temp {outfile}",
             ],
@@ -94,19 +96,19 @@ def task_create_pdf_slide():
         }
 
 
-# def task_create_lecture_notes():
-#     infiles = sorted(LECTURES_MD_DIR.glob("*.md"))
+def task_create_lecture_notes():
+    infiles = sorted(LECTURES_MD_DIR.glob("*.md"))
 
-#     for infile in infiles:
-#         outfile = Path(LECTURES_NOTES_DIR) / infile.with_suffix(".notes.pdf").name
-#         yield {
-#             "name": infile,
-#             "file_dep": [infile],
-#             "actions": [
-#                 f"python lib/extract_notes.py < {infile} | pandoc -o {outfile} -f markdown --pdf-engine=xelatex -V geometry:margin=2cm",
-#             ],
-#             "targets": [outfile],
-#         }
+    for infile in infiles:
+        outfile = Path(LECTURES_NOTES_DIR) / infile.with_suffix(".notes.pdf").name
+        yield {
+            "name": infile,
+            "file_dep": [infile],
+            "actions": [
+                f"python lib/extract_notes.py < {infile} | pandoc -o {outfile} -f markdown --pdf-engine=xelatex -V geometry:margin=2cm",
+            ],
+            "targets": [outfile],
+        }
 
 
 
@@ -135,7 +137,7 @@ def task_create_syllabus():
             -V filecolor='[HTML]{{111bab}}' \
             --metadata title='{TITLE}' \
             --metadata date='{today}'",
-            f"rm {WEBSITE_DIR} /*.tmp"
+            f"rm {WEBSITE_DIR}/*.tmp"
            
         ],
         "targets": [outfile],
