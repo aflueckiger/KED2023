@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alex Flückiger">
+<meta name="dcterms.date" content="2023-04-28">
+
+<title>KED2023 - The ABC of Computational Text Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//_images/favicon/android-chrome-512x512.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<meta property="og:title" content="KED2023 - The ABC of Computational Text Analysis">
+<meta property="og:description" content="#8 Ethics and the Evolution of NLP">
+<meta property="og:site-name" content="KED2023">
+<meta name="twitter:title" content="KED2023 - The ABC of Computational Text Analysis">
+<meta name="twitter:description" content="In this hands-on seminar, bachelor students of social and cultural sciences learn the basics of programming among other essential technical skills.">
+<meta name="twitter:image" content="https://aflueckiger.github.io/KED2023/_images/background.png">
+<meta name="twitter:image-height" content="478">
+<meta name="twitter:image-width" content="1179">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">KED2023</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../lectures.html">
+ <span class="menu-text">Lectures</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assignments.html">
+ <span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../materials.html">
+ <span class="menu-text">Materials</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#recap-last-lecture" id="toc-recap-last-lecture" class="nav-link active" data-scroll-target="#recap-last-lecture">Recap last Lecture</a></li>
+  <li><a href="#outline" id="toc-outline" class="nav-link" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#ethics-is-more-than-philosophy.-it-is-everywhere." id="toc-ethics-is-more-than-philosophy.-it-is-everywhere." class="nav-link" data-scroll-target="#ethics-is-more-than-philosophy.-it-is-everywhere."><strong>Ethics</strong> is more than philosophy.<br>It <strong>is everywhere</strong>.</a></li>
+  <li><a href="#an-example" id="toc-an-example" class="nav-link" data-scroll-target="#an-example">An Example</a>
+  <ul class="collapse">
+  <li><a href="#you-are-applying-for-a-job-at-a-big-company." id="toc-you-are-applying-for-a-job-at-a-big-company." class="nav-link" data-scroll-target="#you-are-applying-for-a-job-at-a-big-company.">You are applying for a job at a big company.</a></li>
+  <li><a href="#does-your-cv-pass-the-automatic-pre-filtering" id="toc-does-your-cv-pass-the-automatic-pre-filtering" class="nav-link" data-scroll-target="#does-your-cv-pass-the-automatic-pre-filtering">Does your CV pass the automatic pre-filtering?</a>
+  <ul class="collapse">
+  <li><a href="#thinking-for-what-reasons" id="toc-thinking-for-what-reasons" class="nav-link" data-scroll-target="#thinking-for-what-reasons">:thinking: For what reasons?</a></li>
+  </ul></li>
+  <li><a href="#your-interview-is-recorded.-sunglasses-hot_face-what-personal-traits-are-inferred-from-that" id="toc-your-interview-is-recorded.-sunglasses-hot_face-what-personal-traits-are-inferred-from-that" class="nav-link" data-scroll-target="#your-interview-is-recorded.-sunglasses-hot_face-what-personal-traits-are-inferred-from-that">Your interview is recorded. :sunglasses: :hot_face:<br> What personal traits are inferred from that? <br></a>
+  <ul class="collapse">
+  <li><a href="#thinking-is-it-a-good-reflection-of-your-personality" id="toc-thinking-is-it-a-good-reflection-of-your-personality" class="nav-link" data-scroll-target="#thinking-is-it-a-good-reflection-of-your-personality">:thinking: Is it a good reflection of your personality?</a></li>
+  </ul></li>
+  <li><a href="#dont-worry-about-the-future" id="toc-dont-worry-about-the-future" class="nav-link" data-scroll-target="#dont-worry-about-the-future">Don’t worry about the future …</a>
+  <ul class="collapse">
+  <li><a href="#worry-about-the-present." id="toc-worry-about-the-present." class="nav-link" data-scroll-target="#worry-about-the-present.">… worry about the present.</a></li>
+  </ul></li>
+  <li><a href="#algorithmic-managment-of-labour-force" id="toc-algorithmic-managment-of-labour-force" class="nav-link" data-scroll-target="#algorithmic-managment-of-labour-force">Algorithmic Managment of Labour Force</a></li>
+  </ul></li>
+  <li><a href="#an-revolution-of-nlp" id="toc-an-revolution-of-nlp" class="nav-link" data-scroll-target="#an-revolution-of-nlp">An (R)evolution of NLP</a>
+  <ul class="collapse">
+  <li><a href="#from-bag-of-words-to-embeddings" id="toc-from-bag-of-words-to-embeddings" class="nav-link" data-scroll-target="#from-bag-of-words-to-embeddings">From Bag of Words to Embeddings</a>
+  <ul class="collapse">
+  <li><a href="#putting-words-into-computers-smith2020-church2021" id="toc-putting-words-into-computers-smith2020-church2021" class="nav-link" data-scroll-target="#putting-words-into-computers-smith2020-church2021">Putting Words into Computers <span class="citation" data-cites="Smith2020 Church2021">[@Smith2020; @Church2021]</span></a></li>
+  </ul></li>
+  <li><a href="#bag-of-words" id="toc-bag-of-words" class="nav-link" data-scroll-target="#bag-of-words">Bag of Words</a></li>
+  <li><a href="#representing-a-corpus" id="toc-representing-a-corpus" class="nav-link" data-scroll-target="#representing-a-corpus">Representing a Corpus</a></li>
+  <li><a href="#i-eat-a-hot-___-for-lunch." id="toc-i-eat-a-hot-___-for-lunch." class="nav-link" data-scroll-target="#i-eat-a-hot-___-for-lunch.">“I eat a hot <code>___</code> for lunch.”</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#word-embeddings" id="toc-word-embeddings" class="nav-link" data-scroll-target="#word-embeddings">Word Embeddings</a>
+  <ul class="collapse">
+  <li><a href="#word2vec-mikolov2013" id="toc-word2vec-mikolov2013" class="nav-link" data-scroll-target="#word2vec-mikolov2013">word2vec <span class="citation" data-cites="Mikolov2013">[@Mikolov2013]</span></a></li>
+  </ul></li>
+  <li><a href="#contextualized-word-embeddings" id="toc-contextualized-word-embeddings" class="nav-link" data-scroll-target="#contextualized-word-embeddings">Contextualized Word Embeddings</a>
+  <ul class="collapse">
+  <li><a href="#bert-devlin2019" id="toc-bert-devlin2019" class="nav-link" data-scroll-target="#bert-devlin2019">BERT <span class="citation" data-cites="Devlin2019">[@Devlin2019]</span></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#modern-nlp-is-propelled-by-data" id="toc-modern-nlp-is-propelled-by-data" class="nav-link" data-scroll-target="#modern-nlp-is-propelled-by-data">Modern NLP is propelled by data</a>
+  <ul class="collapse">
+  <li><a href="#learning-associations-from-data" id="toc-learning-associations-from-data" class="nav-link" data-scroll-target="#learning-associations-from-data">Learning Associations from Data</a></li>
+  <li><a href="#cultural-associations-in-training-data" id="toc-cultural-associations-in-training-data" class="nav-link" data-scroll-target="#cultural-associations-in-training-data">Cultural Associations in Training Data</a></li>
+  <li><a href="#word-embeddings-are-biased" id="toc-word-embeddings-are-biased" class="nav-link" data-scroll-target="#word-embeddings-are-biased">Word Embeddings are biased …</a>
+  <ul class="collapse">
+  <li><a href="#because-our-data-is-we-are-biased.-bender2021" id="toc-because-our-data-is-we-are-biased.-bender2021" class="nav-link" data-scroll-target="#because-our-data-is-we-are-biased.-bender2021">… because <del><strong>our data</strong> is</del> we are biased. <span class="citation" data-cites="Bender2021">[@Bender2021]</span></a></li>
+  </ul></li>
+  <li><a href="#in-class-exercises-i" id="toc-in-class-exercises-i" class="nav-link" data-scroll-target="#in-class-exercises-i">In-class: Exercises I</a></li>
+  </ul></li>
+  <li><a href="#modern-ai-dl" id="toc-modern-ai-dl" class="nav-link" data-scroll-target="#modern-ai-dl">Modern AI = DL</a>
+  <ul class="collapse">
+  <li><a href="#how-does-deep-learning-work" id="toc-how-does-deep-learning-work" class="nav-link" data-scroll-target="#how-does-deep-learning-work">How does Deep Learning work?</a>
+  <ul class="collapse">
+  <li><a href="#deep-learning-works-like-a-huge-bureaucracy" id="toc-deep-learning-works-like-a-huge-bureaucracy" class="nav-link" data-scroll-target="#deep-learning-works-like-a-huge-bureaucracy">Deep Learning works like a huge bureaucracy</a></li>
+  </ul></li>
+  <li><a href="#limitations-of-data-driven-deep-learning" id="toc-limitations-of-data-driven-deep-learning" class="nav-link" data-scroll-target="#limitations-of-data-driven-deep-learning">Limitations of data-driven Deep Learning</a></li>
+  <li><a href="#current-state-of-deep-learning" id="toc-current-state-of-deep-learning" class="nav-link" data-scroll-target="#current-state-of-deep-learning">Current State of Deep Learning</a>
+  <ul class="collapse">
+  <li><a href="#extremely-powerful-but-bengio2021" id="toc-extremely-powerful-but-bengio2021" class="nav-link" data-scroll-target="#extremely-powerful-but-bengio2021">Extremely powerful but … <span class="citation" data-cites="Bengio2021">[@Bengio2021]</span></a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#biased-data-and-beyond" id="toc-biased-data-and-beyond" class="nav-link" data-scroll-target="#biased-data-and-beyond">Biased Data and beyond</a>
+  <ul class="collapse">
+  <li><a href="#data-digital-traces-social-artifacts" id="toc-data-digital-traces-social-artifacts" class="nav-link" data-scroll-target="#data-digital-traces-social-artifacts">Data = Digital Traces = Social Artifacts</a></li>
+  <li><a href="#data-vs.-capta" id="toc-data-vs.-capta" class="nav-link" data-scroll-target="#data-vs.-capta">Data vs.&nbsp;Capta</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1"></a></li>
+  <li><a href="#two-sides-of-the-ai-coin" id="toc-two-sides-of-the-ai-coin" class="nav-link" data-scroll-target="#two-sides-of-the-ai-coin">Two Sides of the AI Coin</a>
+  <ul class="collapse">
+  <li><a href="#explaining-vs.-solving" id="toc-explaining-vs.-solving" class="nav-link" data-scroll-target="#explaining-vs.-solving">Explaining vs.&nbsp;Solving</a></li>
+  </ul></li>
+  <li><a href="#still-doubts-about-practical-implications" id="toc-still-doubts-about-practical-implications" class="nav-link" data-scroll-target="#still-doubts-about-practical-implications">Still doubts about practical implications?</a></li>
+  <li><a href="#and-it-goes-on" id="toc-and-it-goes-on" class="nav-link" data-scroll-target="#and-it-goes-on">And it goes on …</a></li>
+  <li><a href="#fair-is-a-fad" id="toc-fair-is-a-fad" class="nav-link" data-scroll-target="#fair-is-a-fad">Fair is a Fad</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2"></a></li>
+  <li><a href="#data-represents-real-life." id="toc-data-represents-real-life." class="nav-link" data-scroll-target="#data-represents-real-life.">Data represents real life.</a></li>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions?</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The ABC of Computational Text Analysis</h1>
+<p class="subtitle lead">#8 Ethics and the Evolution of NLP</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Alex Flückiger 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Faculty of Humanities and Social Sciences<br>University of Lucerne
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 28, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="recap-last-lecture" class="level2">
+<h2 class="anchored" data-anchor-id="recap-last-lecture">Recap last Lecture</h2>
+<ul>
+<li>assignment 2 accomplished :white_check_mark:</li>
+<li>an abundance of data sources
+<ul>
+<li>JSTOR, Nexis, few datasets</li>
+</ul></li>
+<li>creating your own dataset
+<ul>
+<li>convert any data to <code>.txt</code></li>
+</ul></li>
+<li>processing a batch of files
+<ul>
+<li>perform tasks in for-loop</li>
+</ul></li>
+</ul>
+<div class="notes">
+<ul>
+<li>Assignment
+<ul>
+<li>posititv: gut gelöst, für manche Leute sehr viel einfacher, für manche schwieriger</li>
+<li>Tradeoff: generalisierung vs.&nbsp;spezifizität
+<ul>
+<li>Kunst ist: so generell wie möglich, so spezifisch wie nötig</li>
+</ul></li>
+</ul></li>
+<li>interessante Quellen für Sozialwissenschaften
+<ul>
+<li>Unmenge intressanter Daten, wenig Datensätze</li>
+<li>Konversion, da Dokument nicht in maschinenlesbarer Form</li>
+</ul></li>
+<li>gerüstet um mit (fast) allen Textdaten zu arbeiten</li>
+</ul>
+</div>
+</section>
+<section id="outline" class="level2">
+<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<ul>
+<li>ethics is everywhere :see_no_evil::hear_no_evil::speak_no_evil:
+<ul>
+<li>… and your responsibility</li>
+</ul></li>
+<li>understand the development of modern NLP :rocket:
+<ul>
+<li>… or how to put words into computers</li>
+</ul></li>
+</ul>
+<div class="notes">
+<ul>
+<li>heute ein Sprung, der über praktischen Teil von Seminar hinausgeht
+<ul>
+<li>Mix aus Ethik und Entwicklung NLP</li>
+<li>moderne NLP leistungsfähiger als je zuvor, aber mit Problemen</li>
+</ul></li>
+<li>AI ist Werkzeug, erstmal weder gut noch schlecht
+<ul>
+<li>Vergleich: Motor für Krankenwagen oder Panzer (Verteidigung/Angriff).</li>
+<li>Internet für Wikipedia oder für Kinderpornographie</li>
+</ul></li>
+<li>Die Frage ist: Wer profitiert genau von was? Wer verliert dabei?</li>
+</ul>
+</div>
+</section>
+<section id="ethics-is-more-than-philosophy.-it-is-everywhere." class="level1">
+<h1><strong>Ethics</strong> is more than philosophy.<br>It <strong>is everywhere</strong>.</h1>
+</section>
+<section id="an-example" class="level1">
+<h1>An Example</h1>
+<section id="you-are-applying-for-a-job-at-a-big-company." class="level2" data-background="../images/cv.png">
+<h2 data-background="../images/cv.png" class="anchored" data-anchor-id="you-are-applying-for-a-job-at-a-big-company.">You are applying for a job at a big company.</h2>
+<div class="notes">
+<ul>
+<li>Ethik ist nicht nur abstrakt und gehört nicht nur in Philosophie
+<ul>
+<li>nicht Begriff ist wichtig, sondern Denkart</li>
+<li>nachdenken über Ausgangslage + Konsequenzen</li>
+</ul></li>
+<li>Anekdoten aus eigenem Bewerbungsprozess
+<ul>
+<li>als Bewerber</li>
+<li>für Jobs, die Tools zur automatischen CV-Verarbeitung machen</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="does-your-cv-pass-the-automatic-pre-filtering" class="level2">
+<h2 class="anchored" data-anchor-id="does-your-cv-pass-the-automatic-pre-filtering">Does your CV pass the automatic pre-filtering?</h2>
+<p>:red_circle: :green_circle:</p>
+<div class="incremental">
+<section id="thinking-for-what-reasons" class="level3">
+<h3 class="anchored" data-anchor-id="thinking-for-what-reasons">:thinking: For what reasons?</h3>
+<div class="notes">
+<ul>
+<li>automatische Vorselektion Bewerbungen</li>
+<li>bestenfalls: naiv, schlechtensfalls: anti-liberal/diskriminierend</li>
+</ul>
+</div>
+</section>
+</div>
+</section>
+<section id="your-interview-is-recorded.-sunglasses-hot_face-what-personal-traits-are-inferred-from-that" class="level2">
+<h2 class="anchored" data-anchor-id="your-interview-is-recorded.-sunglasses-hot_face-what-personal-traits-are-inferred-from-that">Your interview is recorded. :sunglasses: :hot_face:<br> What personal traits are inferred from that? <br></h2>
+<div class="incremental">
+<section id="thinking-is-it-a-good-reflection-of-your-personality" class="level3">
+<h3 class="anchored" data-anchor-id="thinking-is-it-a-good-reflection-of-your-personality">:thinking: Is it a good reflection of your personality?</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/face_impressions.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p></p><figcaption class="figure-caption">Face impressions as perceived by a model by <span class="citation" data-cites="Peterson2022">[@Peterson2022]</span></figcaption><p></p>
+</figure>
+</div>
+</section>
+</div>
+</section>
+<section id="dont-worry-about-the-future" class="level2" data-background="var(--red)">
+<h2 data-background="var(--red)" class="anchored" data-anchor-id="dont-worry-about-the-future">Don’t worry about the future …</h2>
+<section id="worry-about-the-present." class="level3">
+<h3 class="anchored" data-anchor-id="worry-about-the-present.">… worry about the present.</h3>
+<ul>
+<li>AI is persuasive in everyday’s life
+<ul>
+<li>assessing risks and performances (credits, job, crimes, terrorism etc.)</li>
+</ul></li>
+<li>AI is extremely capable</li>
+<li>AI is not so smart and often poorly evaluated</li>
+</ul>
+<p>:bulb: What is going on behind the scene?</p>
+<div class="notes">
+<ul>
+<li>je mehr die Systeme können, desto mehr werden sie eingesetzt, desto unsichtbarer wird, was sie nicht können</li>
+<li>Moderne AI lernt Muster aus Daten. Gilt auch für NLP.
+<ul>
+<li>generalisiert blind oder eben genau so wie gelernt</li>
+</ul></li>
+<li>Ungleichheit wird reproduziert, gar verstärkt durch Systematik
+<ul>
+<li>Geschlecht, Ethnie, sozioökonomisch</li>
+</ul></li>
+<li>Problematik ist Reichweite und Intransparenz
+<ul>
+<li>Menschen auch fallibel, aber mit grösser Varietät</li>
+</ul></li>
+<li>Anwendungen für tabelarische Daten, Text, Bild, Video
+<ul>
+<li>self-driving cars (walking pedestrians vs wheel chair pedestrians)</li>
+</ul></li>
+<li>Entwicklung NLP und Ethik hängen zusammen
+<ul>
+<li>quasi: je leistungsfähiger NLP, desto mehr Bias wird mitgelernt im aktuellen Paradigma</li>
+<li>besseres Verständnis = bessere Data Science</li>
+</ul></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="algorithmic-managment-of-labour-force" class="level2">
+<h2 class="anchored" data-anchor-id="algorithmic-managment-of-labour-force">Algorithmic Managment of Labour Force</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/chatgpt_headcount_reduction.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">ChatGPT may be used to communicate difficult desicions</figcaption><p></p>
+</figure>
+</div>
+<div class="notes">
+<ul>
+<li>Akkordarbeit und bei ungenügender Leistung automatische Entlassung?</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="an-revolution-of-nlp" class="level1">
+<h1>An (R)evolution of NLP</h1>
+<section id="from-bag-of-words-to-embeddings" class="level2">
+<h2 class="anchored" data-anchor-id="from-bag-of-words-to-embeddings">From Bag of Words to Embeddings</h2>
+<section id="putting-words-into-computers-smith2020-church2021" class="level3">
+<h3 class="anchored" data-anchor-id="putting-words-into-computers-smith2020-church2021">Putting Words into Computers <span class="citation" data-cites="Smith2020 Church2021">[@Smith2020; @Church2021]</span></h3>
+<ul>
+<li>from <strong>coarse, static</strong> to <strong>fine, contextual</strong> meaning</li>
+<li>how to measure similarity of words
+<ul>
+<li>string-based</li>
+<li>syntactic (e.g., part-of-speech)</li>
+<li>semantic (e.g., animate)</li>
+<li>embedding as abstract representations</li>
+</ul></li>
+<li>from counting to learning representations</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Ein Sprung, wie diese Technologie gewachsen ist</li>
+<li>Probleme
+<ul>
+<li>Bank kann Kreditinstitut bedeuten, in anderem Satz Parkbank</li>
+<li>Haus und Gebäude sehr ähnlich, aber nicht reflektiert in Oberflächenform</li>
+</ul></li>
+<li>Syntax und Semantik um Wörter zu gruppieren</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="bag-of-words" class="level2">
+<h2 class="anchored" data-anchor-id="bag-of-words">Bag of Words</h2>
+<ul>
+<li>word as arbitrary, discrete numbers
+<ul>
+<li><code>King = 1, Queen = 2, Man = 3, Woman = 4</code></li>
+</ul></li>
+<li>intrinsic meaning</li>
+<li>how are these words similar?</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/word2vec-one-hot.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Discrete, symbolic words <span class="citation" data-cites="Colyer2016">[@Colyer2016]</span></figcaption><p></p>
+</figure>
+</div>
+<div class="notes">
+<ul>
+<li>Vektorrepräsentation für ganzes Vokubular</li>
+<li>jedes Wort ist anderes als jedes andere, in unvergleichbarer Weise</li>
+<li>BoW lange Zeit Standard. Ergänzt durch zusätzliche Information wie POS</li>
+</ul>
+</div>
+</section>
+<section id="representing-a-corpus" class="level2">
+<h2 class="anchored" data-anchor-id="representing-a-corpus">Representing a Corpus</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="collection-of-documents" class="level3">
+<h3 class="anchored" data-anchor-id="collection-of-documents">Collection of Documents</h3>
+<div class="l-left-align">
+<ol type="1">
+<li><p><code>NLP is great. I love NLP.</code></p></li>
+<li><p><code>I understand NLP.</code></p></li>
+<li><p><code>NLP, NLP, NLP.</code></p></li>
+</ol>
+</div>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="document-term-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="document-term-matrix">Document Term Matrix</h3>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><code>NLP</code></th>
+<th><code>I</code></th>
+<th><code>is</code></th>
+<th><strong><em>term</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Doc 1</strong></td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td><strong>Doc 2</strong></td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>…</td>
+</tr>
+<tr class="odd">
+<td><strong>Doc 3</strong></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td><strong><em>Doc ID</em></strong></td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td><strong><em>term frequency</em></strong></td>
+</tr>
+</tbody>
+</table>
+</section>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>für den Computer müssen Daten tabularisiert werden für weitere Verarbeitung</li>
+</ul>
+</div>
+</section>
+<section id="i-eat-a-hot-___-for-lunch." class="level2" data-background="var(--blue)">
+<h2 data-background="var(--blue)" class="anchored" data-anchor-id="i-eat-a-hot-___-for-lunch.">“I eat a hot <code>___</code> for lunch.”</h2>
+<div class="notes">
+<ul>
+<li>Wörter können aber auch anders definiert werden und das will ich hier illustrieren</li>
+<li>Frage an Studis</li>
+</ul>
+</div>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<blockquote class="blockquote">
+<p>You shall know a word by the company it keeps!</p>
+<p><span class="citation" data-cites="Firth1957">@Firth1957</span></p>
+</blockquote>
+<div class="notes">
+<ul>
+<li>kontextuelle Bedeutung statt intrinschische Definition</li>
+<li>Saussure: Zeichen nur definiert durch andere Zeichen</li>
+<li>relationale Bedeutung: Objekt ist definiert durch Kontext</li>
+<li>lange ohne technische Implementation</li>
+</ul>
+</div>
+</section>
+<section id="word-embeddings" class="level2">
+<h2 class="anchored" data-anchor-id="word-embeddings">Word Embeddings</h2>
+<section id="word2vec-mikolov2013" class="level3">
+<h3 class="anchored" data-anchor-id="word2vec-mikolov2013">word2vec <span class="citation" data-cites="Mikolov2013">[@Mikolov2013]</span></h3>
+<ul>
+<li>words as continuous vectors
+<ul>
+<li>accounting for similarity between words</li>
+</ul></li>
+<li>semantic similarity
+<ul>
+<li><code>King – Man + Woman = Queen</code></li>
+<li><code>France / Paris = Switzerland / Bern</code></li>
+</ul></li>
+</ul>
+<div class="l-multiple">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/word_vectors.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Single continuous vector per word <span class="citation" data-cites="Colyer2016">[@Colyer2016]</span></figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/word2vec-king-queen-vectors.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Words as points in a semantic space <span class="citation" data-cites="Colyer2016">[@Colyer2016]</span></figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/word2vec-king-queen-composition.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Doing arithmetics with words <span class="citation" data-cites="Colyer2016">[@Colyer2016]</span></figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>Seit 2013 hat sich alles verändert</li>
+<li>vector = list of numbers -&gt; point in Euclidean space</li>
+<li>Idee: wenn Wort genau gleich gebraucht wird, dann selbe Stelle</li>
+<li>Synonyme, Analogien finden</li>
+<li>alles noch globale Information. Ein Wort hat genau ein Vektor
+<ul>
+<li>Was passiert mit mehrdeutigen Wörter (z.B. Bank)?</li>
+</ul></li>
+<li>Frage wie diese Repräsentationen genau gelernt wir nach Pause</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="contextualized-word-embeddings" class="level2">
+<h2 class="anchored" data-anchor-id="contextualized-word-embeddings">Contextualized Word Embeddings</h2>
+<section id="bert-devlin2019" class="level3">
+<h3 class="anchored" data-anchor-id="bert-devlin2019">BERT <span class="citation" data-cites="Devlin2019">[@Devlin2019]</span></h3>
+<ul>
+<li>recontextualize static word embedding
+<ul>
+<li>different embeddings in different contexts</li>
+<li>accounting for ambiguity (e.g., <code>bank</code>)</li>
+</ul></li>
+<li>acquire linguistic knowledge from language models (LM)
+<ul>
+<li>LM predict next/missing word</li>
+<li>pre-trained on massive data (&gt; 300 billions words)</li>
+</ul></li>
+</ul>
+<p><br></p>
+<p>:boom: embeddings are the cornerstone of modern NLP</p>
+<div class="notes">
+<ul>
+<li>alles lässt sich embedden (Wörter, Sätze, Paragraphen, Dokumente)</li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+<section id="modern-nlp-is-propelled-by-data" class="level1">
+<h1>Modern NLP is propelled by data</h1>
+<section id="learning-associations-from-data" class="level2">
+<h2 class="anchored" data-anchor-id="learning-associations-from-data">Learning Associations from Data</h2>
+<br>
+<p>
+<span style="font-size:1.3em"><span style="font-family:Courier New,Courier,monospace">«<span style="color:#e74c3c"><code>___</code></span> becomes a doctor.»</span></span>
+</p>
+<div class="incremental">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/bert_bias_doctor.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Gender bias of the commonly used language model <a href="https://pair.withgoogle.com/explorables/fill-in-the-blank">BERT</a> <span class="citation" data-cites="Devlin2019">[@Devlin2019]</span></figcaption><p></p>
+</figure>
+</div>
+<div class="notes">
+<ul>
+<li>BERT wird in Google Search gebraucht</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="cultural-associations-in-training-data" class="level2">
+<h2 class="anchored" data-anchor-id="cultural-associations-in-training-data">Cultural Associations in Training Data</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/bert_bias_hobbies.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p></p><figcaption class="figure-caption">Gender bias of the commonly used language model <a href="https://pair.withgoogle.com/explorables/fill-in-the-blank">BERT</a> <span class="citation" data-cites="Devlin2019">[@Devlin2019]</span></figcaption><p></p>
+</figure>
+</div>
+<div class="notes">
+<ul>
+<li>Analyse umkehren: Nicht nach Pronomen fragen, sondern nach Tätigkeiten</li>
+<li>Model trained on Wikipedia and Books (not Reddit)</li>
+</ul>
+</div>
+</section>
+<section id="word-embeddings-are-biased" class="level2">
+<h2 class="anchored" data-anchor-id="word-embeddings-are-biased">Word Embeddings are biased …</h2>
+<section id="because-our-data-is-we-are-biased.-bender2021" class="level3">
+<h3 class="anchored" data-anchor-id="because-our-data-is-we-are-biased.-bender2021">… because <del><strong>our data</strong> is</del> we are biased. <span class="citation" data-cites="Bender2021">[@Bender2021]</span></h3>
+<div class="notes">
+<ul>
+<li>Timnit Gebru (Google Ethics Lead) gefeuert für dieses Paper Ende 2020</li>
+<li>Daten sind nicht besser als wir und Gesellschaft trägt extreme Diskriminierungen mit sich</li>
+<li><strong>Pause</strong></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="in-class-exercises-i" class="level2" data-background="var(--blue)">
+<h2 data-background="var(--blue)" class="anchored" data-anchor-id="in-class-exercises-i">In-class: Exercises I</h2>
+<ol type="1">
+<li>Open the following website in your browser: <a href="https://pair.withgoogle.com/explorables/fill-in-the-blank/" class="uri">https://pair.withgoogle.com/explorables/fill-in-the-blank/</a></li>
+<li>Read the the article and play around with the interactive demo.</li>
+<li>What works surprisingly well? What is flawed by societal bias? Where do you see limits of large language models?</li>
+</ol>
+</section>
+</section>
+<section id="modern-ai-dl" class="level1">
+<h1>Modern AI = DL</h1>
+<section id="how-does-deep-learning-work" class="level2">
+<h2 class="anchored" data-anchor-id="how-does-deep-learning-work">How does Deep Learning work?</h2>
+<section id="deep-learning-works-like-a-huge-bureaucracy" class="level3">
+<h3 class="anchored" data-anchor-id="deep-learning-works-like-a-huge-bureaucracy">Deep Learning <a href="https://thinc.ai/docs/backprop101">works</a> like a huge bureaucracy</h3>
+<ol type="1">
+<li><strong>start</strong> with <strong>random</strong> prediction</li>
+<li><strong>blame</strong> units for contributing to <strong>wrong predictions</strong></li>
+<li><strong>adjust</strong> units based on the accounted blame</li>
+<li><strong>repeat</strong> the cycle</li>
+</ol>
+<div class="incremental">
+<p>:nerd_face: train with <strong>gradient descent</strong>, a series of <strong>small steps</strong> taken <strong>to minimize an error function</strong></p>
+</div>
+</section>
+</section>
+<section id="limitations-of-data-driven-deep-learning" class="level2">
+<h2 class="anchored" data-anchor-id="limitations-of-data-driven-deep-learning">Limitations of data-driven Deep Learning</h2>
+<p><br></p>
+<p>
+<span style="font-size:1.5em"><span style="font-family:Courier New,Courier,monospace">„This sentence contains <span style="color:#3498db">32</span> characters.“<br> „Dieser Satz enthält <span style="color:#e74c3c">32</span> Buchstaben.“</span></span><br> &nbsp;
+</p>
+<div class="notes">
+<ul>
+<li>ohne Trainingsdaten aktuell nicht zu lösen</li>
+</ul>
+</div>
+</section>
+<section id="current-state-of-deep-learning" class="level2">
+<h2 class="anchored" data-anchor-id="current-state-of-deep-learning">Current State of Deep Learning</h2>
+<section id="extremely-powerful-but-bengio2021" class="level3">
+<h3 class="anchored" data-anchor-id="extremely-powerful-but-bengio2021">Extremely powerful but … <span class="citation" data-cites="Bengio2021">[@Bengio2021]</span></h3>
+<ul>
+<li>great at <strong>learning patterns</strong>, yet reasoning in its infancy</li>
+<li>requires tons of data due to inefficient learning</li>
+<li>generalizes poorly</li>
+</ul>
+<div class="notes">
+<ul>
+<li>out of domain (schwarze vs weisse Menschen, anderes Textgenre)</li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+<section id="biased-data-and-beyond" class="level1">
+<h1>Biased Data and beyond</h1>
+<section id="data-digital-traces-social-artifacts" class="level2">
+<h2 class="anchored" data-anchor-id="data-digital-traces-social-artifacts">Data = Digital Traces = Social Artifacts</h2>
+<ul>
+<li>collecting, curating, preserving traces</li>
+<li><strong>data is imperfect</strong>, always
+<ul>
+<li>social bias, noise, lack of data etc.</li>
+</ul></li>
+<li>data is more a <strong>tool</strong> to refine questions <strong>rather than a reflection of the world</strong></li>
+</ul>
+<div class="notes">
+<ul>
+<li>Was sind Daten?
+<ul>
+<li>Daten sind kein Abbild der Welt, nichts natürliches.</li>
+</ul></li>
+<li>Analog zu Romanos: Massenmedien sind nicht die Welt
+<ul>
+<li>Daten sind auch nicht die Welt</li>
+</ul></li>
+<li>Daten liegen nicht einfach herum, sondern gemacht (siehe Schritte)</li>
+</ul>
+</div>
+</section>
+<section id="data-vs.-capta" class="level2">
+<h2 class="anchored" data-anchor-id="data-vs.-capta">Data vs.&nbsp;Capta</h2>
+<blockquote class="blockquote">
+<p>Differences in the etymological roots of the terms data and capta make the distinction between constructivist and realist approaches clear. <em>Capta</em> is <span style="color:#b5533c"><strong>“taken”</strong></span> actively while <em>data</em> is assumed to be a <span style="color:#b5533c"><strong>“given”</strong></span> able to be recorded and observed.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Humanistic inquiry acknowledges the situated, partial, and constitutive character of knowledge production, the recognition that knowledge is constructed, <em>taken</em>, <span style="color:#b5533c"><strong>not simply given as a natural representation</strong></span> of pre-existing fact.</p>
+<p><span class="citation" data-cites="Drucker2011">@Drucker2011</span></p>
+</blockquote>
+<div class="notes">
+<ul>
+<li>viel Konflikt geht auf diese Realismus/Konstruktivismus Perspektive zurück</li>
+<li>Konstruktivmus heisst nur, Fragen zu stellen, wieso die Dinge sind, wie sie ausschauen</li>
+</ul>
+</div>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"></h2>
+<blockquote class="blockquote">
+<p>Raw data is an oxymoron.</p>
+<p><span class="citation" data-cites="Gitelman2013">@Gitelman2013</span></p>
+</blockquote>
+</section>
+<section id="two-sides-of-the-ai-coin" class="level2">
+<h2 class="anchored" data-anchor-id="two-sides-of-the-ai-coin">Two Sides of the AI Coin</h2>
+<section id="explaining-vs.-solving" class="level3">
+<h3 class="anchored" data-anchor-id="explaining-vs.-solving">Explaining vs.&nbsp;Solving</h3>
+<ul>
+<li>conduct <strong>research to understand</strong> matters in science</li>
+<li><strong>automate</strong> matters <strong>in business</strong> using applied AI</li>
+</ul>
+</section>
+</section>
+<section id="still-doubts-about-practical-implications" class="level2">
+<h2 class="anchored" data-anchor-id="still-doubts-about-practical-implications">Still doubts about practical implications?</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/google_translate_bias.png" class="img-fluid figure-img" style="width:40.0%"></p>
+<p></p><figcaption class="figure-caption">Gender bias in Google Translate</figcaption><p></p>
+</figure>
+</div>
+<div class="notes">
+<ul>
+<li>Ungarische Pronomen sind nich gendered</li>
+</ul>
+</div>
+</section>
+<section id="and-it-goes-on" class="level2">
+<h2 class="anchored" data-anchor-id="and-it-goes-on">And it goes on …</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/google_translate_bias_promotion.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Gender bias in <a href="https://translate.google.com/?sl=en&amp;tl=de&amp;text=The%20engineer%20gets%20a%20promotion.%0AThe%20child%20carer%20goes%20to%20the%20zoo%20with%20the%20kids.%0AThe%20child%20carer%20gets%20a%20promotion.&amp;op=translate">Google Translate</a></figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="fair-is-a-fad" class="level2">
+<h2 class="anchored" data-anchor-id="fair-is-a-fad">Fair is a Fad</h2>
+<ul>
+<li>companies also engage in fair AI to avoid regulation</li>
+<li><strong>Fair</strong> and <strong>good</strong> – <strong>but to whom?</strong> <span class="citation" data-cites="Kalluri2020">[@Kalluri2020 ]</span></li>
+<li>lacking democratic legitimacy</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Fair kann ziemlich vieles bedeuten, solange man es selbst definieren kann
+<ul>
+<li>demokratische Legitimität fehlt für all diese Systeme</li>
+</ul></li>
+<li>looking beyond data
+<ul>
+<li>invading privacy</li>
+<li>economic monopolies</li>
+<li>(unpaid) AI-trainers and click-workers</li>
+<li>environmental costs</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2"></h2>
+<blockquote class="blockquote">
+<p>Don’t ask if artificial intelligence is good or fair, <br>ask how it shifts power.</p>
+<p><span class="citation" data-cites="Kalluri2020">@Kalluri2020</span></p>
+</blockquote>
+</section>
+<section id="data-represents-real-life." class="level2" data-background="#4d7e65">
+<h2 data-background="#4d7e65" class="anchored" data-anchor-id="data-represents-real-life.">Data represents real life.</h2>
+<p>Don’t be a fool. Be wise, think twice.</p>
+</section>
+</section>
+<section id="questions" class="level1 white-text" data-background="../images/paint-anna-kolosyuk-unsplash.jpg">
+<h1 class="white-text" data-background="../images/paint-anna-kolosyuk-unsplash.jpg">Questions?</h1>
+<section id="references" class="level2 scrollable">
+<h2 class="scrollable anchored" data-anchor-id="references">References</h2>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Alex Flückiger</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aflueckiger/KED2023">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

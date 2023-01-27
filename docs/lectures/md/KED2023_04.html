@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alex Flückiger">
+<meta name="dcterms.date" content="2023-03-24">
+
+<title>KED2023 - The ABC of Computational Text Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//_images/favicon/android-chrome-512x512.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<meta property="og:title" content="KED2023 - The ABC of Computational Text Analysis">
+<meta property="og:description" content="#4 Introduction to the Command-line">
+<meta property="og:site-name" content="KED2023">
+<meta name="twitter:title" content="KED2023 - The ABC of Computational Text Analysis">
+<meta name="twitter:description" content="In this hands-on seminar, bachelor students of social and cultural sciences learn the basics of programming among other essential technical skills.">
+<meta name="twitter:image" content="https://aflueckiger.github.io/KED2023/_images/background.png">
+<meta name="twitter:image-height" content="478">
+<meta name="twitter:image-width" content="1179">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">KED2023</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../lectures.html">
+ <span class="menu-text">Lectures</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assignments.html">
+ <span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../materials.html">
+ <span class="menu-text">Materials</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#recap-last-lecture" id="toc-recap-last-lecture" class="nav-link active" data-scroll-target="#recap-last-lecture">Recap last Lecture</a></li>
+  <li><a href="#outline" id="toc-outline" class="nav-link" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#how-to-get-started" id="toc-how-to-get-started" class="nav-link" data-scroll-target="#how-to-get-started">How to get started</a>
+  <ul class="collapse">
+  <li><a href="#open-a-shell" id="toc-open-a-shell" class="nav-link" data-scroll-target="#open-a-shell">Open a Shell</a></li>
+  </ul></li>
+  <li><a href="#bourne-again-shell" id="toc-bourne-again-shell" class="nav-link" data-scroll-target="#bourne-again-shell">Bourne-again Shell</a></li>
+  <li><a href="#unix-philosophy" id="toc-unix-philosophy" class="nav-link" data-scroll-target="#unix-philosophy">Unix Philosophy</a></li>
+  <li><a href="#basic-commands-in-shell" id="toc-basic-commands-in-shell" class="nav-link" data-scroll-target="#basic-commands-in-shell">Basic commands in Shell</a>
+  <ul class="collapse">
+  <li><a href="#example-components-of-a-command" id="toc-example-components-of-a-command" class="nav-link" data-scroll-target="#example-components-of-a-command">example components of a command</a></li>
+  <li><a href="#run-command-help" id="toc-run-command-help" class="nav-link" data-scroll-target="#run-command-help">run command + help</a></li>
+  </ul></li>
+  <li><a href="#where-your-files-are-stored" id="toc-where-your-files-are-stored" class="nav-link" data-scroll-target="#where-your-files-are-stored">Where your files are stored</a>
+  <ul class="collapse">
+  <li><a href="#and-how-to-find-them" id="toc-and-how-to-find-them" class="nav-link" data-scroll-target="#and-how-to-find-them">… and how to find them</a></li>
+  <li><a href="#important-places-in-your-filesystem" id="toc-important-places-in-your-filesystem" class="nav-link" data-scroll-target="#important-places-in-your-filesystem">Important Places in your Filesystem</a></li>
+  <li><a href="#navigating-in-a-file-system" id="toc-navigating-in-a-file-system" class="nav-link" data-scroll-target="#navigating-in-a-file-system">Navigating in a File System</a>
+  <ul class="collapse">
+  <li><a href="#when-you-are-lost-open-in-file-manager-gui" id="toc-when-you-are-lost-open-in-file-manager-gui" class="nav-link" data-scroll-target="#when-you-are-lost-open-in-file-manager-gui">when you are lost, open in file manager (GUI)</a></li>
+  </ul></li>
+  <li><a href="#open-files" id="toc-open-files" class="nav-link" data-scroll-target="#open-files">Open Files</a>
+  <ul class="collapse">
+  <li><a href="#show-within-shell" id="toc-show-within-shell" class="nav-link" data-scroll-target="#show-within-shell">show within Shell</a></li>
+  <li><a href="#show-with-default-application-gui" id="toc-show-with-default-application-gui" class="nav-link" data-scroll-target="#show-with-default-application-gui">show with default application (GUI)</a></li>
+  </ul></li>
+  <li><a href="#useful-key-actions" id="toc-useful-key-actions" class="nav-link" data-scroll-target="#useful-key-actions">Useful Key Actions</a></li>
+  <li><a href="#creating-moving-and-copying" id="toc-creating-moving-and-copying" class="nav-link" data-scroll-target="#creating-moving-and-copying">Creating, Moving and Copying</a>
+  <ul class="collapse">
+  <li><a href="#create-files-and-directories" id="toc-create-files-and-directories" class="nav-link" data-scroll-target="#create-files-and-directories">create files and directories</a></li>
+  <li><a href="#copy-and-move-files" id="toc-copy-and-move-files" class="nav-link" data-scroll-target="#copy-and-move-files">copy and move files</a></li>
+  </ul></li>
+  <li><a href="#removing-files" id="toc-removing-files" class="nav-link" data-scroll-target="#removing-files">Removing Files</a></li>
+  <li><a href="#in-class-exercises-i" id="toc-in-class-exercises-i" class="nav-link" data-scroll-target="#in-class-exercises-i">In-class: Exercises I</a></li>
+  </ul></li>
+  <li><a href="#how-is-that-useful-thinking-we-are-getting-there" id="toc-how-is-that-useful-thinking-we-are-getting-there" class="nav-link" data-scroll-target="#how-is-that-useful-thinking-we-are-getting-there">How is that useful? :thinking:<br>We are getting there!</a>
+  <ul class="collapse">
+  <li><a href="#wildcards" id="toc-wildcards" class="nav-link" data-scroll-target="#wildcards">Wildcards</a>
+  <ul class="collapse">
+  <li><a href="#placeholders-to-match" id="toc-placeholders-to-match" class="nav-link" data-scroll-target="#placeholders-to-match">placeholders to match …</a></li>
+  </ul></li>
+  <li><a href="#searching" id="toc-searching" class="nav-link" data-scroll-target="#searching">Searching</a>
+  <ul class="collapse">
+  <li><a href="#collect-certain-files-only" id="toc-collect-certain-files-only" class="nav-link" data-scroll-target="#collect-certain-files-only">collect certain files only</a></li>
+  <li><a href="#find-specific-files" id="toc-find-specific-files" class="nav-link" data-scroll-target="#find-specific-files">find specific files</a></li>
+  </ul></li>
+  <li><a href="#expansion" id="toc-expansion" class="nav-link" data-scroll-target="#expansion">Expansion</a>
+  <ul class="collapse">
+  <li><a href="#batch-processing-with-expansion" id="toc-batch-processing-with-expansion" class="nav-link" data-scroll-target="#batch-processing-with-expansion">batch processing with expansion</a></li>
+  </ul></li>
+  <li><a href="#operators" id="toc-operators" class="nav-link" data-scroll-target="#operators"><span style="color:#111">Operators</span></a></li>
+  <li><a href="#combining-commands" id="toc-combining-commands" class="nav-link" data-scroll-target="#combining-commands">Combining Commands</a>
+  <ul class="collapse">
+  <li><a href="#use-shell-operators-to" id="toc-use-shell-operators-to" class="nav-link" data-scroll-target="#use-shell-operators-to">use shell operators to …</a></li>
+  </ul></li>
+  <li><a href="#merging-files" id="toc-merging-files" class="nav-link" data-scroll-target="#merging-files">Merging Files</a></li>
+  <li><a href="#conventions-pray" id="toc-conventions-pray" class="nav-link" data-scroll-target="#conventions-pray">Conventions :pray:</a></li>
+  <li><a href="#writing-a-runnable-script" id="toc-writing-a-runnable-script" class="nav-link" data-scroll-target="#writing-a-runnable-script">Writing a runnable Script</a>
+  <ul class="collapse">
+  <li><a href="#example-script-find_all_pdf.sh" id="toc-example-script-find_all_pdf.sh" class="nav-link" data-scroll-target="#example-script-find_all_pdf.sh">Example script: <code>find_all_pdf.sh</code></a></li>
+  </ul></li>
+  <li><a href="#the-beauty-of-scripting-is-automation.-zap" id="toc-the-beauty-of-scripting-is-automation.-zap" class="nav-link" data-scroll-target="#the-beauty-of-scripting-is-automation.-zap">The beauty of scripting is automation. :zap:</a></li>
+  <li><a href="#assignment-1-writing_hand" id="toc-assignment-1-writing_hand" class="nav-link" data-scroll-target="#assignment-1-writing_hand">Assignment #1 :writing_hand:</a></li>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions?</a>
+  <ul class="collapse">
+  <li><a href="#in-class-exercises-ii" id="toc-in-class-exercises-ii" class="nav-link" data-scroll-target="#in-class-exercises-ii">In-class: Exercises II</a></li>
+  <li><a href="#in-class-exercises-iii" id="toc-in-class-exercises-iii" class="nav-link" data-scroll-target="#in-class-exercises-iii">In-class: Exercises III</a></li>
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a>
+  <ul class="collapse">
+  <li><a href="#useful-primers-on-bash" id="toc-useful-primers-on-bash" class="nav-link" data-scroll-target="#useful-primers-on-bash">useful primers on Bash</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The ABC of Computational Text Analysis</h1>
+<p class="subtitle lead">#4 Introduction to the Command-line</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Alex Flückiger 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Faculty of Humanities and Social Sciences<br>University of Lucerne
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 24, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="recap-last-lecture" class="level2">
+<h2 class="anchored" data-anchor-id="recap-last-lecture">Recap last Lecture</h2>
+<ul>
+<li>Successful installation? :white_check_mark:<br>
+</li>
+<li>Scripting :dart:
+<ul>
+<li>automate, document, reproduce</li>
+</ul></li>
+<li>Any questions?</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Installation
+<ul>
+<li>Installation erfolgreich?</li>
+<li>unklare Dinge im Guide?</li>
+<li>Voraussetzung für weitere Sessions</li>
+</ul></li>
+<li>Projektorganisation zentral</li>
+<li>Scripting bedeutet Organisation
+<ul>
+<li>iterative Entwicklung</li>
+<li>Reproduktion</li>
+<li>Chaos ist nachvollziehbar!</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="outline" class="level2">
+<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<ul>
+<li>learn principles of the shell :classical_building:</li>
+<li>perform shell commands :arrow_forward:</li>
+<li>get practice by solving exercises :building_construction:</li>
+</ul>
+<div class="notes">
+<ul>
+<li>heute Einführung in Shell, nächstes Mal tatsächlich nützliche Dinge</li>
+<li>Commands statt Klicks</li>
+<li>Wieso Shell (und nicht Python?)
+<ul>
+<li>wichtig für alle Datei-Operationen, skalierbar für Tausende Dateien</li>
+<li>manche Programme lassen sich nur über Shell starten</li>
+<li>einfacher und effizienter als Python, Denken/Konzepte sehr ähnlich</li>
+</ul></li>
+<li>Shell ist Cockpit bis zu Osterferien</li>
+<li>Metaziel
+<ul>
+<li>sanfter Einstieg ins Programmieren</li>
+<li>Verstehen was wichtig ist in Computerinteraktion</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="how-to-get-started" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-get-started">How to get started</h2>
+<section id="open-a-shell" class="level3">
+<h3 class="anchored" data-anchor-id="open-a-shell">Open a Shell</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="macos" class="level4">
+<h4 class="anchored" data-anchor-id="macos">macOS</h4>
+<ul>
+<li>open <code>Terminal</code></li>
+<li>shell type: <code>zsh</code></li>
+</ul>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="windows" class="level4">
+<h4 class="anchored" data-anchor-id="windows">Windows</h4>
+<ul>
+<li>open <code>Ubuntu 20.04 LTS</code></li>
+<li>shell type: <code>Bash</code></li>
+<li><del>open Windows Command Prompt</del></li>
+</ul>
+</section>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>interaktiv: Studis sollen Bash auch öffnen
+<ul>
+<li>rasch durchgehen, damit mehr Übungszeit bleibt</li>
+</ul></li>
+<li>Shell Commands platformübergreifend</li>
+<li>Shell zeigen: Erscheinungsbild je System unterschiedlich</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="bourne-again-shell" class="level2">
+<h2 class="anchored" data-anchor-id="bourne-again-shell">Bourne-again Shell</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="bash" class="level3">
+<h3 class="anchored" data-anchor-id="bash">Bash</h3>
+<ul>
+<li>offers many built-in tools</li>
+<li>shell prompt
+<ul>
+<li><code>USER@HOSTNAME:~$</code></li>
+</ul></li>
+<li>home directory
+<ul>
+<li><code>~</code> refers to <code>/home/USER</code></li>
+</ul></li>
+<li>case-sensitive</li>
+<li>no feedback
+<ul>
+<li>unless there is an issue</li>
+</ul></li>
+</ul>
+</section>
+</div><div class="column" style="width:50%;">
+<p><img src="../images/command_line.png" style="height:14cm"></p>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li><p>Computersteuerung komplett über CLI möglich</p>
+<ul>
+<li>unnütze Verdoppelung zu GUI?</li>
+<li>ermöglicht Bearbeitung Tausender Dateien</li>
+<li>schnelle Inspektion von Daten</li>
+</ul></li>
+<li><p>Empfehlung: konsequente Nutzung CLI</p>
+<ul>
+<li><p>Vertrauen, Geschwindigkeit</p></li>
+<li><p>Anfang braucht Gewöhnung</p></li>
+<li><p>Vorteilen von beiden nutzen</p></li>
+</ul></li>
+<li><p>no need to memorize syntax</p>
+<ul>
+<li>slides, google, stackoverflow</li>
+<li>wiederkehrendes auto-erinnern</li>
+</ul></li>
+<li><p>Eigenschaften</p>
+<ul>
+<li>extremely fast</li>
+<li>kompakter Code -&gt; komplexe Prozessierung</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="unix-philosophy" class="level2" data-background="#4d7e65">
+<h2 data-background="#4d7e65" class="anchored" data-anchor-id="unix-philosophy">Unix Philosophy</h2>
+<p>Build small programs that <em>do one thing</em> <br>and <em>do it well</em>. :nerd_face:</p>
+</section>
+<section id="basic-commands-in-shell" class="level2">
+<h2 class="anchored" data-anchor-id="basic-commands-in-shell">Basic commands in Shell</h2>
+<section id="example-components-of-a-command" class="level3">
+<h3 class="anchored" data-anchor-id="example-components-of-a-command">example components of a command</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">command</span> <span class="at">-a</span> <span class="at">--long_argument</span> FILE     <span class="co"># non-working example command</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="run-command-help" class="level3">
+<h3 class="anchored" data-anchor-id="run-command-help">run command + help</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"hello world"</span>      <span class="co"># print some text</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">man</span> echo                <span class="co"># get help for any command (e.g., echo)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="notes">
+<ul>
+<li>CLI: Eingabe + Ausgabe gleiches Fenster</li>
+<li>Tradition von hello world</li>
+<li>quotes to preserve formatting</li>
+<li>Hilfeseiten sehr umfangreich
+<ul>
+<li>googlen oft schneller –&gt; stackoverflow</li>
+</ul></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="where-your-files-are-stored" class="level1 white-text" data-background="../images/drawer_unsplash.jpg">
+<h1 class="white-text" data-background="../images/drawer_unsplash.jpg">Where your files are stored</h1>
+<section id="and-how-to-find-them" class="level2">
+<h2 class="anchored" data-anchor-id="and-how-to-find-them">… and how to find them</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><p>hierarchical filesystem :evergreen_tree:</p>
+<ul>
+<li>folders/directories</li>
+<li>files with a suffix</li>
+</ul></li>
+<li><p>absolute path starting from top-level directory</p>
+<ul>
+<li>e.g.&nbsp;<code>/home/alex/KED2023/slides/KED2023_01.html</code></li>
+</ul></li>
+<li><p>relative path looking from current directory</p>
+<ul>
+<li>e.g.&nbsp;<code>KED2023/slides/KED2023_01.html</code></li>
+</ul></li>
+</ul>
+</div><div class="column">
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> README.md</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> lectures</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> images</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│&nbsp;&nbsp;</span> └── ai.jpg</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">├──</span> html</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│&nbsp;&nbsp;</span> ├── KED2023_01.html</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">│&nbsp;&nbsp;</span> └── KED2023_02.html</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> md</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>     <span class="ex">&nbsp;&nbsp;</span> ├── KED2023_01.md</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>     <span class="ex">&nbsp;&nbsp;</span> └── KED2023_02.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="incremental">
+<p>:thumbsup: Only relative paths work across systems</p>
+<div class="notes">
+<ul>
+<li>Sehr wichtig und hat in Vergangenheit Probleme bereitet (“Cloud/App-Abstraktion”)</li>
+<li>verschachtelte, hierarchische Struktur
+<ul>
+<li>wie Aktenschrank mit Ordner</li>
+</ul></li>
+<li>Navigation in diesem Baum/Aktenschrank (tiefer/höher)</li>
+<li>/ für Angabe von Pfad (Verzeichnis/Unterverzeichnis)</li>
+<li>absoluter Pfad beginnt mit Slash, relativer ohne Slash</li>
+<li>Ordner / Dateien –&gt; Endungen
+<ul>
+<li>keine technische Notwendigkeit</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="important-places-in-your-filesystem" class="level2">
+<h2 class="anchored" data-anchor-id="important-places-in-your-filesystem">Important Places in your Filesystem</h2>
+<ul>
+<li><p>shortcut names of directories</p>
+<ul>
+<li><code>.</code> current dir</li>
+<li><code>..</code> parent dir</li>
+<li><code>~</code> home dir (e.g.&nbsp;<code>/home/alex</code>)</li>
+</ul></li>
+<li><p>find your files on Windows</p>
+<ul>
+<li><code>/mnt/c/Users/YOUR_USERNAME/</code></li>
+<li>shortcut with <code>documents</code></li>
+</ul></li>
+</ul>
+<div class="notes">
+<ul>
+<li>Windows-Leute hinweisen auf Pfad innerhalb Ubuntu</li>
+</ul>
+</div>
+</section>
+<section id="navigating-in-a-file-system" class="level2">
+<h2 class="anchored" data-anchor-id="navigating-in-a-file-system">Navigating in a File System</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span>                 <span class="co"># show absolute path of current directory</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>                  <span class="co"># list content of current directory</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span>              <span class="co"># list with more information</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> dirname          <span class="co"># list content of directory dirname</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..               <span class="co"># change directory to go folder up</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> dir/subdir       <span class="co"># go to folder dir/subdir (two folders down)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="when-you-are-lost-open-in-file-manager-gui" class="level3">
+<h3 class="anchored" data-anchor-id="when-you-are-lost-open-in-file-manager-gui">when you are lost, open in file manager (GUI)</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">open</span> .          <span class="co"># open path in finder (macOS)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">explorer.exe</span> .  <span class="co"># open Windows Explorer in WSL Ubuntu (Windows)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="notes">
+<ul>
+<li>Befehle sind Abkürzungen
+<ul>
+<li>cd = change directory</li>
+<li>ls = list</li>
+</ul></li>
+<li>diskutieren von ls output
+<ul>
+<li>Berechtigung/Eigentümer/Grösse/Mod.-datum/Name</li>
+<li>d für directory</li>
+</ul></li>
+<li>beliebige Verzeichnisse springen
+<ul>
+<li>oberstes Verzeichnis: C: oder /</li>
+<li>cd zurück ins home</li>
+</ul></li>
+<li>Kommentare mit #</li>
+</ul>
+<!-- nautilus .     # open path in file manager (Ubuntu) -->
+</div>
+</section>
+</section>
+<section id="open-files" class="level2">
+<h2 class="anchored" data-anchor-id="open-files">Open Files</h2>
+<section id="show-within-shell" class="level3">
+<h3 class="anchored" data-anchor-id="show-within-shell">show within Shell</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> text.txt           <span class="co"># print content (space to scroll)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> text.txt           <span class="co"># print first 10 lines of file      </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-5</span> text.txt        <span class="co"># print last 5 lines of file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="show-with-default-application-gui" class="level3">
+<h3 class="anchored" data-anchor-id="show-with-default-application-gui">show with default application (GUI)</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">open</span> text.txt           <span class="co"># macOS</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">wslview</span> text.txt        <span class="co"># WSL Ubuntu (Windows)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<!-- xdg-open text.txt      # Ubuntu -->
+</section>
+</section>
+<section id="useful-key-actions" class="level2">
+<h2 class="anchored" data-anchor-id="useful-key-actions">Useful Key Actions</h2>
+<ul>
+<li>autocompletion: <code>TAB</code></li>
+<li>get last command: :arrow_up:</li>
+<li>scrolling: <code>SPACE</code></li>
+<li>cancel <code>CTRL + C</code></li>
+<li>quit: <code>q</code> or <code>CTRL + D</code></li>
+</ul>
+<div class="notes">
+<ul>
+<li>lange Dateinamen, Programme nur halb erinnert</li>
+<li>q bspw. in Hilfe-Seite man</li>
+</ul>
+</div>
+</section>
+<section id="creating-moving-and-copying" class="level2">
+<h2 class="anchored" data-anchor-id="creating-moving-and-copying">Creating, Moving and Copying</h2>
+<section id="create-files-and-directories" class="level3">
+<h3 class="anchored" data-anchor-id="create-files-and-directories">create files and directories</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> test.txt      <span class="co"># create a new file</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data          <span class="co"># make a new directory</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> data/1999  <span class="co"># make a new directory with a subfolder</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="copy-and-move-files" class="level3">
+<h3 class="anchored" data-anchor-id="copy-and-move-files">copy and move files</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> test.txt other/.             <span class="co"># copy file into other folder, keep its name            </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> test.txt other/new_name.txt  <span class="co"># move or rename a file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="notes">
+<ul>
+<li>touch abängig, ob Datei existiert</li>
+<li>mkdir -p für Subdirs</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="removing-files" class="level2" data-background="#b5533c">
+<h2 data-background="#b5533c" class="anchored" data-anchor-id="removing-files">Removing Files</h2>
+<p>Watch out, there is no recycle bin. No way back!</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> old.txt          <span class="co"># remove a file</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> old_data      <span class="co"># remove a folder with all its files</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="in-class-exercises-i" class="level2" data-background="#3c70b5">
+<h2 data-background="#3c70b5" class="anchored" data-anchor-id="in-class-exercises-i">In-class: Exercises I</h2>
+<ol type="1">
+<li>Create a new directory called <code>tmp</code>.</li>
+<li>Change into that directory using <code>cd</code> and print its absolute path using <code>pwd</code>.</li>
+<li>Use <code>touch</code> to create a new file called <code>magic.txt</code> in <code>tmp</code>.</li>
+<li>Rename the file from <code>magic.txt</code> to <code>easy_as_pie.txt</code>.</li>
+<li>Check out the helper page of <code>mv</code> command.</li>
+<li>Look around in the filesystem using <code>cd</code> and <code>ls</code>.</li>
+</ol>
+<div class="notes">
+<p><strong>Pause</strong></p>
+</div>
+</section>
+</section>
+<section id="how-is-that-useful-thinking-we-are-getting-there" class="level1">
+<h1>How is that useful? :thinking:<br>We are getting there!</h1>
+<section id="wildcards" class="level2">
+<h2 class="anchored" data-anchor-id="wildcards">Wildcards</h2>
+<section id="placeholders-to-match" class="level3">
+<h3 class="anchored" data-anchor-id="placeholders-to-match">placeholders to match …</h3>
+<ul>
+<li>any single character: <code>?</code></li>
+<li>any sequence of characters: <code>*</code></li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mv</span> data/<span class="pp">*</span>.txt new_data/.    <span class="co"># move txt-files from to another subfolder</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="pp">*</span>.txt files/.            <span class="co"># copy all txt-files in a single folder</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="notes">
+<ul>
+<li>bei Unkenntnis oder Zusammenfassung von Dateinamen</li>
+<li>batch operation</li>
+<li>Ordner muss existieren
+<ul>
+<li>zeige Fehlermeldung</li>
+</ul></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="searching" class="level2">
+<h2 class="anchored" data-anchor-id="searching">Searching</h2>
+<section id="collect-certain-files-only" class="level3">
+<h3 class="anchored" data-anchor-id="collect-certain-files-only">collect certain files only</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="pp">*</span>.txt        <span class="co"># list all files with the suffix .txt (in current directory)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="find-specific-files" class="level3">
+<h3 class="anchored" data-anchor-id="find-specific-files">find specific files</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># search on filename</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> /path/to/dir <span class="at">-name</span> <span class="st">"*speech*"</span>  <span class="co"># find files in specific directory</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">locate</span> <span class="at">-i</span> pattern_1 pattern_2       <span class="co"># global search of files/folders</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># search on content</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-r</span> <span class="st">"Europe"</span> /path/to/dir       <span class="co"># find all files containing X in a directory </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="notes">
+<ul>
+<li>grep ist mächtig, häufig brauchen</li>
+<li>grep nur für rohe Textformate (txt, html, csv etc.)</li>
+<li>arg -i case-insensitiveness</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="expansion" class="level2">
+<h2 class="anchored" data-anchor-id="expansion">Expansion</h2>
+<section id="batch-processing-with-expansion" class="level3">
+<h3 class="anchored" data-anchor-id="batch-processing-with-expansion">batch processing with expansion</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> text_<span class="dt">{</span>a<span class="dt">..</span>c<span class="dt">}</span>.txt   </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># is equivalent to</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> text_a.txt text_b.txt text_c.txt</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="dt">{</span><span class="dv">2000</span><span class="dt">..</span><span class="dv">2005</span><span class="dt">}{</span>a<span class="dt">..</span>c<span class="dt">}</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># is equivalent to</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> 2000a 2000b 2000c 2001a 2001b 2001c ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="notes">
+<ul>
+<li>hilfreich um Dateien zu ordnen</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="operators" class="level2" data-background="../images/lego_stack.jpg">
+<h2 data-background="../images/lego_stack.jpg" class="anchored" data-anchor-id="operators"><span style="color:#111">Operators</span></h2>
+<!-- https://www.pinterest.ch/pin/518265869592086618/ -->
+<div class="notes">
+<ul>
+<li>Operators machten Probleme</li>
+<li>modulares Zusammenbauen von Commands</li>
+<li>“Leim” zum Übergeben von Resultaten</li>
+<li>Files als Zwischenprodukte umgehen</li>
+<li>Unix Philosophy</li>
+</ul>
+</div>
+</section>
+<section id="combining-commands" class="level2">
+<h2 class="anchored" data-anchor-id="combining-commands">Combining Commands</h2>
+<section id="use-shell-operators-to" class="level3">
+<h3 class="anchored" data-anchor-id="use-shell-operators-to">use shell operators to …</h3>
+<ul>
+<li>redirect output into file (overwrite): <code>&gt;</code></li>
+<li>append to existing file: <code>&gt;&gt;</code></li>
+<li>stream to next command: <code>|</code> (pipe)</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">'line 1'</span> <span class="op">&gt;</span> test.txt    <span class="co"># write into file</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">more</span> test.txt <span class="kw">|</span> <span class="fu">tail</span> <span class="at">-1</span>     <span class="co"># pass output to next command    </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<p><a href="https://unix.stackexchange.com/questions/159513/what-are-the-shells-control-and-redirection-operators">Learn more about operators</a></p>
+<div class="notes">
+<ul>
+<li>check output first, then overwrite file as a second step</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="merging-files" class="level2">
+<h2 class="anchored" data-anchor-id="merging-files">Merging Files</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> part_1.txt part_2.txt       <span class="co"># concatenate multiple files</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> <span class="pp">*</span>.txt <span class="op">&gt;</span> all_text.txt        <span class="co"># merge all txt into a single one</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conventions-pray" class="level2">
+<h2 class="anchored" data-anchor-id="conventions-pray">Conventions :pray:</h2>
+<ul>
+<li>no spaces/umlauts in names
+<ul>
+<li>alphanumeric, underscore, hyphen, dot</li>
+</ul></li>
+<li>files have a suffix, folders don’t
+<ul>
+<li><code>text_1.txt</code> vs.&nbsp;<code>texts</code></li>
+</ul></li>
+<li>descriptive file names
+<ul>
+<li><code>SOURCE/YEAR/speech_party_X.txt</code></li>
+</ul></li>
+<li>don’t modify the raw data</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Konventionen helfen Fehler vermindern, Verständnis verbessern</li>
+</ul>
+</div>
+</section>
+<section id="writing-a-runnable-script" class="level2">
+<h2 class="anchored" data-anchor-id="writing-a-runnable-script">Writing a runnable Script</h2>
+<section id="example-script-find_all_pdf.sh" class="level3">
+<h3 class="anchored" data-anchor-id="example-script-find_all_pdf.sh">Example script: <code>find_all_pdf.sh</code></h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"This is a list of all PDFs on my computer:"</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">locate</span> <span class="at">-i</span> /home/<span class="pp">*</span>.pdf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>file with suffix <code>.sh</code>
+<ul>
+<li>one command per row</li>
+<li><code>#</code> precedes comments</li>
+</ul></li>
+<li>start script with Shebang <code>#!/bin/sh</code></li>
+<li>execute with <code>bash SCRIPTNAME.sh</code></li>
+</ul>
+<div class="notes">
+<ul>
+<li>Automation = Ablauf von Instruktionen</li>
+<li>Vorteil: nicht nötig Befehlsabfolge zu merken</li>
+<li>Übung ebenfalls als Skript abgeben</li>
+<li>no prompt, just commands</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="the-beauty-of-scripting-is-automation.-zap" class="level2" data-background="#4d7e65">
+<h2 data-background="#4d7e65" class="anchored" data-anchor-id="the-beauty-of-scripting-is-automation.-zap">The beauty of scripting is automation. :zap:</h2>
+</section>
+<section id="assignment-1-writing_hand" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-1-writing_hand">Assignment #1 :writing_hand:</h2>
+<ul>
+<li>get/submit via OLAT
+<ul>
+<li>starting tonight</li>
+<li>deadline: 31 March 2023, 23:59</li>
+</ul></li>
+<li>discuss issues on OLAT forum</li>
+<li>ask friends for support, not solutions</li>
+</ul>
+<div class="notes">
+<ul>
+<li>kleine Übung</li>
+<li>Vertrauen entwickeln</li>
+<li>nicht bis zum Schluss warten</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="questions" class="level1 white-text" data-background="../images/paint-anna-kolosyuk-unsplash.jpg">
+<h1 class="white-text" data-background="../images/paint-anna-kolosyuk-unsplash.jpg">Questions?</h1>
+<section id="in-class-exercises-ii" class="level2" data-background="#3c70b5">
+<h2 data-background="#3c70b5" class="anchored" data-anchor-id="in-class-exercises-ii">In-class: Exercises II</h2>
+<ol type="1">
+<li><p>Create a new file with <code>touch</code>.</p></li>
+<li><p>Write the following content into that file, one line at a time using the append operator:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">How</span> about making programming a little more accessible<span class="pp">?</span> Like:</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">from</span> human_knowledge import solution</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Make sure that the content was written into that file using <code>more</code>.</p></li>
+</ol>
+</section>
+<section id="in-class-exercises-iii" class="level2" data-background="#3c70b5">
+<h2 data-background="#3c70b5" class="anchored" data-anchor-id="in-class-exercises-iii">In-class: Exercises III</h2>
+<ol type="1">
+<li><p>Navigate up and down in in your filesystem using <code>cd</code> and list the respective files per directory with <code>ls</code>. Where can you find your personal documents? Print the absolute path with <code>pwd</code>.<br>
+A hint to Windows users as they are working in a Ubuntu subsystem, have a look at: <code>/mnt/c/Users</code></p></li>
+<li><p>Read <code>man ls</code> and write an <code>ls</code> command that lists your documents ordered</p>
+<ul>
+<li>by recency (time)</li>
+<li>by size</li>
+</ul></li>
+<li><p>Use the <code>|</code> and <code>&gt;</code> operators to write the 3 “last modified” files in your documents folder into a file called <code>last-modified.txt</code> on your desktop (desktop is also a directory). It is a single command performing multiple operations, one after another.</p></li>
+</ol>
+</section>
+<section id="additional-resources" class="level2">
+<h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
+<section id="useful-primers-on-bash" class="level3">
+<h3 class="anchored" data-anchor-id="useful-primers-on-bash">useful primers on Bash</h3>
+<ul>
+<li><a href="https://aflueckiger.github.io/KED2023/materials/cheatsheet_command_line.pdf">Cheatsheet</a> for this course</li>
+<li><a href="https://programminghistorian.org/en/lessons/intro-to-bash">The Programming Historian</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/an-introduction-to-the-linux-terminal">DigitalOcean</a></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Alex Flückiger</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aflueckiger/KED2023">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

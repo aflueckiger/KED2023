@@ -1,0 +1,22 @@
+center: true
+date-format: long
+lang: en-US
+title-slide-attributes:
+  data-background-image: https://upload.wikimedia.org/wikipedia/en/6/68/UNILU_logo_EN.png
+  data-background-size: 8%
+  data-background-position: 2% 2%
+format:
+  revealjs:
+    overview: true
+    menu: false
+    slide-number: c/t
+    show-slide-number: all
+    controls: true
+    controls-layout: bottom-right
+    code-link: true
+    link-external-newwindow: true
+    strip-comments: true
+    mouse-wheel: true
+    transition: fade
+    theme: [default, ../resources/custom_style_reveal.scss]
+    highlight-style: github-dark

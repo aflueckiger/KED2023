@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alex Flückiger">
+<meta name="dcterms.date" content="2023-03-10">
+
+<title>KED2023 - The ABC of Computational Text Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../..//_images/favicon/android-chrome-512x512.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<meta property="og:title" content="KED2023 - The ABC of Computational Text Analysis">
+<meta property="og:description" content="#2 Text as Data">
+<meta property="og:site-name" content="KED2023">
+<meta name="twitter:title" content="KED2023 - The ABC of Computational Text Analysis">
+<meta name="twitter:description" content="In this hands-on seminar, bachelor students of social and cultural sciences learn the basics of programming among other essential technical skills.">
+<meta name="twitter:image" content="https://aflueckiger.github.io/KED2023/_images/background.png">
+<meta name="twitter:image-height" content="478">
+<meta name="twitter:image-width" content="1179">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">KED2023</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../schedule.html">
+ <span class="menu-text">Schedule</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../lectures.html">
+ <span class="menu-text">Lectures</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../assignments.html">
+ <span class="menu-text">Assignments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../materials.html">
+ <span class="menu-text">Materials</span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#outline" id="toc-outline" class="nav-link active" data-scroll-target="#outline">Outline</a></li>
+  <li><a href="#recap-last-lecture" id="toc-recap-last-lecture" class="nav-link" data-scroll-target="#recap-last-lecture">Recap last Lecture</a></li>
+  <li><a href="#reading" id="toc-reading" class="nav-link" data-scroll-target="#reading">Reading</a></li>
+  <li><a href="#semiotic-triangle" id="toc-semiotic-triangle" class="nav-link" data-scroll-target="#semiotic-triangle">Semiotic Triangle</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#working-with-texts" id="toc-working-with-texts" class="nav-link" data-scroll-target="#working-with-texts">Working with Texts</a>
+  <ul class="collapse">
+  <li><a href="#a-micro-and-macro-perspective-i" id="toc-a-micro-and-macro-perspective-i" class="nav-link" data-scroll-target="#a-micro-and-macro-perspective-i">A micro and macro perspective I</a>
+  <ul class="collapse">
+  <li><a href="#individual-cases-vs.-collective-trends" id="toc-individual-cases-vs.-collective-trends" class="nav-link" data-scroll-target="#individual-cases-vs.-collective-trends">individual cases vs.&nbsp;collective trends</a></li>
+  </ul></li>
+  <li><a href="#a-micro-and-macro-perspective-ii" id="toc-a-micro-and-macro-perspective-ii" class="nav-link" data-scroll-target="#a-micro-and-macro-perspective-ii">A micro and macro perspective II</a>
+  <ul class="collapse">
+  <li><a href="#scalability-vs.-abstraction" id="toc-scalability-vs.-abstraction" class="nav-link" data-scroll-target="#scalability-vs.-abstraction">scalability vs.&nbsp;abstraction</a></li>
+  </ul></li>
+  <li><a href="#from-micro-to-macro-bar_chart-and-back-again-bookmark_tabs" id="toc-from-micro-to-macro-bar_chart-and-back-again-bookmark_tabs" class="nav-link" data-scroll-target="#from-micro-to-macro-bar_chart-and-back-again-bookmark_tabs">From micro to macro :bar_chart:<br>…and back again :bookmark_tabs:</a></li>
+  <li><a href="#two-research-paradigms" id="toc-two-research-paradigms" class="nav-link" data-scroll-target="#two-research-paradigms">Two Research Paradigms</a></li>
+  <li><a href="#numbers-do-not-talk-no_mouth" id="toc-numbers-do-not-talk-no_mouth" class="nav-link" data-scroll-target="#numbers-do-not-talk-no_mouth">Numbers do not talk :no_mouth:</a></li>
+  <li><a href="#text-as-data" id="toc-text-as-data" class="nav-link" data-scroll-target="#text-as-data">Text as Data</a></li>
+  <li><a href="#unstructured-text-thinking" id="toc-unstructured-text-thinking" class="nav-link" data-scroll-target="#unstructured-text-thinking">Unstructured Text? :thinking:</a>
+  <ul class="collapse">
+  <li><a href="#collection-documents-paragraphs-sentences-words" id="toc-collection-documents-paragraphs-sentences-words" class="nav-link" data-scroll-target="#collection-documents-paragraphs-sentences-words">collection &gt; documents &gt; paragraphs &gt; sentences &gt; words</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#data-formats" id="toc-data-formats" class="nav-link" data-scroll-target="#data-formats">Data Formats</a>
+  <ul class="collapse">
+  <li><a href="#in-class-task-file-types" id="toc-in-class-task-file-types" class="nav-link" data-scroll-target="#in-class-task-file-types">In-class Task: File Types</a></li>
+  <li><a href="#file-formats" id="toc-file-formats" class="nav-link" data-scroll-target="#file-formats">File Formats</a></li>
+  </ul></li>
+  <li><a href="#lets-dive-into-it-sweat_drops" id="toc-lets-dive-into-it-sweat_drops" class="nav-link" data-scroll-target="#lets-dive-into-it-sweat_drops">Let’s Dive into it! :sweat_drops:</a>
+  <ul class="collapse">
+  <li><a href="#counting-ngrams" id="toc-counting-ngrams" class="nav-link" data-scroll-target="#counting-ngrams">Counting ngrams</a>
+  <ul class="collapse">
+  <li><a href="#google-ngram-viewer-michel2011" id="toc-google-ngram-viewer-michel2011" class="nav-link" data-scroll-target="#google-ngram-viewer-michel2011">Google Ngram Viewer <span class="citation" data-cites="Michel2011">[@Michel2011]</span></a></li>
+  </ul></li>
+  <li><a href="#in-class-task-investigate-the-environmental-discourse" id="toc-in-class-task-investigate-the-environmental-discourse" class="nav-link" data-scroll-target="#in-class-task-investigate-the-environmental-discourse">In-Class Task: Investigate the Environmental Discourse</a>
+  <ul class="collapse">
+  <li><a href="#dart-what-do-you-conclude-from-your-observations" id="toc-dart-what-do-you-conclude-from-your-observations" class="nav-link" data-scroll-target="#dart-what-do-you-conclude-from-your-observations">:dart: What do you conclude from your observations?</a></li>
+  </ul></li>
+  <li><a href="#refine-your-queries" id="toc-refine-your-queries" class="nav-link" data-scroll-target="#refine-your-queries">Refine your Queries</a>
+  <ul class="collapse">
+  <li><a href="#check-out-case-sensitiveness-wildcards-and-operators-nerd_face" id="toc-check-out-case-sensitiveness-wildcards-and-operators-nerd_face" class="nav-link" data-scroll-target="#check-out-case-sensitiveness-wildcards-and-operators-nerd_face">check out case-sensitiveness, wildcards (*) ​an​d ​operators :nerd_face:</a></li>
+  </ul></li>
+  <li><a href="#ngram-pay-attention" id="toc-ngram-pay-attention" class="nav-link" data-scroll-target="#ngram-pay-attention">Ngram ‘pay attention’</a></li>
+  <li><a href="#remember-thumbsup" id="toc-remember-thumbsup" class="nav-link" data-scroll-target="#remember-thumbsup">Remember :thumbsup:</a></li>
+  <li><a href="#no-culturomics-but-meaning-making" id="toc-no-culturomics-but-meaning-making" class="nav-link" data-scroll-target="#no-culturomics-but-meaning-making">No Culturomics but Meaning-Making</a>
+  <ul class="collapse">
+  <li><a href="#phenomena-in-collective-memory" id="toc-phenomena-in-collective-memory" class="nav-link" data-scroll-target="#phenomena-in-collective-memory">phenomena in collective memory</a></li>
+  </ul></li>
+  <li><a href="#questions-of-interpretation" id="toc-questions-of-interpretation" class="nav-link" data-scroll-target="#questions-of-interpretation">Questions of Interpretation</a>
+  <ul class="collapse">
+  <li><a href="#possible-reasons-of-decreasing-frequency" id="toc-possible-reasons-of-decreasing-frequency" class="nav-link" data-scroll-target="#possible-reasons-of-decreasing-frequency">possible reasons of decreasing frequency</a></li>
+  </ul></li>
+  <li><a href="#a-word-of-caution" id="toc-a-word-of-caution" class="nav-link" data-scroll-target="#a-word-of-caution">A Word of Caution</a></li>
+  <li><a href="#interacting-with-data" id="toc-interacting-with-data" class="nav-link" data-scroll-target="#interacting-with-data">Interacting with Data</a>
+  <ul class="collapse">
+  <li><a href="#it-is-a-lense-not-a-map." id="toc-it-is-a-lense-not-a-map." class="nav-link" data-scroll-target="#it-is-a-lense-not-a-map.">It is a lense, not a map.</a></li>
+  </ul></li>
+  <li><a href="#prepare-your-system" id="toc-prepare-your-system" class="nav-link" data-scroll-target="#prepare-your-system">Prepare your System</a></li>
+  <li><a href="#new-room-classical_building" id="toc-new-room-classical_building" class="nav-link" data-scroll-target="#new-room-classical_building">New room :classical_building:</a></li>
+  </ul></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions?</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The ABC of Computational Text Analysis</h1>
+<p class="subtitle lead">#2 Text as Data</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    Alex Flückiger 
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Faculty of Humanities and Social Sciences<br>University of Lucerne
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 10, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="outline" class="level2">
+<h2 class="anchored" data-anchor-id="outline">Outline</h2>
+<ul>
+<li>recap + reading</li>
+<li>methodological foundation :grimacing:</li>
+<li>first computational text analysis</li>
+</ul>
+<div class="notes">
+<ul>
+<li>kurzfristige Umstellung auf Zoom</li>
+<li>Diskussion Survey Seminarerwartungen
+<ul>
+<li>3/4 mit R-Erfahrung, wenige mit Python und Kommandozeile</li>
+<li>SoCom Leute mit Inhaltsanalyse, keine Daten in Aussicht</li>
+<li>Einführungskurs, aber komplementäres Wissen und Pointers für Fortgeschrittene</li>
+<li>Skills für Seminar/BA-Arbeiten</li>
+<li>allgemeine Programmier- und Computerkenntnisse</li>
+</ul></li>
+<li>Fragen zu Inhalt/Website?</li>
+<li>Diskussion letzte Sitzung + Paper</li>
+<li>Hauptteil: Bedeutung/Grundlage von Textanalyse
+<ul>
+<li>Auf welcher methodischen Grundlage steht das Feld?</li>
+<li>Qualitativer Anteil gegenüber letzten Sitzung herausheben</li>
+</ul></li>
+<li>zweite Lektion: erste Textanalyse
+<ul>
+<li>einfach, aber mächtig</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="recap-last-lecture" class="level2">
+<h2 class="anchored" data-anchor-id="recap-last-lecture">Recap last Lecture</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="computer-as" class="level3">
+<h3 class="anchored" data-anchor-id="computer-as">computer as …</h3>
+<ul>
+<li>… an intelligent device</li>
+<li>… a tool for a <em>new</em> social science</li>
+</ul>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="datafication" class="level3">
+<h3 class="anchored" data-anchor-id="datafication">datafication</h3>
+<ul>
+<li>abundance of data</li>
+<li>exploit new form of data</li>
+</ul>
+</section>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>Technologie verändert Welt. Seit immer, erneut grosser Schritt nach Industrialisierung.</li>
+<li>Computer als Werkzeug/interaktiver Partner
+<ol type="1">
+<li>nehmen an sozialen Prozessen teil -&gt; wie verändert sich das Soziale/Ökonomische (Wissenschaft, Arbeit, Jobmarkt, Benachteiligung)?</li>
+<li>für CSS: Daten wichtiger als ML</li>
+</ol></li>
+<li>Daten sind da -&gt; erst Programmieren ermöglicht Auswertung</li>
+</ul>
+</div>
+</section>
+<section id="reading" class="level2" data-background="#3c70b5">
+<h2 data-background="#3c70b5" class="anchored" data-anchor-id="reading">Reading</h2>
+<section id="computational-social-science-lazer2009" class="level4">
+<h4 class="anchored" data-anchor-id="computational-social-science-lazer2009">Computational Social Science <span class="citation" data-cites="Lazer2009">[@Lazer2009]</span></h4>
+<div class="incremental">
+<ul>
+<li>data-driven</li>
+<li>network analysis + text analysis</li>
+<li>historical perspective vs.&nbsp;real-time dynamics</li>
+<li>issues: limited access to data and new methods</li>
+</ul>
+<div class="notes">
+<ul>
+<li>hochaktuell: Einsichten in Pandemiegeschehen durch Netzwerkanalyse</li>
+<li>methodical focus because of Nature paper</li>
+<li>more than self-reported data (survey)</li>
+<li>tlw. schwieriger Zugang
+<ul>
+<li>organisationsintern Daten und Datenschutz</li>
+<li>historische und textuelle Daten einfacher zugänglich</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="semiotic-triangle" class="level2">
+<h2 class="anchored" data-anchor-id="semiotic-triangle">Semiotic Triangle</h2>
+<div class="columns">
+<div class="column">
+<section id="loose-coupling-between" class="level3">
+<h3 class="anchored" data-anchor-id="loose-coupling-between">Loose coupling between</h3>
+<ul>
+<li>World</li>
+<li>Cognition</li>
+<li>Language</li>
+</ul>
+</section>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/ogden_semiotic_triangle.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Semiotic Triangle <span class="citation" data-cites="Ogden1923">[@Ogden1923]</span></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>Was ist Sprache?
+<ul>
+<li>Keine Philosophie-Vorlesung</li>
+<li>technisch auch von Bedeutung</li>
+</ul></li>
+<li>Versuch der Einheit: Ding, Konzept und Wort</li>
+<li>keine direkte Beziehung zwischen Symbol &amp; Gegenstand
+<ul>
+<li>keine Eineindeutigkeit wie in Datenbanken –&gt; schwierig für Computer
+<ul>
+<li>identische Personen- und Ortsnamen</li>
+<li>umfasst Früchte auch Hülsenfrüchte?</li>
+</ul></li>
+<li>jede Ecke kann wechseln
+<ul>
+<li>Gleiches heisst anders, anderes heisst gleich</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<blockquote class="blockquote">
+<p>Language shapes the way we think, <br> and determines what we can think about.</p>
+<p><cite>Benjamin Lee Whorf</cite></p>
+</blockquote>
+<div class="notes">
+<ul>
+<li>zweiteilige These umstritten (Sapir-Whorf-Hypothese)
+<ul>
+<li>Sprache formt das Denken</li>
+<li>unabhängig der Determination: überragende Bedeutung für das Soziale</li>
+<li>Inuit-Anekdote zu Schnee bedingt durch Grammatik</li>
+</ul></li>
+<li>Sprache ist das Soziale schlechthin
+<ul>
+<li>Vermittlungsmedium</li>
+<li>weitere Formen: Zeichnen, Mathematik, Fotos</li>
+</ul></li>
+<li>wenn nicht kommuniziert, dann gesellschaftlich ohne Bedeutung (aber nicht unbedingt unvorstellbar)
+<ul>
+<li>Wörter sind Unterscheidungen</li>
+<li>Link zu Luhmann</li>
+</ul></li>
+<li>Aktuelles Beispiel Ukraine-Krieg
+<ul>
+<li>Konflikt vs Krieg (Gewalt) vs Invasion (asymmetrisch), militärische Operation</li>
+<li>Definitionskampf ist gut erkennbar von Russland, aber auch allen anderen</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="working-with-texts" class="level1">
+<h1>Working with Texts</h1>
+<section id="a-micro-and-macro-perspective-i" class="level2">
+<h2 class="anchored" data-anchor-id="a-micro-and-macro-perspective-i">A micro and macro perspective I</h2>
+<section id="individual-cases-vs.-collective-trends" class="level3">
+<h3 class="anchored" data-anchor-id="individual-cases-vs.-collective-trends">individual cases vs.&nbsp;collective trends</h3>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/close_reading.png" style="height:15cm" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">close reading <a href="https://i1.wp.com/elevenews.com/wp-content/uploads/2018/03/golf-cart-repair-manuals.png">(src)</a></figcaption><p></p>
+</figure>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/nlp-natural-language-processing.jpg" style="height:15cm" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">distant reading <a href="https://www.100worte.de/wp-content/uploads/2019/08/nlp-natural-language-processing.jpg">(src)</a></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>Nun klar, wieso Textanalyse wichtig, aber welche Herangehensweise?</li>
+<li>Traditionell
+<ul>
+<li>Inhaltsanalyse, close reading</li>
+<li>Einzeldokumente</li>
+<li>lange Zeit alternativlos</li>
+</ul></li>
+<li>computergestützte Textanalyse
+<ul>
+<li>NLP, distant reading</li>
+<li>Textsammlungen</li>
+</ul></li>
+<li>Rauszoomen bringt mehr/neues Verständnis, nicht nur Reinzoomen</li>
+<li>Methodik ändert evtl. Fragestellung
+<ul>
+<li>NLP: nicht Individuum, sondern Diskurs/Gesellschaft/Gruppe</li>
+<li>strukturelle Beschreibungen und Kultur/Stimmung</li>
+</ul></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="a-micro-and-macro-perspective-ii" class="level2">
+<h2 class="anchored" data-anchor-id="a-micro-and-macro-perspective-ii">A micro and macro perspective II</h2>
+<section id="scalability-vs.-abstraction" class="level3">
+<h3 class="anchored" data-anchor-id="scalability-vs.-abstraction">scalability vs.&nbsp;abstraction</h3>
+<div class="columns">
+<div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/newspapers-in-pile.jpg" style="height:15cm" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">tons of text <a href="https://independencedaily.co.uk/sunday-papers-12-august-2018/">(src)</a></figcaption><p></p>
+</figure>
+</div>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/numbers_unsplash.jpg" style="height:15cm" class="figure-img"></p>
+<p></p><figcaption class="figure-caption">meaning of numbers <a href="https://unsplash.com/photos/Wpnoqo2plFA">(src)</a></figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="notes">
+<ul>
+<li>je ein Problem je Approach
+<ul>
+<li>close: nicht skalierbar
+<ul>
+<li>ist das generalisierbar?</li>
+</ul></li>
+<li>distant: kontextlos, da Narrativ/Einzelheiten verloren gehen
+<ul>
+<li>verlieren wer/was/wo/wie/wann/warum</li>
+<li>was bedeuten Zahlen? Verweis: BIP (informelle Wirtschaft)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="from-micro-to-macro-bar_chart-and-back-again-bookmark_tabs" class="level2" data-background="var(--green)">
+<h2 data-background="var(--green)" class="anchored" data-anchor-id="from-micro-to-macro-bar_chart-and-back-again-bookmark_tabs">From micro to macro :bar_chart:<br>…and back again :bookmark_tabs:</h2>
+<div class="notes">
+<ul>
+<li>Lösung: Vogelperspektive, dann Eintauchen und zurück</li>
+<li>Gute Data Science besteht aus guter Kenntnis von Daten</li>
+<li>Grösser nicht immer besser</li>
+</ul>
+</div>
+</section>
+<section id="two-research-paradigms" class="level2">
+<h2 class="anchored" data-anchor-id="two-research-paradigms">Two Research Paradigms</h2>
+<section id="data-exploration-vs.-hypothesis-testing-evans2016" class="level4">
+<h4 class="anchored" data-anchor-id="data-exploration-vs.-hypothesis-testing-evans2016">data exploration vs.&nbsp;hypothesis testing <span class="citation" data-cites="Evans2016">[@Evans2016]</span></h4>
+<ul>
+<li>add nuance</li>
+<li>develop new narratives</li>
+<li>verify hypothesis</li>
+</ul>
+<div class="notes">
+<ul>
+<li>genauere Einordnung: exaktere Epochenbestimmung</li>
+<li>Agnostik/Induktion ausnutzen für anderes Narrativ
+<ul>
+<li>data-driven Diskurs ordnen</li>
+</ul></li>
+<li>Modelvorhersagen zu Kausalitätsaussagen
+<ul>
+<li>z.B. Klimawandel Berichterstattung -&gt; Erfolg grüne Partei?</li>
+<li>Metadaten zu Kommunikationsflüsse nötig</li>
+</ul></li>
+</ul>
+</div>
+<hr>
+</section>
+</section>
+<section id="numbers-do-not-talk-no_mouth" class="level2" data-background="#4d7e65">
+<h2 data-background="#4d7e65" class="anchored" data-anchor-id="numbers-do-not-talk-no_mouth">Numbers do not talk :no_mouth:</h2>
+<div class="incremental">
+<p>Thus, quantification and qualitative analysis go well together.</p>
+<div class="notes">
+<ul>
+<li>alter Konflikt Quali/Quanti
+<ul>
+<li>beide Lager kritisch gegenüber NLP</li>
+<li>zu wenig rigoros, zu naiv mangels Kontext</li>
+</ul></li>
+<li>Zahlen sprechen nicht für sich selbst</li>
+<li>komplementär</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="text-as-data" class="level2">
+<h2 class="anchored" data-anchor-id="text-as-data">Text as Data</h2>
+<ul>
+<li>synonymy</li>
+<li>ambiguities</li>
+<li>compositonality of meaning</li>
+<li>discrete symbols</li>
+<li>unstructured, messy data</li>
+</ul>
+<p><span class="citation" data-cites="Grimmer2013">[see also @Grimmer2013]</span></p>
+<div class="notes">
+<ul>
+<li>Link zu semiotischem Dreieck</li>
+<li>Text inhärent schwierig
+<ul>
+<li>herausfordernste Datenform</li>
+<li>Front der AI</li>
+</ul></li>
+<li>Wörter = diskrete Symbole
+<ul>
+<li>nominales Skalenniveau</li>
+</ul></li>
+<li>compositional
+<ul>
+<li>grosse Mäuse, kleine Elefanten</li>
+</ul></li>
+<li>unstrukturiert
+<ul>
+<li>anders als Tabelle/Datenbank</li>
+<li>unterschiedliche Datenformate</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="unstructured-text-thinking" class="level2">
+<h2 class="anchored" data-anchor-id="unstructured-text-thinking">Unstructured Text? :thinking:</h2>
+<section id="collection-documents-paragraphs-sentences-words" class="level3">
+<h3 class="anchored" data-anchor-id="collection-documents-paragraphs-sentences-words">collection &gt; documents &gt; paragraphs &gt; sentences &gt; words</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/alphabet_pasta.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Texts carry more meaning than a soup (=set) of words <a href="https://commons.wikimedia.org/wiki/File:AlphabetPasta.jpg">(Wikimedia)</a></figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="data-formats" class="level1">
+<h1>Data Formats</h1>
+<section id="in-class-task-file-types" class="level2" data-background="#3c70b5">
+<h2 data-background="#3c70b5" class="anchored" data-anchor-id="in-class-task-file-types">In-class Task: File Types</h2>
+<div class="columns blockstyle">
+<ul>
+<li>What file formats do you know?</li>
+<li>Open files of different types in a text editor. <br> Which ones look good?</li>
+</ul>
+</div>
+<div class="notes">
+<ul>
+<li>Problem ist nicht wirklich der Text, sondern das Format</li>
+<li>alle möglichen Filetypen, nicht nur Text
+<ul>
+<li>zip/tar, exe, dmg/iso, jpg/png/gif</li>
+</ul></li>
+<li>öffnen von Editor?</li>
+<li>Dateiendungen aktiviert auf Computer?</li>
+</ul>
+</div>
+</section>
+<section id="file-formats" class="level2">
+<h2 class="anchored" data-anchor-id="file-formats">File Formats</h2>
+<ul>
+<li>machine-readability
+<ul>
+<li>raw: txt, csv, tsv</li>
+<li>formatted: docx, pdf, html, xml</li>
+</ul></li>
+<li>open vs.&nbsp;proprietary</li>
+<li>digital sustainability</li>
+</ul>
+<div class="notes">
+<ul>
+<li>am besten raw + open</li>
+<li>Papier altert langsamer als Software!</li>
+<li><strong>Pause</strong></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="lets-dive-into-it-sweat_drops" class="level1">
+<h1>Let’s Dive into it! :sweat_drops:</h1>
+<section id="counting-ngrams" class="level2">
+<h2 class="anchored" data-anchor-id="counting-ngrams">Counting ngrams</h2>
+<section id="google-ngram-viewer-michel2011" class="level3">
+<h3 class="anchored" data-anchor-id="google-ngram-viewer-michel2011"><a href="https://books.google.com/ngrams">Google Ngram Viewer</a> <span class="citation" data-cites="Michel2011">[@Michel2011]</span></h3>
+<ul>
+<li>historical perspective with ngrams</li>
+<li>&gt;5.2 million books</li>
+<li>rise and fall of cultural ideas and phenomena</li>
+</ul>
+<div class="notes">
+<ul>
+<li>Google Books
+<ul>
+<li>indexiert ganze (Uni-)Bibliotheken</li>
+<li>in 2009 mehr als 4% aller veröffentlichter Bücher</li>
+</ul></li>
+<li>See how ideas evolve/change over time</li>
+<li>y: relative Worthäufigkeiten</li>
+<li>x: Bücher indexiert nach Publikationsjahr</li>
+<li>publiziert in Science, kein klassiches SoWi Journal
+<ul>
+<li>disziplinare Grenzen brechen auf</li>
+</ul></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="in-class-task-investigate-the-environmental-discourse" class="level2" data-background="#3c70b5">
+<h2 data-background="#3c70b5" class="anchored" data-anchor-id="in-class-task-investigate-the-environmental-discourse">In-Class Task: Investigate the Environmental Discourse</h2>
+<ul>
+<li><p>What other terms have been used to describe nature?</p>
+<ul>
+<li>e.g.&nbsp;environment</li>
+</ul></li>
+<li><p>What environmental issues are debated the strongest? When?</p>
+<ul>
+<li>e.g.&nbsp;nuclear power plant</li>
+</ul></li>
+<li><p>Are there any differences between languages?</p>
+<ul>
+<li>i.e.&nbsp;similar words with non-equivalent curves over time</li>
+</ul></li>
+</ul>
+<section id="dart-what-do-you-conclude-from-your-observations" class="level3">
+<h3 class="anchored" data-anchor-id="dart-what-do-you-conclude-from-your-observations">:dart: What do you conclude from your observations?</h3>
+<div class="notes">
+<ul>
+<li>Dauer: 20 Minuten</li>
+<li>issues described by whom?</li>
+<li>Herumgehen + selbst ausprobieren</li>
+<li>Wikipedia nutzen</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="refine-your-queries" class="level2">
+<h2 class="anchored" data-anchor-id="refine-your-queries">Refine your Queries</h2>
+<section id="check-out-case-sensitiveness-wildcards-and-operators-nerd_face" class="level3">
+<h3 class="anchored" data-anchor-id="check-out-case-sensitiveness-wildcards-and-operators-nerd_face">check out case-sensitiveness, wildcards (*) ​an​d ​operators :nerd_face:</h3>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 88%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>+</code></td>
+<td>sums multiple expressions into one to <strong>aggregate trends</strong>.</td>
+</tr>
+<tr class="even">
+<td><code>-</code></td>
+<td>subtracts the expression on the right from the expression on the left, giving you a way to <strong>measure one ngram relative to another</strong>.</td>
+</tr>
+<tr class="odd">
+<td><code>/</code></td>
+<td>divides the expression on the left by the expression on the right, which is useful for <strong>isolating the behavior of an ngram with respect to another</strong>.</td>
+</tr>
+<tr class="even">
+<td><code>*</code></td>
+<td>multiplies the expression on the left by the number on the right, making it easier to compare ngrams of very different frequencies. (Be sure to enclose the entire ngram in parentheses so that * isn’t interpreted as a wildcard.)</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="ngram-pay-attention" class="level2">
+<h2 class="anchored" data-anchor-id="ngram-pay-attention">Ngram ‘pay attention’</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/google_ngram_pay_attention.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Google Ngram Viewer: Evolution of the phrase ‘attention’</figcaption><p></p>
+</figure>
+</div>
+<div class="notes">
+<ul>
+<li>major shift: “call attention” -&gt; “pay attention”</li>
+<li>externer Faktor (call) vs.&nbsp;aktives Verhalten (pay)</li>
+<li>pay attention as a form of currency</li>
+<li>Zusammenhang? Aufmerksamkeitsökonomie, Individualismus</li>
+<li>“if you don’t want to call attention to yourself by giving an incorrect answer, then you should probably pay attention in class.”</li>
+</ul>
+</div>
+</section>
+<section id="remember-thumbsup" class="level2" data-background="#4d7e65">
+<h2 data-background="#4d7e65" class="anchored" data-anchor-id="remember-thumbsup">Remember :thumbsup:</h2>
+<p>Has the language evolved over time or the social perception?</p>
+<div class="incremental">
+<p><br></p>
+<p><strong>Both, most likely.</strong></p>
+<p><br></p>
+<p>Similarly, language may vary across regions and communities.</p>
+<div class="notes">
+<ul>
+<li>Grosse Frage ist
+<ul>
+<li>Wird das gleiche anders benannt?</li>
+<li>Geht es um was anderes?</li>
+</ul></li>
+<li>Link zu Odgen Dreieck von nicht fixer Beziehungen</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="no-culturomics-but-meaning-making" class="level2">
+<h2 class="anchored" data-anchor-id="no-culturomics-but-meaning-making">No Culturomics but Meaning-Making</h2>
+<section id="phenomena-in-collective-memory" class="level3">
+<h3 class="anchored" data-anchor-id="phenomena-in-collective-memory">phenomena in collective memory</h3>
+<ul>
+<li>semantic drifts (meaning)</li>
+<li>lexical shifts (frequency)</li>
+</ul>
+<p><strong>Read, read, read</strong> to complement <strong>stats</strong> with context!</p>
+<div class="notes">
+<ul>
+<li><p>Änderung von kontextueller Verwendung oder Wortfrequenz</p></li>
+<li><p>Eigentum hat sich etabliert, Religion degeneriert</p></li>
+<li><p>Patterns EN</p>
+<ul>
+<li>dessert=&gt;*_ADJ</li>
+<li>*=&gt;public_ADJ</li>
+<li>*=&gt;personal_ADJ</li>
+</ul></li>
+<li><p>Pattern DE</p>
+<ul>
+<li>Kulturen=&gt;*_ADJ</li>
+<li>Kinder=&gt;*_ADJ</li>
+</ul></li>
+<li><p>only entire words, yet: _INF</p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="questions-of-interpretation" class="level2">
+<h2 class="anchored" data-anchor-id="questions-of-interpretation">Questions of Interpretation</h2>
+<section id="possible-reasons-of-decreasing-frequency" class="level3">
+<h3 class="anchored" data-anchor-id="possible-reasons-of-decreasing-frequency">possible reasons of decreasing frequency</h3>
+<ul>
+<li>loosing interest</li>
+<li>becoming an established fact</li>
+<li>new reference
+<ul>
+<li><code>The Great War</code> → <code>World War I</code></li>
+</ul></li>
+<li>selection of data sources</li>
+</ul>
+<div class="notes">
+<ul>
+<li>numbers don’t talk</li>
+<li>Kommunikation
+<ul>
+<li>Weisse Schafe nicht erwähnenswert, nur schwarze</li>
+<li>Nachrichtenwerte</li>
+<li>Themenkonjunkturen</li>
+</ul></li>
+<li>einzelne Wörter bilden schlechte Evidenzbasis</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="a-word-of-caution" class="level2" data-background="#b5533c">
+<h2 data-background="#b5533c" class="anchored" data-anchor-id="a-word-of-caution">A Word of Caution</h2>
+<p>The unknowns of Google Ngram Viewer</p>
+<ul>
+<li>index of books
+<ul>
+<li>genre, authors, quantity</li>
+</ul></li>
+<li>artifacts of digitalization</li>
+</ul>
+<p>:nerd_face: use better alternative: <a href="https://bookworm.htrc.illinois.edu/develop/">bookworm HathiTrust</a></p>
+<div class="notes">
+<ul>
+<li>Google: ~4% of all books ever published</li>
+<li>Compared to the 2009 versions, the 2012 and 2019 versions:
+<ul>
+<li>more books, improved OCR, improved library and publisher metadata.</li>
+<li>ngrams across page boundaries, no ngrams across sentence boundaries</li>
+<li>rule-based tokenization</li>
+</ul></li>
+<li>wissenschaftlicher Standard
+<ul>
+<li>Ziel: nicht Unfehlbarkeit, sondern methodisch nachvollziehbar und kritisierbar</li>
+<li>zitierfähig</li>
+</ul></li>
+<li>HathiTrust
+<ul>
+<li>curated collection</li>
+<li>filter by meta data</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="interacting-with-data" class="level2">
+<h2 class="anchored" data-anchor-id="interacting-with-data">Interacting with Data</h2>
+<section id="it-is-a-lense-not-a-map." class="level3">
+<h3 class="anchored" data-anchor-id="it-is-a-lense-not-a-map.">It is a lense, not a map.</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/dikw_pyramid.svg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">DIKW pyramid <a href="https://en.wikipedia.org/wiki/DIKW_pyramid#/media/File:DIKW_Pyramid.svg">(Wikipedia)</a></figcaption><p></p>
+</figure>
+</div>
+<div class="notes">
+<ul>
+<li>Lens / transformation like biology/physics
+<ul>
+<li>allerdings keine Labordaten</li>
+<li>Soziales ohne ceteris paribus</li>
+</ul></li>
+<li>not just mapping but interacting
+<ul>
+<li>Daten erlauben neue Sicht</li>
+<li>deshalb nicht CS überlassen</li>
+</ul></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="prepare-your-system" class="level2">
+<h2 class="anchored" data-anchor-id="prepare-your-system">Prepare your System</h2>
+<ol type="1">
+<li>backup files + update system :construction:</li>
+<li>start installation with this <a href="https://aflueckiger.github.io/KED2023/materials/installation_guide.pdf">guide</a> :construction_worker:</li>
+</ol>
+<div class="notes">
+<ul>
+<li>Nicht riskanter als anderes. Ein Backup gehört dazu, ein Datenverlust sicher nicht.</li>
+<li>Unklarheiten/Probleme unbedingt zurückmelden</li>
+<li>Wer hat Python schon installiert? Welches OS/Installer?</li>
+</ul>
+</div>
+</section>
+<section id="new-room-classical_building" class="level2">
+<h2 class="anchored" data-anchor-id="new-room-classical_building">New room :classical_building:</h2>
+<ul>
+<li>seminar in lecture hall 5</li>
+<li>as of 17 March onwards</li>
+</ul>
+</section>
+</section>
+<section id="questions" class="level1 white-text" data-background="../images/paint-anna-kolosyuk-unsplash.jpg">
+<h1 class="white-text" data-background="../images/paint-anna-kolosyuk-unsplash.jpg">Questions?</h1>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Alex Flückiger</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/aflueckiger/KED2023">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
