@@ -9,19 +9,19 @@ The plan below is provisional. I am happy to adapt the topics, as well as the sc
 
 | Date                 | Topic                                                        |
 | -------------------- | ------------------------------------------------------------ |
-| 23 February 2023     | [Introduction + Where is the digital revolution?](/KED2023/lectures#week-1-introduction--where-is-the-digital-revolution) |
-| 02 March 2023        | [Text as Data](/KED2023/lectures#week-2-text-as-data)        |
-| 09 March 2023        | [Setting up your Development Environment](/KED2023/lectures#week-3-setting-up-your-development-environment) |
-| 16 March 2023        | [Introduction to the Command-line](/KED2023/lectures#week-4-introduction-to-the-command-line) |
-| 23 March 2023        | [Basic NLP with Command-line](/KED2023/lectures#week-5-basic-nlp-with-command-line) |
-| 30 March 2023 (Zoom) | [Learning Regular Expressions](/KED2023/lectures#week-6-learning-regular-expressions) |
-| 06 April 2023 (Zoom) | [Working with (your own) Data](/KED2023/lectures#week-7-working-with-data) |
+| 23 February 2023     | [Introduction + Where is the digital revolution?](lectures.html#week-1-introduction-where-is-the-digital-revolution) |
+| 02 March 2023        | [Text as Data](lectures.html#week-2-text-as-data)        |
+| 09 March 2023        | [Setting up your Development Environment](lectures.html#week-3-setting-up-your-development-environment) |
+| 16 March 2023        | [Introduction to the Command-line](lectures.html#week-4-introduction-to-the-command-line) |
+| 23 March 2023        | [Basic NLP with Command-line](lectures.html#week-5-basic-nlp-with-command-line) |
+| 30 March 2023 (Zoom) | [Learning Regular Expressions](lectures.html#week-6-learning-regular-expressions) |
+| 06 April 2023 (Zoom) | [Working with (your own) Data](lectures.html#week-7-working-with-data) |
 | ~~13 April 2023~~    | *no lecture (Osterpause)*                                    |
-| 20 April 2023        | [Ethics and the Evolution of NLP](/KED2023/lectures#week-8-ethics-and-the-evolution-of-nlp) |
-| 27 April 2023        | [Introduction to Python](/KED2023/lectures#week-9-introduction-to-python) + VS Code |
+| 20 April 2023        | [Ethics and the Evolution of NLP](lectures.html#week-8-ethics-and-the-evolution-of-nlp) |
+| 27 April 2023        | [Introduction to Python](lectures.html#week-9-introduction-to-python) + VS Code |
 | 04 May 2023          | Pandas und LIRI-Dataset                                      |
-| 11 May 2023          | [NLP with Python](/KED2023/lectures#week-10-nlp-with-python) |
+| 11 May 2023          | [NLP with Python](lectures.html#week-10-nlp-with-python) |
 | ~~18 May 2023~~      | *no lecture (Christi Himmelfahrt)*                           |
-| 25 May 2023          | [NLP with Python II + Working Session](/KED2023/lectures#week-11-nlp-with-python-ii--working-session) |
-| 01 June 2023         | [Mini-Project Presentations + Discussion](/KED2023/lectures#week-12-mini-project-presentations--discussion) |
+| 25 May 2023          | [NLP with Python II + Working Session](lectures.html#week-11-nlp-with-python-ii-working-session) |
+| 01 June 2023         | [Mini-Project Presentations + Discussion](lectures.html#week-12-mini-project-presentations-discussion) |
 

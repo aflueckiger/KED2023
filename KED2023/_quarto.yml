@@ -40,6 +40,6 @@ format:
      light: [litera, light_styles.scss]
      dark: [litera, dark_styles.scss]
     toc: true
-
+    link-external-newwindow: true
 
 

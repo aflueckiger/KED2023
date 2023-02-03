@@ -8,7 +8,7 @@ TITLE = "BA Seminar: The ABC of Computational Text Analysis"
 AUTHOR = "Alex Flückiger"
 
 ## Location of CSS file
-CSSFILE = Path("/home/alex/KED2023/lectures/resources/custom_style_reveal.css")
+CSSFILE = Path("/home/alex/KED2023/KED2023/lectures/resources/custom_style_reveal.scss")
 
 ## Location of your working bibliography file
 BIBFILE = Path("/home/alex/zotero.bib")
@@ -16,7 +16,7 @@ BIBFILE = Path("/home/alex/zotero.bib")
 TITLE = "BA Seminar: The ABC of Computational Text Analysis"
 AUTHOR = "Alex Flückiger"
 
-MAIN_DIR = Path.cwd()
+MAIN_DIR = Path(".").cwd() / "KED2023"
 LECTURES_DIR = MAIN_DIR / "lectures"
 LECTURES_MD_DIR = LECTURES_DIR / "md"
 LECTURES_HTML_DIR = LECTURES_DIR / "html"
@@ -25,7 +25,6 @@ LECTURES_NOTES_DIR = LECTURES_DIR / "notes"
 
 ASSIGNMENTS_DIR = MAIN_DIR / "assignments"
 MATERIALS_DIR = MAIN_DIR / "materials"
-WEBSITE_DIR = MAIN_DIR / "website"
 
 
 def task_prepare_dir():
@@ -50,7 +49,7 @@ def task_prepare_dir():
 def task_update_website():
     """Render with quarto"""
     return {
-        "actions": ["quarto render website"],
+        "actions": [f"quarto render {MAIN_DIR}"],
     }
 
 
@@ -65,11 +64,10 @@ def task_create_html_slide():
             "name": infile,
             "file_dep": [infile, CSSFILE],
             "actions": [
-                f"cd {LECTURES_MD_DIR} && quarto render {infile} -o {outfile.name} \
+                f"cd {LECTURES_MD_DIR} && quarto render {infile.name} -o {outfile.name} \
                 -f markdown+emoji+strikeout --standalone --embed-resources \
                 --citeproc --bibliography {BIBFILE} \
                  --quiet",
-                f"cd {LECTURES_MD_DIR} && mv {outfile.name} {outfile}",
             ],
             "targets": [outfile],
             "title": show_cmd,
@@ -117,13 +115,13 @@ def task_create_syllabus():
     outfile = MAIN_DIR / "KED2023_syllabus.pdf"
 
     fdependencies = [
-        WEBSITE_DIR / fname
+        MAIN_DIR / fname
         for fname in ["index.qmd", "schedule.qmd", "lectures.qmd", "assignments.qmd"]
     ]
     return {
         "file_dep": fdependencies,
         "actions": [
-            f"cd {WEBSITE_DIR} && \
+            f"cd {MAIN_DIR} && \
             cat index.qmd <(echo '[Go to Course Website](https://aflueckiger.github.io/KED2023/)' ) | grep -v 'Go to UniLu website' | sed '/<div/,/div>/d'> index.md.tmp && \
             sed '5 a # Schedule' schedule.qmd > schedule.md.tmp && \
             sed '5 a # Lectures' lectures.qmd | grep -P -v '{{< .+ >}}' | sed -E 's/The slides .+ icon://g' > lectures.md.tmp && \
@@ -138,7 +136,7 @@ def task_create_syllabus():
             -V filecolor='[HTML]{{111bab}}' \
             --metadata title='{TITLE}' \
             --metadata date='{today}'",
-            f"rm {WEBSITE_DIR}/*.tmp",
+            f"rm {MAIN_DIR}/*.tmp",
         ],
         "targets": [outfile],
         # 'title': show_cmd
@@ -167,7 +165,7 @@ def task_create_assignment():
             # 'title': show_cmd
         }
 
-def task_create_assignment():
+def task_create_materials():
 
     infiles = sorted(MATERIALS_DIR.glob("**/*.md"))
 
