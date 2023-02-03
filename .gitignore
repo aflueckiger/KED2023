@@ -1,3 +1,7 @@
 .doit.db
 __pycache__
 venv
+KED2023/lectures/notes/
+KED2023/lectures/md/.gitignore
+KED2023/assignments
+docs/assignments
