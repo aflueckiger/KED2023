@@ -2,9 +2,12 @@ project:
   type: website
   output-dir: ../docs
   resources:
-  - "../lectures"
-  - "materials"
-  - "../assignments"
+    - "../lectures/html/*html"
+    - "../lectures/pdf/*pdf"
+    - "materials"
+    - "assignments"
+  render:
+    - "*.qmd"
 
 website:
   title: "KED2023"

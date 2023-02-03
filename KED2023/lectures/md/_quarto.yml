@@ -1,3 +1,6 @@
+project:
+  output-dir: ../html
+
 center: true
 date-format: long
 lang: en-US
@@ -7,6 +10,7 @@ title-slide-attributes:
   data-background-position: 2% 2%
 format:
   revealjs:
+    output-dir: ../html
     overview: true
     menu: false
     slide-number: c/t
