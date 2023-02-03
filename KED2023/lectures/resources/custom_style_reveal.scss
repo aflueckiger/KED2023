@@ -1,6 +1,6 @@
 /*-- scss:defaults --*/
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Caveat+Brush&family=Caveat:wght@600&family=Permanent+Marker&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=News+Cycle&family=Permanent+Marker&display=swap');
 
 $mainfont: Lato, sans-serif;
 $presentation-slide-text-align: center;
@@ -8,11 +8,6 @@ $presentation-font-size-root: 30px;
 
 
 /*-- scss:rules --*/
-
-
-
-
-
 
 /*********************************************
 * CUSTOM COLORS
@@ -111,6 +106,8 @@ p.subtitle{
 .reveal h4,
 .reveal h5,
 .reveal h6 {
+    font-family: News Cycle, sans-serif;
+    font-weight: lighter;
     color: var(--color-headings)
 }
 
