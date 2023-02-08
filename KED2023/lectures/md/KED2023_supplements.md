@@ -21,6 +21,15 @@ Here I present some stuff that we did not cover in class.
 
 
 
+##  Data vs. Capta
+
+> Differences in the etymological roots of the terms data and capta make the distinction between constructivist and realist approaches clear. *Capta* is <span style="color:#b5533c">**"taken"**</span> actively while *data* is assumed to be a <span style="color:#b5533c">**"given"**</span> able to be recorded and observed.
+
+> Humanistic inquiry acknowledges the situated, partial, and constitutive character of knowledge production, the recognition that knowledge is constructed, *taken*, <span style="color:#b5533c">**not simply given as a natural representation**</span> of pre-existing fact.
+>
+
+
+
 ## Forms of Data
 
 - content data
@@ -31,6 +40,15 @@ Here I present some stuff that we did not cover in class.
   - preferable as `.csv` 
 
 
+
+### show with default application (GUI)
+
+```bash
+open text.txt			# macOS
+wslview text.txt		# WSL Ubuntu (Windows)
+```
+
+<!-- xdg-open text.txt		# Ubuntu -->
 
 ## Key Word in Context (KWIC)
 
@@ -193,25 +211,3 @@ done
 - Soziotechnische Systeme
 
 :::
-
-## Grid Example
-
-<div class="l-double">
-
-::: 
-
-**COL 1**
-
-- text processing
-
-:::
-
-::: 
-
-**COL 2**
-
-- existing resources
-- creating new resources
-
-:::
-</div>

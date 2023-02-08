@@ -24,3 +24,5 @@ format:
     transition: fade
     theme: [default, ../resources/custom_style_reveal.scss]
     highlight-style: github-dark
+    code-line-numbers: false
+

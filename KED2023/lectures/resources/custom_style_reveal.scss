@@ -238,8 +238,18 @@ section.has-dark-background code {
     color:#f9f9ff !important;
 }
 
-.reveal p+h3 {
-    margin-top:2em;
+.reveal p+h3,
+.reveal div.sourceCode+h3{
+    margin-top:1.5em;
+}
+
+.reveal pre.sourceCode,
+.fragment {
+    margin:2em;
+}
+
+.reveal div.sourceCode {
+    border:0px;
 }
 /*********************************************
 * QUOTES
@@ -284,6 +294,12 @@ section.has-dark-background code {
 /*********************************************
 * CUSTOM CLASSES
 *********************************************/
+/*-- hack for headings since section attribute ar no longer assigned to headings --*/
+section.white-text h1,
+section.white-text h2 {
+    color:#f9f9ff !important;
+}
+
 
 .white-text {
     color:#f9f9ff !important;
@@ -365,7 +381,7 @@ section.has-dark-background code {
   font-size: 1.3em;
 }
 
-.l-image-corner {
+.l-image-corner{
     position: absolute;
     right: 0;
     transform: translate(0%,-55%);
