@@ -1,6 +1,7 @@
 /*-- scss:defaults --*/
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=News+Cycle&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Lato:wght@300;400&family=News+Cycle&family=Permanent+Marker&display=swap');
+
 
 $mainfont: Lato, sans-serif;
 $presentation-slide-text-align: center;
@@ -127,7 +128,7 @@ p.subtitle{
 * FULL SCREEN SLIDES
 *********************************************/
 
-.reveal section[data-background*="images"] {
+.reveal section[data-background-image*="image"], {
     background-color: rgba(00, 00, 00, .2);
     padding: 1em;
     width: 80% !important;
@@ -135,7 +136,7 @@ p.subtitle{
     margin: auto;
     font-size: 1.3em;
 }
-.reveal section[data-background*="images"] h2 {
+.reveal section[data-background-image*="image"] h2 {
     color: white !important;
     font-family: Lato;
     font-weight: bold;

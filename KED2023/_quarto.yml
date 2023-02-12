@@ -41,5 +41,3 @@ format:
      dark: [litera, dark_styles.scss]
     toc: true
     link-external-newwindow: true
-
-
