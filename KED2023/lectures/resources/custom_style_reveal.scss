@@ -128,7 +128,7 @@ p.subtitle{
 * FULL SCREEN SLIDES
 *********************************************/
 
-.reveal section[data-background-image*="image"], {
+.reveal section:not(#title-slide)[data-background-image*="image"] {
     background-color: rgba(00, 00, 00, .2);
     padding: 1em;
     width: 80% !important;

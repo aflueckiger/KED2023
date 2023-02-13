@@ -202,7 +202,7 @@ done
 
 
 
-## <span style="color:var(--red)">Anatomy of AI[@Crawford2018]<br> illustrated by the Amazon Echo</span>{data-background=../images/anatomy_of_ai.png}
+## <span style="color:var(--red)">Anatomy of AI[@Crawford2018]<br> illustrated by the Amazon Echo</span>{data-background-image=../images/anatomy_of_ai.png}
 
 ::: notes
 

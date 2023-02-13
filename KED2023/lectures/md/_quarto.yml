@@ -2,11 +2,11 @@ project:
   output-dir: ../html
 
 center: true
-date-format: long
+date-format: "DD MMMM YYYY"
 lang: en-US
 title-slide-attributes:
-  data-background-image: https://upload.wikimedia.org/wikipedia/en/6/68/UNILU_logo_EN.png
-  data-background-size: 8%
+  data-background-image: ../images/UNILU_logo_EN.png
+  data-background-size: 10%
   data-background-position: 2% 2%
 format:
   revealjs:
