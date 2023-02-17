@@ -1,5 +1,6 @@
 .doit.db
 __pycache__
+**/.ipynb_checkpoints
 venv*
 KED2023/lectures/notes/
 KED2023/lectures/md/.gitignore
