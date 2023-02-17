@@ -1,0 +1,27 @@
+---
+title: 'Schedule'
+layout: page
+---
+
+We have 13 seminar sessions together.
+
+The plan below is provisional. I am happy to adapt the topics, as well as the schedule, to the needs and interests of the students. Likely, we will change some topics and orderings as we go.
+
+| Date                 | Topic                                                        |
+| -------------------- | ------------------------------------------------------------ |
+| 23 February 2023     | [Introduction + Where is the digital revolution?](lectures.html#week-1-introduction-where-is-the-digital-revolution) |
+| 02 March 2023        | [Text as Data](lectures.html#week-2-text-as-data)            |
+| 09 March 2023        | [Setting up your Development Environment](lectures.html#week-3-setting-up-your-development-environment) |
+| 16 March 2023        | [Introduction to the Command-line](lectures.html#week-4-introduction-to-the-command-line) |
+| 23 March 2023        | [Basic NLP with Command-line](lectures.html#week-5-basic-nlp-with-command-line) |
+| 30 March 2023 (Zoom) | [Learning Regular Expressions](lectures.html#week-6-learning-regular-expressions) |
+| 06 April 2023 (Zoom) | [Working with (your own) Data](lectures.html#week-7-working-with-data) |
+| ~~13 April 2023~~    | *no lecture (Osterpause)*                                    |
+| 20 April 2023        | [Ethics and the Evolution of NLP](lectures.html#week-8-ethics-and-the-evolution-of-nlp) |
+| 27 April 2023        | [Introduction to Python + VS Code](lectures.html#week-9-introduction-to-python) |
+| 04 May 2023          | [Data Analysis of Swiss Media](lectures.html#week-10-data-analysis-of-swiss-media) |
+| 11 May 2023          | [NLP with Python](lectures.html#week-11-nlp-with-python)     |
+| ~~18 May 2023~~      | *no lecture (Christi Himmelfahrt)*                           |
+| 25 May 2023          | [NLP with Python II + Working Session](lectures.html#week-12-nlp-with-python-ii-working-session) |
+| 01 June 2023         | [Mini-Project Presentations + Discussion](lectures.html#week-13-mini-project-presentations-discussion) |
+
