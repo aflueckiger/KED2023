@@ -10,8 +10,8 @@ You have to submit three assignments to complete the seminar successfully. The p
 | #    | Topic                                                        | Published     | Deadline (by midnight)      | Solution                                                     |
 | -- | --------------------------------- | ------------------------- | ----------------------------------------------- | --------------------------------------------- |
 | 1    | Data Wrangling | 24 March 2023 | 31 March 2023 | - |
-| 2    | Regex NLP | 08 April 2023 | 15 April 2023- | -        |
-| 3    | Python NLP | 13 May 2023  | 20 May 2023 | - |
+| 2    | Regex NLP | 07 April 2023 | 14 April 2023- | -        |
+| 3    | Python NLP | 12 May 2023  | 19 May 2023 | - |
 
 ## Formal Instructions
 
