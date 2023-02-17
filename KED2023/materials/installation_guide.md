@@ -13,14 +13,14 @@ toc-depth: 2
 
 **IMPORTANT NOTE: When you use a Mac and have Python 3/Anaconda installed already, let me know first before proceeding. Installing naively multiple Python versions may cause problems.**
 
-This guide aims to ease setting up your development environment for Windows 10 and macOS. Depending on your operating system, you have to install additional components to program in Python and perform common data wrangling tasks in the command-line. The instructions cover the installation of the following components:
+This guide aims to ease setting up your development environment for Windows 11 and macOS. Depending on your operating system, you have to install additional components to program in Python and perform common data wrangling tasks in the command-line. The instructions cover the installation of the following components:
 
-- Python 3.8
-- VS Code Editor
+- Python 3.10
+- [VS Code Editor](https://code.visualstudio.com/)
 - various Bash tools 
-- Tesseract (Optical Character Recognition)
+- [Tesseract](https://en.wikipedia.org/wiki/Tesseract_(software)) (Optical Character Recognition)
 
-The proposed installation strikes a good balance between relative simplicity (e.g., no virtual environments in Python) and cross-platform usage of the tools. Be aware that the installation and setup of software are sometimes more difficult and poorer documented than its usage. Beyond potential problems during the installation, there are also different ways to set up the development environment. 
+The proposed installation strikes a good balance between relative simplicity and cross-platform usage of the tools. Be aware that the installation and setup of software are sometimes more difficult and poorer documented than its usage. Beyond potential problems during the installation, there are also different ways to set up the development environment. 
 
 We write Python code using the VS Code. Although lightweight, it is a fully-fledged integrated development environment (IDE) supporting all major operating systems and many programming languages. Other than competing editors, it doesn't require much configuration and, out-of-the-box, it comes with indispensable features like auto-completion, code formatting, linting (error flagging) and debugging. In VS Code, you can even open and run [Jupyter Notebooks](https://jupyter.org/) to perform interactive data science showing the output next to the code that created it. 
 
@@ -32,8 +32,6 @@ Before you proceed with the installation, back up your files[^backup] and make s
 Keep in mind that you will not get *any* feedback in the command-line unless there is an issue. At first, the lack of feedback after a successful action may be confusing as it runs counter the general experience when working with graphical interfaces. However, the lack of feedback just means the command was executed as expected; thus, there is no need to bother you with further messages.
 
 Let me know if you are struggling with any of the steps. 
-
-
 
 [^backup]: "Better save than sorry." Backing up files is a must and may save you tears as a computer is a delicate piece of hardware that does not live forever. Moreover, users are also prone to mess up files or software at any point. In these cases, you just want to go back one step and restore your data.
 
@@ -183,25 +181,29 @@ To use the powerful Bash tools on your Windows computer, we install a Ubuntu Lin
    wsl --set-default-version 1
    wsl --install -d Ubuntu
    ```
-   
+
 2. Reboot your computer to complete the installation of WSL and Ubuntu.
 
-2. The installation should be completed automatically after the reboot. If not, you can launch Ubuntu from your Windows start menu. When you have any problems, let me know and I will gladly assist. It may require [additional configuration](https://askubuntu.com/questions/1264102/wsl-2-wont-run-ubuntu-error-0x80370102) of your BIOS.
+3. The installation should be completed automatically after the reboot. If not, you can launch Ubuntu from your Windows start menu. When you have any problems, let me know and I will gladly assist. It may require [additional configuration](https://askubuntu.com/questions/1264102/wsl-2-wont-run-ubuntu-error-0x80370102) of your BIOS.
 
-2. Once the installation is complete, you will be prompted to create a new user account and set a password. 
-   **IMPORTANT**: Remember these credentials as they are used to switch to the administrator mode on your Linux system. You may choose the same account name and password as on your hosting Windows system.
-   
-5. After the login, update your freshly installed Ubuntu system with the following commands:
+4. Once the installation is complete, you will be prompted to create a new user account and set a password. 
+   **IMPORTANT**: Remember these credentials as they are used to switch to the administrator mode on your Linux system. You may choose the same account name and password as on your host Windows system.
+
+5. Annoyingly, the copy/paste behaviour is different in command lines on Windows. Open the menu with a `right-click` on the Windows title bar &rarr; `Properties` &rarr; `Options` ) and enable `Use Ctrl+Shift+C and Ctrl+Shift+V as Copy/Paste`. For the following steps, you can simply copy the commands using the keyboard shortcut.
+   Please note, that using `Ctrl+C` is not possible as it is used to cancel a running program.
+
+6. After the login, update your freshly installed Ubuntu system with the following commands and confirm with `Y`:
 
    ```bash
    sudo apt update && sudo apt upgrade
    ```
 
-6. Create a symbolic link in the Bash to easily access your files on Windows. For example, you may want to link the folder `Documents` on Windows to the symbolic folder `documents` on Ubuntu. To do this, replace the `<YOUR_USERNAME>` with the actual one and run the following commands:
+7. Create a symbolic link in the Bash to easily access your files on Windows. For example, you may want to link the folder `Documents` on Windows to the symbolic folder `documents` on Ubuntu. For people using OneDrive, they can also set a symbolic link to this directory. For this, replace the `<YOUR_USERNAME>` with the actual one and run the following commands:
 
    ```bash
    cd ~
    ln -s /mnt/c/Users/<YOUR_WINDOWS_USERNAME>/Documents documents
+   ln -s /mnt/c/Users/<YOUR_WINDOWS_USERNAME>/OneDrive/ onedrive
    ```
 
    Your `Documents` on Windows can be accessed like this:
@@ -210,14 +212,10 @@ To use the powerful Bash tools on your Windows computer, we install a Ubuntu Lin
    ls documents
    ```
 
-8. Annoyingly, the copy/paste behaviour is different in command lines on Windows. Any selected text is copied automatically, and to paste it, you have to right-click on your mouse. You may want to reassign the shortcuts to `Ctrl+Shift+C` and `Ctrl+Shift+V` in the menu (`right-click` on the windows title bar &rarr; `Properties` &rarr; `Options` ). Using `Ctrl+C` is not possible as it is used to cancel a running program.
-
 
 Source: [Microsoft](https://docs.microsoft.com/en-us/windows/wsl/install)
 
-<!--- Credentials on the Ubuntu system in the virtual machine: user: ked password: start --->
-
-
+<!--- Credentials on the Ubuntu system in the virtual machine: user: student password: 1234 --->
 
 ## Install additional command-line tools
 
@@ -235,6 +233,11 @@ Source: [Microsoft](https://docs.microsoft.com/en-us/windows/wsl/install)
    sudo apt install python3-pip
    ```
 
+4. Install the dependency management for Python:
+
+   ``` bash
+   python3 -m pip install poetry
+   ```
 
 ### Tesseract
 
@@ -267,7 +270,7 @@ Unless you have another favourite coding editor, install and customize VS Code e
    ext install ms-vscode-remote.vscode-remote-extensionpack
    ```
 
-4. In the left lower corner, you should now see a green label with `WSL: Ubuntu` (see figure 1). If not, press `F1`, select *Remote-WSL: New Window* to connect the subsystem.
+4. In the left lower corner, you should now see a green label with `WSL: Ubuntu` (@fig:figure1). If not, press `F1`, select *WSL: New WSL Window* to connect the subsystem.
 
 5. To make programming in Python easier, you should install two more extensions: VS Code Python extension and Tabnine. Launch again the *VS Code Quick Open* by pressing `CTRL`+`P`, paste the command, and press enter:
 
@@ -283,9 +286,16 @@ Unless you have another favourite coding editor, install and customize VS Code e
 
 Source: [Microsoft](https://code.visualstudio.com/docs/remote/wsl)
 
-![WSL Ubuntu is successfully connected](images/vs_code_wsl.png){ width=4cm }
+![WSL Ubuntu is successfully connected](images/vs_code_wsl.png){#fig:figure1}
 
 
+
+## Show file extensions
+
+You may not see the file extensions on Windows by default. For example, a document named`test.docx` is shown as `test` in Explorer. If this is the case, enable the file extensions.
+
+1.  Open File Explorer (`Windows key` + `E`).
+2. Click on "View", select "Show", and choose the "File name extensions"
 
 # Installation Guide for Linux
 
@@ -299,7 +309,7 @@ You presumably have installed some of the required tools already or you have the
 
 We need to install some additional packages that are not included in the Python standard library.
 
-A common and easy way to install everything needed in a project is by using a provided `requirements.txt` file that lists all the used Python packages. You find such a file in the [repository of this seminar](https://github.com/aflueckiger/KED2023/), available on GitHub. We will learn more about GitHub and the installed packages later in the course. For now, you can think of a GitHub repository as a publicly available project folder that is versioned.
+Using `poetry`, we can install all the dependencies needed in a project at once and fully reproducible. All dependencies are specified in a file called  `pyproject.toml` that is provided in the [repository of this seminar]([pyproject.toml](https://github.com/aflueckiger/KED2023/blob/KED2023/pyproject.toml)), available on GitHub. We will learn more about GitHub and the installed packages later in the course. For now, you can think of a GitHub repository as a publicly available project folder that is versioned.
 
 1. Open a command-line (Terminal on Mac, Ubuntu on Windows) and download the GitHub repository of this course. 
 
@@ -314,29 +324,47 @@ A common and easy way to install everything needed in a project is by using a pr
    cd KED2023
    ```
 
-2. Now, you can install the necessary packages listed in the `requirements.txt` with a single command: 
+2. Configure poetry to use the project directory for its virtual environment:
 
     ```bash
-    python3 -m pip install -r requirements.txt
+    poetry config virtualenvs.in-project true
+    ```
+
+3. Now, you can install the necessary packages with a single command: 
+
+    ```bash
+    poetry install
     ```
 
 ## First Steps in Python
 
-As a kind of initiation ritual, say hello to the programming world in Python. 
+As a kind of initiation ritual, say hello to the programming world in Python and check if everything is installed successfully. 
 
-1. Open the VS Code editor and create a new file called `hello_world.py`.
-2. Write the following code in that file:
+1. Open the VS Code editor
+
+2. Ensure that you connected to `WSL: Ubuntu` (green patch in the lower-left corner, see @fig:figure1)
+
+3. Open the folder `KED2023`
+
+4. Create a new file called `hello_world.py`.
+
+5. Copy the following code in that file (see @fig:figure2):
 
     ```python
     msg = "Hello World!"
     print(msg)
+    
+    import spacy
+    print(f"spaCy is installed correctly and runs at version: {spacy.__version__}")
     ```
 
-3. Execute the code by right-clicking in the window and choosing `Run Python File in Terminal`.
+6. Execute the code by right-clicking in the window and choosing `Run Python File in Terminal`.
 
-Congrats, you wrote your first little program in Python. It may not be as impressive as you would have imagined, but you can go along and will learn by practising. The list of tutorials below provides a great starting point to learn the basics of Python by solving little exercises interactively:
+7. When you see the version number, everything works fine. If you get a `ModuleNotFoundError`, let me know.
+
+Congrats, you wrote your first little program in Python. It may not be as impressive as you would have imagined, but you can go along and learn by practising more. The list of tutorials below provides a great starting point to learn the basics of Python by solving little exercises interactively:
 
 - [Python Principles](https://pythonprinciples.com)
 - [LearnPython](https://www.learnpython.org/en/Welcome)
 
-![Write your first Python script in VS Code](images/vs_code_hello_world.png){ width=6cm }
+![Write your first Python script in VS Code](images/vs_code_hello_world.png){#fig:figure2 }
