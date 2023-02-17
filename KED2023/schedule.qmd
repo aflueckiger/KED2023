@@ -20,8 +20,8 @@ The plan below is provisional. I am happy to adapt the topics, as well as the sc
 | 20 April 2023        | [Ethics and the Evolution of NLP](lectures.html#week-8-ethics-and-the-evolution-of-nlp) |
 | 27 April 2023        | [Introduction to Python + VS Code](lectures.html#week-9-introduction-to-python) |
 | 04 May 2023          | [Data Analysis of Swiss Media](lectures.html#week-10-data-analysis-of-swiss-media) |
-| 11 May 2023          | [NLP with Python](lectures.html#week-10-nlp-with-python)     |
+| 11 May 2023          | [NLP with Python](lectures.html#week-11-nlp-with-python)     |
 | ~~18 May 2023~~      | *no lecture (Christi Himmelfahrt)*                           |
-| 25 May 2023          | [NLP with Python II + Working Session](lectures.html#week-11-nlp-with-python-ii-working-session) |
-| 01 June 2023         | [Mini-Project Presentations + Discussion](lectures.html#week-12-mini-project-presentations-discussion) |
+| 25 May 2023          | [NLP with Python II + Working Session](lectures.html#week-12-nlp-with-python-ii-working-session) |
+| 01 June 2023         | [Mini-Project Presentations + Discussion](lectures.html#week-13-mini-project-presentations-discussion) |
 

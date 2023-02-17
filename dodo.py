@@ -122,9 +122,9 @@ def task_create_syllabus():
         "file_dep": fdependencies,
         "actions": [
             f"cd {MAIN_DIR} && \
-            cat index.qmd <(echo '[Go to Course Website](https://aflueckiger.github.io/KED2023/)' ) | grep -v 'Go to UniLu website' | sed '/<div/,/div>/d'> index.md.tmp && \
+            cat index.qmd <(echo '[Go to Course Website](https://aflueckiger.github.io/KED2023/)' ) | grep -v '< fa' | sed '/<div/,/div>/d'> index.md.tmp && \
             sed '5 a # Schedule' schedule.qmd > schedule.md.tmp && \
-            sed '5 a # Lectures' lectures.qmd | grep -P -v '{{< .+ >}}' | sed -E 's/The slides .+ icon://g' > lectures.md.tmp && \
+            sed '5 a # Lectures' lectures.qmd | grep -P -v '< .+ >' | sed -E 's/The slides .+ icon://g' > lectures.md.tmp && \
             sed '5 a # Assignments' assignments.qmd > assignments.md.tmp && \
             pandoc -o {outfile} index.md.tmp schedule.md.tmp lectures.md.tmp assignments.md.tmp \
             --from markdown \
@@ -181,7 +181,8 @@ def task_create_materials():
             -V filecolor='[HTML]{{111bab}}' \
             -V geometry:margin=2.5cm \
             --number-sections \
-            --metadata date='{today}'",
+            --metadata date='{today}' \
+            -F pandoc-crossref",
             ],
             "targets": [outfile],
             # 'title': show_cmd
