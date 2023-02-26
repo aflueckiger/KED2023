@@ -41,7 +41,7 @@ Let me know if you are struggling with any of the steps.
 
 Despite being Unix-based, macOS is lacking some essential command-line tools out-of-the-box. In this section, we install the Command Line Tools first since these tools are also a requirement for the subsequent installation of the package manager Homebrew. 
 
-1. Open a Terminal to get a command-line interface. When you cannot find the application in your system tray, press the `command` and `spacebar` keys to search and type `Terminal` to search for it.
+1. Open a Terminal to get a command-line interface. When you cannot find the application in your system tray, press the `CMD` + `Spacebar` keys to search and type `Terminal` to search for it.
 
 4. Type the following command and press enter:
    ```bash
@@ -55,7 +55,7 @@ Despite being Unix-based, macOS is lacking some essential command-line tools out
     ```bash
     git --version
     ```
-    When you see something like this `git version 2.x`, the installation was successfull.
+    When you see something like this `git version 2.x`, the installation was successful.
 
 Source: [OSXDaily](https://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/)
 
@@ -66,8 +66,7 @@ Homebrew is a powerful package manager for macOS systems. With Homebrew, you can
 1. To install Homebrew, type the following command into your Terminal window: 
    
    ```bash
-   /bin/bash -c "$(curl -fsSL \ 
-   https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ```
    When there is an issue executing this command (i.e., unprintable characters), copy the identical looking installation command from the [offical website](https://brew.sh/) into your Terminal.
 
@@ -144,8 +143,6 @@ Source: [Tesseract](https://github.com/tesseract-ocr/tesseract/wiki)
    ```
     brew install wget
    ```
-
-<!--macOS Catalina introduced Zsh as the new default shell instead of Bash. To enable Zsh as new default on your system, type: chsh -s /bin/zsh -->
 
 ## Install VS Code
 
@@ -233,11 +230,6 @@ Source: [Microsoft](https://docs.microsoft.com/en-us/windows/wsl/install)
    sudo apt install python3-pip
    ```
 
-4. Install the dependency management for Python:
-
-   ``` bash
-   python3 -m pip install poetry
-   ```
 
 ### Tesseract
 
@@ -288,8 +280,6 @@ Source: [Microsoft](https://code.visualstudio.com/docs/remote/wsl)
 
 ![WSL Ubuntu is successfully connected](images/vs_code_wsl.png){#fig:figure1}
 
-
-
 ## Show file extensions
 
 You may not see the file extensions on Windows by default. For example, a document named`test.docx` is shown as `test` in Explorer. If this is the case, enable the file extensions.
@@ -309,9 +299,9 @@ You presumably have installed some of the required tools already or you have the
 
 We need to install some additional packages that are not included in the Python standard library.
 
-Using `poetry`, we can install all the dependencies needed in a project at once and fully reproducible. All dependencies are specified in a file called  `pyproject.toml` that is provided in the [repository of this seminar]([pyproject.toml](https://github.com/aflueckiger/KED2023/blob/KED2023/pyproject.toml)), available on GitHub. We will learn more about GitHub and the installed packages later in the course. For now, you can think of a GitHub repository as a publicly available project folder that is versioned.
+Using the dependency management `poetry`, we can install all the dependencies needed in a project at once and fully reproducible on any machine. All dependencies are specified in a file called  `pyproject.toml` that is provided in the [repository of this seminar]([pyproject.toml](https://github.com/aflueckiger/KED2023/blob/KED2023/pyproject.toml)), available on GitHub. We will learn more about GitHub and the installed packages later in the course. For now, you can think of a GitHub repository as a publicly available project folder that is versioned.
 
-1. Open a command-line (Terminal on Mac, Ubuntu on Windows) and download the GitHub repository of this course. 
+1. Open a command-line (Mac: Terminal; Windows: Ubuntu) and download the GitHub repository of this course. 
 
    ```bash
    # Windows user only:
@@ -324,13 +314,19 @@ Using `poetry`, we can install all the dependencies needed in a project at once 
    cd KED2023
    ```
 
-2. Configure poetry to use the project directory for its virtual environment:
+2. Install the dependency management for Python:
+
+    ``` bash
+    python3 -m pip install poetry
+    ```
+
+3. Configure poetry to use the project directory for its virtual environment:
 
     ```bash
     poetry config virtualenvs.in-project true
     ```
 
-3. Now, you can install the necessary packages with a single command: 
+4. Now, you can install the necessary packages with a single command:
 
     ```bash
     poetry install
@@ -338,13 +334,13 @@ Using `poetry`, we can install all the dependencies needed in a project at once 
 
 ## First Steps in Python
 
-As a kind of initiation ritual, say hello to the programming world in Python and check if everything is installed successfully. 
+As a kind of initiation ritual of coding, say hello to the programming world in Python and check if everything is installed successfully. 
 
-1. Open the VS Code editor
+1. Open the VS Code editor.
 
-2. Ensure that you connected to `WSL: Ubuntu` (green patch in the lower-left corner, see @fig:figure1)
+2. Windows only: Ensure that you connected to `WSL: Ubuntu` (green patch in the lower-left corner, see @fig:figure1)
 
-3. Open the folder `KED2023`
+3. Open the folder `KED2023` via the menu.
 
 4. Create a new file called `hello_world.py`.
 
@@ -360,7 +356,7 @@ As a kind of initiation ritual, say hello to the programming world in Python and
 
 6. Execute the code by right-clicking in the window and choosing `Run Python File in Terminal`.
 
-7. When you see the version number, everything works fine. If you get a `ModuleNotFoundError`, let me know.
+7. When you see the version number of spaCy, everything works fine. If you get a `ModuleNotFoundError`, let me know.
 
 Congrats, you wrote your first little program in Python. It may not be as impressive as you would have imagined, but you can go along and learn by practising more. The list of tutorials below provides a great starting point to learn the basics of Python by solving little exercises interactively:
 
