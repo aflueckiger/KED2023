@@ -33,7 +33,7 @@ geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
 This cheatsheet is based on [this resource](https://melaniewalsh.github.io/Intro-Cultural-Analytics/01-Command-Line/01-The-Command-Line.html#command-line-cheatsheet). Please also refer to this resource for a more in-dept explanation in prose. You should follow the guide for macOS and Unix even as a Windows user as we have installed a Unix environment.
 
 ## egrep
-The most common arguments of `egrep`:
+`egrep` allows pattern-based search (i.e., searching with regular expressions). The most common arguments of `egrep` are:
 
 - `-i` search case insensitive
 - `-r` search recursively in folder
@@ -59,12 +59,6 @@ The most common arguments of `egrep`:
    ```bash
    echo "line following existing content of file1" >> file1
    ```
-
-
-
-# NLP-related Shell Commands
-
-coming soon!
 
 
 
