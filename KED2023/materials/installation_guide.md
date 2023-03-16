@@ -95,7 +95,13 @@ Homebrew is a powerful package manager for macOS systems. With Homebrew, you can
    ```
    
 
+<!---
 
+ https://stackoverflow.com/questions/5157678/how-do-i-use-brew-installed-python-as-the-default-python 
+
+https://github.com/Homebrew/discussions/discussions/476
+
+--->
 
 Source: [Homebrew](https://docs.brew.sh/FAQ)
 
@@ -195,12 +201,12 @@ To use the powerful Bash tools on your Windows computer, we install a Ubuntu Lin
    sudo apt update && sudo apt upgrade
    ```
 
-7. Create a symbolic link in the Bash to easily access your files on Windows. For example, you may want to link the folder `Documents` on Windows to the symbolic folder `documents` on Ubuntu. For people using OneDrive, they can also set a symbolic link to this directory. For this, replace the `<YOUR_USERNAME>` with the actual one and run the following commands:
+7. Create a symbolic link in the Bash to easily access your files on Windows. For example, you may want to link the folder `Documents` on Windows to the symbolic folder `documents` on Ubuntu. For people using OneDrive, they can also set a symbolic link to this directory. For this, replace the `USERNAME` with the actual username on your Windows computer and run the following commands:
 
    ```bash
    cd ~
-   ln -s /mnt/c/Users/<YOUR_WINDOWS_USERNAME>/Documents documents
-   ln -s /mnt/c/Users/<YOUR_WINDOWS_USERNAME>/OneDrive/ onedrive
+   ln -s /mnt/c/Users/USERNAME/Documents documents
+   ln -s /mnt/c/Users/USERNAME/OneDrive/ onedrive
    ```
 
    Your `Documents` on Windows can be accessed like this:
@@ -305,9 +311,9 @@ Using the dependency management `poetry`, we can install all the dependencies ne
 
    ```bash
    # Windows user only:
-   # Change into the `Documents` folder 
-   # to make is easily accessible from Windows
-   cd /mnt/c/Users/<YOUR_WINDOWS_USERNAME>/Documents
+   # change into the `Documents` folder for better accessibility
+   # replace USERNAME with your actual username
+   cd /mnt/c/Users/USERNAME/Documents
    
    # everyone
    git clone https://github.com/aflueckiger/KED2023.git
