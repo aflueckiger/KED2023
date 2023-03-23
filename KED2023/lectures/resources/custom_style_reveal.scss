@@ -210,12 +210,8 @@ section:not(.has-dark-background) span.citation a{
     color: gray;
 }
 
-.reveal pre {
-    margin-top: 2em;
-    margin-bottom: 4em;
-}
-
 .reveal pre code {
+    margin: 1em;
     font-size: 1.5em;
     padding: 1.5em;
     line-height: 1.2em;
@@ -244,7 +240,6 @@ section.has-dark-background code {
     margin-top:1.5em;
 }
 
-.reveal pre.sourceCode,
 .fragment {
     margin:2em;
 }
