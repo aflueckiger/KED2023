@@ -32,7 +32,7 @@ geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
 
 This cheatsheet is based on [this resource](https://melaniewalsh.github.io/Intro-Cultural-Analytics/01-Command-Line/01-The-Command-Line.html#command-line-cheatsheet). Please also refer to this resource for a more in-dept explanation in prose. You should follow the guide for macOS and Unix even as a Windows user as we have installed a Unix environment.
 
-## egrep
+## Searching with egrep
 `egrep` allows pattern-based search (i.e., searching with regular expressions). The most common arguments of `egrep` are:
 
 - `-i` search case insensitive
@@ -63,6 +63,20 @@ This cheatsheet is based on [this resource](https://melaniewalsh.github.io/Intro
 
 
 # Regular Expressions
+
+## Counting words across Files
+
+It is common to quantify words across files. The example command
+
+- searches for a word starting with `eco` and continuing with any letters
+- count the number of occurrences
+- sorts the words according to their frequency.
+
+```bash
+egrep -roh "\beco[a-z]*" **/*.txt | sort | uniq -c | sort -h
+```
+
+`\b` matches the boundary of a word.
 
 ## Example Patterns
 
