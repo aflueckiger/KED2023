@@ -1667,7 +1667,7 @@ display:block!important;
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">egrep</span> <span class="at">-roh</span> <span class="st">&quot;YOUR_PATTERN&quot;</span> <span class="pp">**</span>/<span class="pp">*</span>.txt <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-h</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <ul>
-<li><strong>Pause</strong></li>
+<li><strong>Pause</strong> (Zeit ist sehr knapp bis hier)</li>
 <li>CTRL+C um Befehl abzubrechen (falls länger als eine Sekunde dauert, ist etwas falsch)</li>
 <li>Start mit einfachem grep-Befehl, dann schauen, was gematcht wird und dann auszählen</li>
 <li>Nach Sitzung Upload der Lösungen</li>
@@ -1684,7 +1684,20 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-
+<section id="in-class-solution" class="slide level2 center" data-background="#3c70b5">
+<h2>In-class: Solution</h2>
+<ol start="2" type="1">
+<li><p>Use <code>egrep</code> to extract all uppercased words like <code>UNO, OECD, SP</code> and count their frequency.</p>
+<ul>
+<li><code>egrep -roh &quot;[A-Z]{2,}&quot; **/*.txt | sort | uniq -c | sort -h</code></li>
+</ul></li>
+<li><p>Use <code>egrep</code> to extract all plural nouns with female endings (e.g. <code>Schweizerinnen</code>). The pattern matches words that start with an uppercase letter, ending with <code>innen</code>, and any letter in between. Do the same for the male forms. Is there a qualitative or a quantitative difference between the gendered forms?</p>
+<ul>
+<li><p><code>egrep -roh &quot;[A-Z][a-z]+innen\b&quot; **/*.txt | sort | uniq -c | sort -h</code></p></li>
+<li><p><code>egrep -roh &quot;[A-Z][a-z]+er\b&quot; **/*.txt | sort | uniq -c | sort -h</code> (there is no way with regular expression to extract only nouns of the male form but not <code>Wasser</code> and the like. For this, you have to use some kind of machine learning.)</p></li>
+</ul></li>
+</ol>
+</section>
 <section id="replacing-removing" class="slide level2 center">
 <h2>Replacing + Removing</h2>
 <h3 id="stream-editor-sed"><strong>s</strong>tream <strong>ed</strong>itor (sed)</h3>
@@ -1859,7 +1872,23 @@ display:block!important;
 <li>Use <code>sed -E</code> to remove the table of content, the footer and the page number in the programme of the Green Party. Check the corresponding PDF to get a visual impression and test your regular expression with <code>egrep</code> first to see if you match the correct parts in the document.</li>
 </ol>
 </section>
-
+<section id="in-class-solution-i" class="slide level2 center" data-background="#3c70b5">
+<h2>In-class: Solution I</h2>
+<ol type="1">
+<li>Use <code>egrep</code> to extract capitalized words and count them. What are the most frequent nouns?
+<ul>
+<li><code>egrep -roh &quot;[A-Z][a-z]+&quot; **/*.txt | sort | uniq -c | sort -h</code></li>
+</ul></li>
+<li>Use <code>egrep</code> to extract words following any of these strings: <code>der die das</code>. Hint: Use a disjunction.
+<ul>
+<li><code>egrep -roh &quot;(der|die|das) \w+&quot; **/*.txt</code></li>
+</ul></li>
+<li>Use <code>sed -E</code> to remove the table of content, the footer and the page number in the programme of the Green Party. Check the corresponding PDF to get a visual impression and test your regular expression with <code>egrep</code> first to see if you match the correct parts in the document.
+<ul>
+<li><code>cat gruene_programme_2019.txt | sed &quot;1,192d&quot; | sed -E &quot;s/^Wahlplattform.*2023$//g&quot; | sed -E &quot;s/^[0-9]+$//g&quot;</code></li>
+</ul></li>
+</ol>
+</section>
 <section id="in-class-self-check" class="slide level2 center" data-background="#3c70b5">
 <h2>In-class: Self-Check</h2>
 <h3 id="equivalent-patterns">Equivalent patterns</h3>
@@ -1878,7 +1907,21 @@ display:block!important;
 <li>You are ready to come up with your own patterns…</li>
 </ol>
 </section>
-
+<section id="in-class-solution-ii" class="slide level2 center" data-background="#3c70b5">
+<h2>In-class: Solution II</h2>
+<ol type="1">
+<li>Count all the bigrams (sequence of two words) using character sets and quantifiers. What about trigrams (three words)?
+<ul>
+<li><code>egrep -hoir &quot;\b[a-z]+ [a-z]+\b&quot; | sort | uniq -c | sort -h</code></li>
+<li><code>egrep -hoir &quot;\b[a-z]+ [a-z]+ [a-z]+\b&quot; | sort | uniq -c | sort -h</code></li>
+</ul></li>
+<li>Extract the words following numbers (also consider numbers like: <code>1&#39;000, 1,000 or 5%</code>). Then, count all the words while excluding the numbers themselves. Hint: Pipe another grep to remove the digits.
+<ul>
+<li><code>egrep -rhoi &quot;[0-9][0-9,&#39;%]+ [a-z]+&quot; | egrep -io &quot;[a-z]+&quot; | sort | uniq -c | sort -h</code></li>
+<li>Alternative: <code>egrep -rhoi &quot;[0-9][0-9,&#39;%]+ [a-z]+&quot; | sed -E &quot;s/[0-9][0-9,&#39;%]+//g&quot; | sort | uniq -c | sort -h</code></li>
+</ul></li>
+</ol>
+</section>
 <section id="in-class-exercise-iii" class="slide level2 center" data-background="#3c70b5">
 <h2>In-class: Exercise III</h2>
 <ol type="1">
