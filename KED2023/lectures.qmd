@@ -137,11 +137,11 @@ Everything we have touched about text processing in greater detail.
 
 To this point, you have acquired the skills to cut a document into pieces and, subsequently, extract, replace, and count any textual elements. Unless you have interesting data, these tools are neat but of no greater use. Thus, we turn to relevant data resources for social science. Given that you have plain text at hand, your tools cut through data like butter. For other formats like PDF or DOCX, we learn some remedies to convert them into plain text. Most notably, we perform optical character recognition (OCR) .
 
-<!-- 
-
 [{{< fa  desktop size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/html/KED2023_07.html){target="_blank"}
 [{{< fa file-pdf size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/pdf/KED2023_07.pdf){target="_blank"}
 [{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/tree/main/KED2023/lectures/md/KED2023_07.md){target="_blank"}
+
+<!-- 
 
 [<i class="fas fa-video"></i>](https://tube.switch.ch/videos/yqvP9Ve8jv) 
 
