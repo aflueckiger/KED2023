@@ -10,7 +10,7 @@ You have to submit three assignments to complete the seminar successfully. The p
 | #    | Topic                                                        | Published     | Deadline (by midnight)      | Solution                                                     |
 | -- | --------------------------------- | ------------------------- | ----------------------------------------------- | --------------------------------------------- |
 | 1    | [Data Wrangling](https://aflueckiger.github.io/KED2023/assignments/assignment_1/KED2023_assignment_1.pdf) | 16 March 2023 | 23 March 2023 | [Example Solution](https://github.com/aflueckiger/KED2023/blob/main/docs/assignments/assignment_1/flueckiger_KED2023_1_solutions.sh) |
-| 2    | [Regex NLP](https://aflueckiger.github.io/KED2023/assignments/assignment_2/KED2023_assignment_2.pdf) | 30 March 2023 | 06 April 2023- | -        |
+| 2    | [Regex NLP](https://aflueckiger.github.io/KED2023/assignments/assignment_2/KED2023_assignment_2.pdf) | 30 March 2023 | 06 April 2023- | [Example Solution](https://github.com/aflueckiger/KED2023/blob/main/docs/assignments/assignment_2/flueckiger_KED2023_2_solutions.sh) |
 | 3    | Python NLP | 11 May 2023 | 18 May 2023 | - |
 
 ## Formal Instructions
