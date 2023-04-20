@@ -21,6 +21,8 @@ black = "^23.1.0"
 jupyter = "^1.0.0"
 ipywidgets = "^8.0.4"
 pykernel = "^0.1.6"
+beautifulsoup4 = "^4.12.2"
+rise = "^5.7.1"
 
 
 [tool.poetry.group.dev.dependencies]
