@@ -149,15 +149,15 @@ To this point, you have acquired the skills to cut a document into pieces and, s
 
 ## Week 8: Ethics and the Evolution of NLP
 
-Ethics is not just an abstract topic of Philosophy. Modern NLP is more powerful than ever before and, thus, embedded in many aspects of life. Unfortunately, it also exhibits severe and poorly understood bias that causes harm. With the recent *data-driven deep learning turn*, NLP overcame many theoretical limitations -- yet, this comes at a cost. It is our duty to better understand the working and impact of this technology. 
+Ethics is not just an abstract topic of Philosophy. Modern NLP is more powerful than ever before and, thus, pervasive in many aspects of life. Unfortunately, it also exhibits severe and poorly understood biases that may cause harm. With the recent *data-driven deep learning turn*, NLP overcame many theoretical limitations -- yet, this comes at a cost. It is our duty to better understand the working and impact of this technology. 
 
 
-
-<!-- 
 
 [{{< fa  desktop size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/html/KED2023_08.html){target="_blank"}
 [{{< fa file-pdf size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/pdf/KED2023_08.pdf){target="_blank"}
 [{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/tree/main/KED2023/lectures/md/KED2023_08.md){target="_blank"}  
+
+<!-- 
 
 -->
 
