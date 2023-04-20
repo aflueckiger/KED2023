@@ -251,12 +251,13 @@ section.has-dark-background code {
 * QUOTES
 *********************************************/
 
-.reveal blockquote  {
+.reveal blockquote {
   font-family: Georgia;
   color: var(--black);
-  max-width: 80%;
+  max-width: 90%;
   text-align: left;
   box-shadow: none;
+  border-left: none;
   font-size: 130%;
   position: relative; }
   .reveal blockquote p{
