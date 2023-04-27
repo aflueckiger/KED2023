@@ -95,7 +95,7 @@
     "href": "lectures.html#week-9-introduction-to-python",
     "title": "Lectures",
     "section": "Week 9: Introduction to Python",
-    "text": "Week 9: Introduction to Python\nIt may come as a surprise that we only start with Python in the ninth session. As the folks say, Python is among the coolest programming languages, relatively easy to learn, and provides excellent NLP packages so that you do not have to implement everything yourself. All true as long as you have your data ready. In this session, we begin with an introduction to the basic syntax of Python. Starting with basics is a dry matter; however, it allows you to use third-party libraries and get a handle on more sophisticated NLP analyses."
+    "text": "Week 9: Introduction to Python\nIt may come as a surprise that we only start with Python in the ninth session. As the folks say, Python is among the coolest programming languages, relatively easy to learn, and provides excellent NLP packages so that you do not have to implement everything yourself. All true as long as you have your data ready. In this session, we begin with an introduction to the basic syntax of Python. Starting with basics is a dry matter; however, it allows you to use third-party libraries and get a handle on more sophisticated NLP analyses.\n  _"
   },
   {
     "objectID": "lectures.html#week-10-data-analysis-of-swiss-media",

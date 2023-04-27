@@ -154,15 +154,12 @@ Ethics is not just an abstract topic of Philosophy. Modern NLP is more powerful 
 
 It may come as a surprise that we only start with Python in the ninth session. As the folks say, Python is among the coolest programming languages, relatively easy to learn, and provides excellent NLP packages so that you do not have to implement everything yourself. All true as long as you have your data ready. In this session, we begin with an introduction to the basic syntax of Python. Starting with basics is a dry matter; however, it allows you to use third-party libraries and get a handle on more sophisticated NLP analyses.
 
-<!-- 
+
 
 [{{< fa  desktop size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/html/KED2023_09.html){target="_blank"}
 [{{< fa file-pdf size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/pdf/KED2023_09.pdf){target="_blank"}
-[{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/tree/main/KED2023/lectures/md/KED2023_09.md){target="_blank"}
-
-[<i class="fas fa-video"></i>](https://tube.switch.ch/videos/hz6jdU36Ek) 
-
--->
+[{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/tree/main/KED2023/lectures/md/KED2023_09.md){target="_blank"}_
+[{{< fa  video size=xl >}}](https://tube.switch.ch/videos/RMDbPjma57){target="_blank"}
 
 ## Week 10: Data Analysis of Swiss Media
 
