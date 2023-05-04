@@ -167,6 +167,26 @@ Analyzing the media discourse from the past and the present has always been one 
 
 
 
+[{{< fa  desktop size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/html/KED2023_10.html){target="_blank"}
+[{{< fa file-pdf size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/pdf/KED2023_10.pdf){target="_blank"}
+[{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/tree/main/KED2023/lectures/md/KED2023_10.md){target="_blank"}
+
+<--
+
+[<i class="fas fa-video"></i>](https://tube.switch.ch/videos/mm25aFfzWz)
+
+-->
+
+### Code
+
+[{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/blob/main/KED2023/materials/code/KED2023_10.ipynb) Click to open the static code
+
+ [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aflueckiger/KED2023/HEAD?labpath=materials%2Fcode%2FKED2023_10.ipynb) Click to run the code in your browser without any installation 
+
+-->
+
+
+
 ## Week 11: NLP with Python
 
 Python is the language of choice when it comes to advanced NLP. Have you ever wondered how the frequency of terms has evolved over the years? Or how the language differs between two groups whereby the groups may be formed by any metadata (people, organization, gender etc.)? In such an exploratory endeavour, using an interactive and visual mode is the most effective that complement basic statistics. In short, we finally arrived at the serious stuff in our journey. To make sure you don't get lost in the forest of yet unknown concepts, you will also learn the jargon of NLP. 
