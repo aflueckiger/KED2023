@@ -171,11 +171,6 @@ Analyzing the media discourse from the past and the present has always been one 
 [{{< fa file-pdf size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/pdf/KED2023_10.pdf){target="_blank"}
 [{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/tree/main/KED2023/lectures/md/KED2023_10.md){target="_blank"}
 
-<--
-
-[<i class="fas fa-video"></i>](https://tube.switch.ch/videos/mm25aFfzWz)
-
--->
 
 ### Code
 
