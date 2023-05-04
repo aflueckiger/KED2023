@@ -13,7 +13,6 @@ matplotlib = "^3.7.0"
 jupyterlab = "^3.6.1"
 textacy = "^0.12.0"
 scattertext = "^0.1.12"
-plotnine = "^0.10.1"
 spacy = "3.5"
 en-core-web-sm = {url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.5.0/en_core_web_sm-3.5.0-py3-none-any.whl"}
 de-core-news-sm = {url = "https://github.com/explosion/spacy-models/releases/download/de_core_news_sm-3.5.0/de_core_news_sm-3.5.0-py3-none-any.whl"}
@@ -23,6 +22,7 @@ ipywidgets = "^8.0.4"
 pykernel = "^0.1.6"
 beautifulsoup4 = "^4.12.2"
 rise = "^5.7.1"
+plotnine = "^0.10.1"
 
 
 [tool.poetry.group.dev.dependencies]
