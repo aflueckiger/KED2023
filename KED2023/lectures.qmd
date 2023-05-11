@@ -165,42 +165,47 @@ It may come as a surprise that we only start with Python in the ninth session. A
 
 Analyzing the media discourse from the past and the present has always been one of the most exciting approaches for social science. Only recently, however, [Swissdox@LiRI](https://swissdox.linguistik.uzh.ch/#) has introduced a simple-to-use API to assemble and download comprehensive datasets of Swiss news media. In this session, we learn about the process of data curation and data analysis using the Pandas package.
 
-
-
 [{{< fa  desktop size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/html/KED2023_10.html){target="_blank"}
 [{{< fa file-pdf size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/pdf/KED2023_10.pdf){target="_blank"}
 [{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/tree/main/KED2023/lectures/md/KED2023_10.md){target="_blank"}
 
-
 ### Code
 
-[{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/blob/main/KED2023/materials/code/KED2023_10.ipynb) Click to open the static code
+Click to open the static code:
 
- [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aflueckiger/KED2023/ea80f96061c7f52c52e9cc2c4b9d629ac0632f15?urlpath=lab%2Ftree%2FKED2023%2Fmaterials%2Fcode%2FKED2023_10.ipynb) Click to run the code in your browser without any installation 
+[{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/blob/main/KED2023/materials/code/KED2023_10.ipynb) 
 
+You may also run the code directly in your browser without any installation:
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aflueckiger/KED2023/ea80f96061c7f52c52e9cc2c4b9d629ac0632f15?urlpath=lab%2Ftree%2FKED2023%2Fmaterials%2Fcode%2FKED2023_10.ipynb) Binder is a non-commercial-service and, thus, may not work if there are too many users.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aflueckiger/KED2023/blob/main/KED2023/materials/code/KED2023_10.ipynb)  Google Colab requires a Google Account.
 
 ## Week 11: NLP with Python
 
 Python is the language of choice when it comes to advanced NLP. Have you ever wondered how the frequency of terms has evolved over the years? Or how the language differs between two groups whereby the groups may be formed by any metadata (people, organization, gender etc.)? In such an exploratory endeavour, using an interactive and visual mode is the most effective that complement basic statistics. In short, we finally arrived at the serious stuff in our journey. To make sure you don't get lost in the forest of yet unknown concepts, you will also learn the jargon of NLP. 
 
-
+[{{< fa  desktop size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/html/KED2023_11.html){target="_blank"}
+[{{< fa file-pdf size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/pdf/KED2023_11.pdf){target="_blank"}
+[{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/tree/main/KED2023/lectures/md/KED2023_11.md){target="_blank"}
 
 <!-- 
 
-[{{< fa  desktop size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/html/KED2023_10.html){target="_blank"}
-[{{< fa file-pdf size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/pdf/KED2023_10.pdf){target="_blank"}
-[{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/tree/main/KED2023/lectures/md/KED2023_10.md){target="_blank"}
-
 [<i class="fas fa-video"></i>](https://tube.switch.ch/videos/mm25aFfzWz)
+
+-->
 
 ### Code
 
-[{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/blob/main/materials/code/KED2023_10.ipynb) Click to open the static code
+Click to open the static code:
 
- [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aflueckiger/KED2023/HEAD?labpath=materials%2Fcode%2FKED2023_10.ipynb) Click to run the code in your browser without any installation 
+[{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/blob/main/KED2023/materials/code/KED2023_11.ipynb) 
 
--->
+You may also run the code directly in your browser without any installation:
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/aflueckiger/KED2023/ea80f96061c7f52c52e9cc2c4b9d629ac0632f15?urlpath=lab%2Ftree%2FKED2023%2Fmaterials%2Fcode%2FKED2023_11.ipynb) Binder is a non-commercial-service and, thus, may not work if there are too many users.
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/aflueckiger/KED2023/blob/main/KED2023/materials/code/KED2023_11.ipynb) Google Colab requires a Google Account.
 
 
 ## Week 12: NLP with Python II + Working Session
