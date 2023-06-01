@@ -21,6 +21,48 @@ Here I present some stuff that we did not cover in class.
 
 
 
+## Topics
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+### Techniques
+
+- text processing
+- extracting and aggregating information
+- creating simple visualizations
+- optical character recognition (OCR)
+- scraping files
+
+:::
+
+::: {.column width="50%"}
+
+### Data
+
+- using existing datasets
+- creating new datasets
+
+:::
+::::::::::::::
+
+<br>
+
+::: {.funky .green}
+
+:nerd_face: inputs are more than welcome!
+
+:::
+
+
+
+::: notes
+
+- Techniken & Resourcen
+- Text zu Daten machen und auswerten
+
+:::
+
 ##  Data vs. Capta
 
 > Differences in the etymological roots of the terms data and capta make the distinction between constructivist and realist approaches clear. *Capta* is <span style="color:#b5533c">**"taken"**</span> actively while *data* is assumed to be a <span style="color:#b5533c">**"given"**</span> able to be recorded and observed.
@@ -211,3 +253,10 @@ done
 - Soziotechnische Systeme
 
 :::
+
+
+
+## Nothing to hide?
+
+- Data for targeting ads to chase climate activists
+- TODO
