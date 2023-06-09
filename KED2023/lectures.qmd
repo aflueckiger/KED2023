@@ -254,11 +254,13 @@ The seminar is coming to an end, yet it doesn't have to be a dead-end. You may h
 
 
 
-<!-- 
-
 [{{< fa  desktop size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/html/KED2023_12.html){target="_blank"}
 [{{< fa file-pdf size=xl >}}](https://aflueckiger.github.io/KED2023/lectures/pdf/KED2023_12.pdf){target="_blank"}
 [{{< fa brands github size=xl >}}](https://github.com/aflueckiger/KED2023/tree/main/KED2023/lectures/md/KED2023_12.md){target="_blank"}
+
+
+
+<!-- 
 
 [<i class="fas fa-video"></i>](https://tube.switch.ch/videos/F0yHkSqnuy) 
 
